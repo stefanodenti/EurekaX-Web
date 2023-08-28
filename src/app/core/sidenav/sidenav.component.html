@@ -1,1 +1,10 @@
-<p>sidenav works!</p>
+<div
+  [ngClass]="{'w-60 lg:w-[300px]': sidenavStatus() === 'open', 'w-0': sidenavStatus() === 'close', 'fixed z-[9999]': isMobile(), 'relative': !isMobile()}"
+     class="h-screen transition-all duration-200 ease-in-out  bg-amber-400">
+  <div *ngIf="sidenavStatus() === 'open'">
+    <p>sidenav works!</p>
+  </div>
+</div>
+
+<div *ngIf="isMobile() && sidenavStatus() === 'open'" (click)="closeSidenav()" class="fixed w-screen bg-black bg-opacity-50 z-40 h-screen"></div>
+

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { UikitModule } from 'src/app/uikit/uikit.module';
 
 @Component({
   selector: 'eurekax-home',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    UikitModule
   ]
 })
 

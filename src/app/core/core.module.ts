@@ -12,10 +12,11 @@ import { RouterModule } from '@angular/router';
         CommonModule,
         RouterModule
     ],
-    exports: [
-        NavbarComponent,
-        FooterComponent,
-    ],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    SidenavComponent,
+  ],
 })
 export class CoreModule {
 }

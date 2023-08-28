@@ -1,5 +1,10 @@
-<eurekax-navbar></eurekax-navbar>
-<div class="py-[50px]">
-  <router-outlet></router-outlet>
+<div class="flex items-start">
+  <eurekax-sidenav></eurekax-sidenav>
+  <div class="flex-auto relative h-screen">
+    <eurekax-navbar></eurekax-navbar>
+    <div class="">
+      <router-outlet></router-outlet>
+    </div>
+    <eurekax-footer></eurekax-footer>
+  </div>
 </div>
-<eurekax-footer></eurekax-footer>

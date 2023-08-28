@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SidenavService} from "../sidenav/sidenav.service";
 
 @Component({
   selector: 'eurekax-navbar',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   showMobileMenu = false;
 
-  constructor() { }
+  constructor(private sidenavService: SidenavService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleSidenav() {
+    this.sidenavService.toggleSidenav();
   }
 
 }

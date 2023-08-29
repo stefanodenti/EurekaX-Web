@@ -3,10 +3,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --primary-color: pink;
-  --secondary-color: purple;
-  --tertiary-color: orange;
+
+  @property --primary-color {
+    syntax: '<color>';
+    initial-value: 'pink';
+    inherits: false;
+  }
+
+  @property --secondary-color {
+    syntax: '<color>';
+    initial-value: 'purple';
+    inherits: false;
+  }
+
+  @property --tertiary-color {
+    syntax: '<color>';
+    initial-value: 'orange';
+    inherits: false;
+  }
+
+  .bg-primary, .bg-secondary, .bg-tertiary, .bg-white, .bg-black {
+    transition: background-color .4s ease-in-out;
+  }
 }
 
 

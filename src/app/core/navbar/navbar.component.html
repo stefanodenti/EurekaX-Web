@@ -1,9 +1,11 @@
 <div class="inset-x-0 top-0">
-  <div class=" h-[50px] bg-amber-400 flex justify-between px-4 py-2 items-center">
+  <div class=" h-[50px] bg-primary flex justify-between px-4 py-2 items-center">
     <div class="flex items-center gap-2">
       <span class="cursor-pointer" (click)="toggleSidenav()">Menu</span>
       <img src="favicon.ico">
     </div>
+    <button (click)="changeColor()">change COlor</button>
+    <button (click)="toggleTheme()">Toggle Theme</button>
     <div class="flex justify-end gap-3 text-xl max-md:hidden">
       <a routerLink="/home">Home</a>
       <a routerLink="/contacts">Contacts</a>

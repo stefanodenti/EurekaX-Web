@@ -4,12 +4,16 @@
       <span class="cursor-pointer" (click)="toggleSidenav()">Menu</span>
       <img src="favicon.ico">
     </div>
-    <eurekax-theme-selector></eurekax-theme-selector>
-    <eurekax-dark-mode-toggle></eurekax-dark-mode-toggle>
-    <div class="flex justify-end gap-3 text-xl max-md:hidden">
+    <div class="flex justify-end gap-3 text-xl max-md:hidden items-center">
       <a routerLink="/home">Home</a>
       <a routerLink="/contacts">Contacts</a>
       <a>Products</a>
+
+
+      <div class="flex items-center gap-3 ml-2">
+        <eurekax-theme-selector></eurekax-theme-selector>
+        <eurekax-dark-mode-toggle></eurekax-dark-mode-toggle>
+      </div>
     </div>
     <a class="lg:hidden" (click)="showMobileMenu = !showMobileMenu">
       Menu
@@ -19,5 +23,9 @@
     <a routerLink="/home">Home</a>
     <a routerLink="/contacts">Contacts</a>
     <a>Products</a>
+    <div class="border-t border-black dark:border-white pt-2 flex justify-between items-center">
+          <eurekax-theme-selector></eurekax-theme-selector>
+          <eurekax-dark-mode-toggle></eurekax-dark-mode-toggle>
+    </div>
   </div>
 </div>

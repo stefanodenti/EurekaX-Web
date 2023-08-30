@@ -1,5 +1,6 @@
-import { Component, effect } from '@angular/core';
+import {Component, effect, OnChanges} from '@angular/core';
 import { ThemeService } from '../services/theme.service';
+import {Palette, Theme} from "../models/config.model";
 
 @Component({
   selector: 'eurekax-theme-selector',
@@ -7,15 +8,18 @@ import { ThemeService } from '../services/theme.service';
   styleUrls: ['./theme-selector.component.scss']
 })
 export class ThemeSelectorComponent {
-  activeTheme = '';
   constructor(public themeService: ThemeService) {
-    effect(() => {
-      this.activeTheme = this.themeService.theme().name;
-    })
+
   }
 
 
-  changeTheme(event: Event) {
-    this.themeService.changeTheme(this.activeTheme);
+  changeTheme(theme: Theme) {
+    this.themeService.changeTheme(theme.name);
+  }
+
+  setOptionStyle(palette: Palette) {
+    return {
+      'background-color': palette.base
+    };
   }
 }

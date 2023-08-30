@@ -1,0 +1,18 @@
+{
+  "theme": {
+    "darkMode": {
+      "defaultSchema": "dark",
+      "detectMode": "auto"
+    },
+    "light": {
+      "primary": "red",
+      "secondary": "purple",
+      "tertiary": "orange"
+    },
+    "dark": {
+      "primary": "green",
+      "secondary": "yellow",
+      "tertiary": "cyan"
+    }
+  }
+}

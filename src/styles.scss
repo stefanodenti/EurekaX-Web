@@ -2,3 +2,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+
+  @property --primary-color {
+    syntax: '<color>';
+    initial-value: 'pink';
+    inherits: false;
+  }
+
+  @property --secondary-color {
+    syntax: '<color>';
+    initial-value: 'purple';
+    inherits: false;
+  }
+
+  @property --tertiary-color {
+    syntax: '<color>';
+    initial-value: 'orange';
+    inherits: false;
+  }
+
+  * {
+    transition: background-color .4s ease-in-out;
+    transition: color .4s ease-in-out;
+  }
+}
+
+
+
+

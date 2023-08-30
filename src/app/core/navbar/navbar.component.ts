@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SidenavService} from "../sidenav/sidenav.service";
+import {ThemeService} from "../theme.service";
 
 @Component({
   selector: 'eurekax-navbar',
@@ -9,7 +10,7 @@ import {SidenavService} from "../sidenav/sidenav.service";
 export class NavbarComponent implements OnInit {
   showMobileMenu = false;
 
-  constructor(private sidenavService: SidenavService) { }
+  constructor(private sidenavService: SidenavService, private themeService: ThemeService) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +19,11 @@ export class NavbarComponent implements OnInit {
     this.sidenavService.toggleSidenav();
   }
 
+  changeColor() {
+    document.documentElement.style.setProperty(`--primary-color`, '#c71c1c');
+  }
+
+  toggleTheme() {
+    this.themeService.toggleDark();
+  }
 }

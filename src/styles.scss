@@ -24,6 +24,30 @@
     inherits: false;
   }
 
+  @property --base-color {
+    syntax: '<color>';
+    initial-value: 'white';
+    inherits: false;
+  }
+
+  @property --success-color {
+    syntax: '<color>';
+    initial-value: 'green';
+    inherits: false;
+  }
+
+  @property --warning-color {
+    syntax: '<color>';
+    initial-value: 'yellow';
+    inherits: false;
+  }
+
+  @property --error-color {
+    syntax: '<color>';
+    initial-value: 'red';
+    inherits: false;
+  }
+
   * {
     transition: background-color .4s ease-in-out;
     transition: color .4s ease-in-out;

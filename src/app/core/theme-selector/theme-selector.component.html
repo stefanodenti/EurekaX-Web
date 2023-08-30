@@ -1,0 +1,3 @@
+<select [(ngModel)]="activeTheme" id="themes" (change)="changeTheme($event)">
+    <option *ngFor="let theme of themeService.themes()" [value]="theme.name">{{theme.name}}</option>
+</select> 

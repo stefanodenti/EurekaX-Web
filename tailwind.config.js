@@ -9,7 +9,10 @@ module.exports = {
         "primary": "var(--primary-color)",
         "secondary": "var(--secondary-color)",
         "tertiary": "var(--tertiary-color)",
-        "accent": "var(--accent-color)"
+        "base": "var(--base-color)",
+        "success": "var(--success-color)",
+        "warning": "var(--warning-color)",
+        "error": "var(--error-color)",
       },
     },
   },

@@ -1,0 +1,4 @@
+<button (click)="toggle()">
+    <span *ngIf="!themeService.isDark()">DARK</span>
+    <span *ngIf="themeService.isDark()">LIGHT</span>
+</button>

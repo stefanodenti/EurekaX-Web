@@ -5,19 +5,25 @@ import {NavbarComponent} from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { DarkModeToggleComponent } from './dark-mode-toggle/dark-mode-toggle.component';
+import { ThemeSelectorComponent } from './theme-selector/theme-selector.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-    declarations: [FooterComponent, NavbarComponent, SidenavComponent, NotificationsComponent],
+    declarations: [FooterComponent, NavbarComponent, SidenavComponent, NotificationsComponent, DarkModeToggleComponent, ThemeSelectorComponent],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        FormsModule
     ],
     exports: [
         NavbarComponent,
         FooterComponent,
         SidenavComponent,
-        NotificationsComponent
+        NotificationsComponent,
+        DarkModeToggleComponent,
+        ThemeSelectorComponent
     ],
 })
 export class CoreModule {

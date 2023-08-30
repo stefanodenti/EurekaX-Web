@@ -1,8 +1,12 @@
 <div
   [ngClass]="{'w-60 lg:w-[300px]': sidenavStatus() === 'open', 'w-0': sidenavStatus() === 'close', 'fixed z-[9999]': isMobile(), 'relative': !isMobile()}"
-     class="h-screen transition-all duration-200 ease-in-out  bg-amber-400">
-  <div *ngIf="sidenavStatus() === 'open'">
-    <p>sidenav works!</p>
+     class="h-screen transition-all duration-200 ease-in-out  bg-gray-800 text-white">
+  <div *ngIf="sidenavStatus() === 'open'" class="p-3">
+    <img src="favicon.ico" alt="logo">
+    <ul class="sidenavmenu">
+      <li class="text-lg">Home</li>
+      <li>Contacts</li>
+    </ul>
   </div>
 </div>
 

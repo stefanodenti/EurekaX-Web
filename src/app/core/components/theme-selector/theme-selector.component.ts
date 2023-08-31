@@ -1,4 +1,4 @@
-import {Component, effect, OnChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import {Palette, Theme} from "../../models/config.model";
 
@@ -8,6 +8,7 @@ import {Palette, Theme} from "../../models/config.model";
   styleUrls: ['./theme-selector.component.scss']
 })
 export class ThemeSelectorComponent {
+  @Input() iconMode: boolean = false;
   constructor(public themeService: ThemeService) {
 
   }

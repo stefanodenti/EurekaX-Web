@@ -1,59 +1,62 @@
-<!--<select [(ngModel)]="activeTheme" id="themes" (change)="changeTheme($event)">-->
-<!--    <option *ngFor="let theme of themeService.themes()" [value]="theme.name">-->
-<!--      <div class="flex items-center justify-between p-2" [style.background-color]="themeService.isDark() ? theme.dark.base : theme.light.base">-->
-<!--        {{theme.name}}-->
-
-<!--        <div class="flex items-center gap-1">-->
-<!--          <div class="h-1 w-0.5" [style.background-color]="themeService.isDark() ? theme.dark.primary : theme.light.primary"></div>-->
-<!--          <div class="h-1 w-0.5" [style.background-color]="themeService.isDark() ? theme.dark.secondary : theme.light.secondary"></div>-->
-<!--          <div class="h-1 w-0.5" [style.background-color]="themeService.isDark() ? theme.dark.tertiary : theme.light.tertiary"></div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </option>-->
-<!--</select>-->
-
-
-
+<ng-container *ngIf="!iconMode else iconTemplate">
   <button id="states-button" data-dropdown-toggle="dropdown-states"
           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.base : themeService.theme()?.light?.base"
-          class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600 dark:text-white dark:border-gray-600" type="button">
-<!--    <svg class="mr-2.5 w-2.5 h-2.5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">-->
-<!--      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3V0H2Zm16 0h-3v16h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5 0H7v16h6V0Z"/>-->
-<!--    </svg>-->
+          class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600 dark:text-white dark:border-gray-600"
+          type="button">
     <div class="flex items-center gap-1 mr-2.5">
-      <div class="h-4 w-2" [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.primary : themeService.theme()?.light?.primary"></div>
-      <div class="h-4 w-2" [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.secondary : themeService.theme()?.light?.secondary"></div>
-      <div class="h-4 w-2" [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.tertiary : themeService.theme()?.light?.tertiary"></div>
+      <div class="h-4 w-2"
+           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.primary : themeService.theme()?.light?.primary"></div>
+      <div class="h-4 w-2"
+           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.secondary : themeService.theme()?.light?.secondary"></div>
+      <div class="h-4 w-2"
+           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.tertiary : themeService.theme()?.light?.tertiary"></div>
     </div>
-    {{themeService.theme()?.name}} <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+    {{themeService.theme()?.name}}
+    <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+    </svg>
   </button>
-  <div id="dropdown-states" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-    <ul class="max-h-60 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
-      <li *ngFor="let theme of themeService.themes(); let first = first; let last = last;"
-          [ngClass]="{'rounded-t-lg': first, 'rounded-b-lg': last}"
-          [style.background-color]="themeService.isDark() ? theme.dark.base : theme.light.base">
-        <button (click)="changeTheme(theme)" type="button" class="inline-flex w-full px-4 py-2 text-sm">
-          <div class="inline-flex items-center w-full">
-            <div class="mr-2 w-3 h-3">
-              <div *ngIf="themeService.theme()?.name === theme.name">
-                <svg class="w-3 h-3 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                </svg>
-              </div>
-            </div>
-            <div class="flex-auto text-start">
-              {{theme.name}}
-            </div>
+</ng-container>
 
-            <div class="flex items-center gap-1">
-              <div class="h-4 w-2" [style.background-color]="themeService.isDark() ? theme.dark.primary : theme.light.primary"></div>
-              <div class="h-4 w-2" [style.background-color]="themeService.isDark() ? theme.dark.secondary : theme.light.secondary"></div>
-              <div class="h-4 w-2" [style.background-color]="themeService.isDark() ? theme.dark.tertiary : theme.light.tertiary"></div>
+<ng-template #iconTemplate>
+  <button type="button" data-dropdown-toggle="dropdown-states" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.15 5.6h.01m3.337 1.913h.01m-6.979 0h.01M5.541 11h.01M15 15h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 2.043 11.89 9.1 9.1 0 0 0 7.2 19.1a8.62 8.62 0 0 0 3.769.9A2.013 2.013 0 0 0 13 18v-.857A2.034 2.034 0 0 1 15 15Z"/>
+    </svg>
+  </button>
+</ng-template>
+
+<div id="dropdown-states" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+  <ul class="max-h-60 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
+    <li *ngFor="let theme of themeService.themes(); let first = first; let last = last;"
+        [ngClass]="{'rounded-t-lg': first, 'rounded-b-lg': last}"
+        [style.background-color]="themeService.isDark() ? theme.dark.base : theme.light.base">
+      <button (click)="changeTheme(theme)" type="button" class="inline-flex w-full px-4 py-2 text-sm">
+        <div class="inline-flex items-center w-full">
+          <div class="mr-2 w-3 h-3">
+            <div *ngIf="themeService.theme()?.name === theme.name">
+              <svg class="w-3 h-3 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                   fill="none" viewBox="0 0 16 12">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M1 5.917 5.724 10.5 15 1.5"/>
+              </svg>
             </div>
           </div>
-        </button>
-      </li>
-    </ul>
+          <div class="flex-auto text-start">
+            {{theme.name}}
+          </div>
+
+          <div class="flex items-center gap-1">
+            <div class="h-4 w-2"
+                 [style.background-color]="themeService.isDark() ? theme.dark.primary : theme.light.primary"></div>
+            <div class="h-4 w-2"
+                 [style.background-color]="themeService.isDark() ? theme.dark.secondary : theme.light.secondary"></div>
+            <div class="h-4 w-2"
+                 [style.background-color]="themeService.isDark() ? theme.dark.tertiary : theme.light.tertiary"></div>
+          </div>
+        </div>
+      </button>
+    </li>
+  </ul>
 </div>
 

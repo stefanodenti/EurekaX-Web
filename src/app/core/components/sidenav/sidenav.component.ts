@@ -1,6 +1,8 @@
 import {Component, HostListener, OnInit, signal} from '@angular/core';
 import {SidenavService} from "./sidenav.service";
 
+
+
 @Component({
   selector: 'eurekax-sidenav',
   templateUrl: './sidenav.component.html',

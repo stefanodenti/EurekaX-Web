@@ -32,7 +32,8 @@ export class ThemeService {
       success: '',
       warning: '',
       error: ''
-    }
+    },
+    logo: ''
   });
   themes = signal<Theme[]>([]);
 

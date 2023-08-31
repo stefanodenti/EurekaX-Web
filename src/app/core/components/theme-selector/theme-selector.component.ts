@@ -1,6 +1,6 @@
 import {Component, effect, OnChanges} from '@angular/core';
-import { ThemeService } from '../services/theme.service';
-import {Palette, Theme} from "../models/config.model";
+import { ThemeService } from '../../services/theme.service';
+import {Palette, Theme} from "../../models/config.model";
 
 @Component({
   selector: 'eurekax-theme-selector',

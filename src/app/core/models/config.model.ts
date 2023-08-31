@@ -1,5 +1,6 @@
 export interface AppConfig {
     themes: Theme[];
+    layouts: Layout[];
 }
 
 export interface Theme {
@@ -10,6 +11,7 @@ export interface Theme {
     },
     light: Palette;
     dark: Palette;
+    logo: string;
 }
 
 export interface Palette {
@@ -20,4 +22,46 @@ export interface Palette {
     success: string;
     warning: string;
     error: string;
+}
+
+export interface Layout {
+    name: string;
+    navbar: NavBar;
+    sidenav?: Sidenav;
+    footer: Footer;
+}
+export interface Navigation {
+    type: 'default' | 'dynamic' | 'selector';
+    icon?: string;
+    label: string;
+    routerLink: string;
+    component?: string;
+    cssClass?: string;
+    childs?: Navigation[];
+}
+
+export interface NavBar {
+    navigations: Navigation[];
+    configs: {
+        showThemeSelector: boolean;
+        showDarkModeToggle: boolean;
+        showLanguageSelector: boolean;
+        showLogo: boolean;
+    },
+    visible: boolean;
+}
+export interface Sidenav {
+    navigations: Navigation[];
+    configs: {
+        showThemeSelector: boolean;
+        showDarkModeToggle: boolean;
+        showLanguageSelector: boolean;
+        showLogo: boolean;
+    },
+    visible: boolean;
+}
+
+export interface Footer {
+    message: string;
+    navigations: Navigation[];
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutDashboardComponent } from './layout-dashboard.component';
 import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../../pages/contacts/contacts.component';
+import { AppSettingsComponent } from 'src/app/pages/app-settings/app-settings.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
     {
       path: 'contacts',
       component: ContactsComponent
+    },
+    {
+      path: 'asettings',
+      component: AppSettingsComponent
     }
   ]
   },

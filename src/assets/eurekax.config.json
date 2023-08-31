@@ -22,7 +22,8 @@
       "success": "#00E600",
       "warning": "#F4A125",
       "error": "#FF1A1A"
-    }
+    },
+  "logo": "favicon.ico"
   },
   {
     "name": "Space",
@@ -48,6 +49,85 @@
       "success": "#00E600",
       "warning": "#F4A125",
       "error": "#FF1A1A"
+    }
+  }],
+  "layout":[ {
+    "name": "standard",
+    "navbar": {
+      "visible": true,
+      "configs": {
+        "showThemeSelector": true,
+        "showDarkModeToggle": true,
+        "showLanguageSelector": true,
+        "showLogo": true
+      },
+      "navigations": [
+        {
+          "type": "default",
+          "label": "Contacts",
+          "routerLink": "/contacts"
+        }
+      ]
+    },
+    "footer": {
+      "message": "[Standard] Fatto con pazienza da Onzino e Ste.",
+      "navigations":[
+        {
+          "type": "default",
+          "label": "Privacy",
+          "routerLink": "/privacy"
+        }
+      ]
+    }
+  },
+  {
+    "name": "dashboard",
+    "navbar": {
+      "visible": true,
+      "configs": {
+        "showThemeSelector": true,
+        "showDarkModeToggle": true,
+        "showLanguageSelector": true,
+        "showLogo": true
+      },
+      "navigations": [
+        {
+          "type": "default",
+          "label": "Contacts",
+          "routerLink": "/dashboard/contacts"
+        }
+      ]
+    },
+    "sidenav": {
+      "visible": true,
+      "configs": {
+        "showThemeSelector": true,
+        "showDarkModeToggle": true,
+        "showLanguageSelector": true,
+        "showLogo": true
+      },
+      "navigations": [
+        {
+          "type": "default",
+          "label": "Home",
+          "routerLink": "/dashboard"
+        },
+        {
+          "type": "default",
+          "label": "Contacts",
+          "routerLink": "/dashboard/contacts"
+        }
+      ]
+    },
+    "footer": {
+      "message": "[Dashboard] Fatto con pazienza da Onzino e Ste.",
+      "navigations":[
+        {
+          "type": "default",
+          "label": "Privacy",
+          "routerLink": "/privacy"
+        }
+      ]
     }
   }]
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SidenavService} from "../sidenav/sidenav.service";
 import {ThemeService} from "../../services/theme.service";
+import {NavBar} from "../../models/config.model";
 
 @Component({
   selector: 'eurekax-navbar',
@@ -8,6 +9,8 @@ import {ThemeService} from "../../services/theme.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() config: NavBar | null = null;
+  @Input() showMenuButton: boolean = true;
   showMobileMenu = false;
 
   constructor(private sidenavService: SidenavService, private themeService: ThemeService) { }

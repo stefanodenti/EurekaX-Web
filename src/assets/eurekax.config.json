@@ -51,7 +51,7 @@
       "error": "#FF1A1A"
     }
   }],
-  "layout":[ {
+  "layouts":[ {
     "name": "standard",
     "navbar": {
       "visible": true,
@@ -76,6 +76,29 @@
           "type": "default",
           "label": "Privacy",
           "routerLink": "/privacy"
+        }
+      ]
+    },
+    "sidenav": {
+      "visible": true,
+      "configs": {
+        "showThemeSelector": true,
+        "showDarkModeToggle": true,
+        "showLanguageSelector": true,
+        "showLogo": true
+      },
+      "navigations": [
+        {
+          "type": "default",
+          "label": "Home",
+          "routerLink": "/home"
+        },
+        {
+          "type": "selector",
+          "label": "Contacts",
+          "childs": [{          "label": "Contacts",
+            "routerLink": "/contacts"}]
+
         }
       ]
     }

@@ -1,0 +1,32 @@
+<ng-container [ngSwitch]="navigation?.type">
+  <ng-container *ngSwitchCase="'selector'">
+    <a type="button" [attr.data-dropdown-toggle]="'navigation-' + navigation?.label" [ngClass]="navigation?.cssClass" class="cursor-pointer">
+      <div *ngIf="!!navigation?.icon">
+        {{navigation?.icon}}
+      </div>
+
+      {{navigation?.label}}
+    </a>
+    <!-- Dropdown -->
+    <div class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700" [id]="'navigation-' + navigation?.label">
+      <ul class="py-1" role="none">
+        <li *ngFor="let subNav of navigation?.childs">
+          <a [routerLink]="subNav.routerLink" [ngClass]="subNav.cssClass" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem">
+            <div class="inline-flex items-center">
+              <div *ngIf="!!subNav.icon">
+                {{subNav.icon}}
+              </div>
+              {{subNav.label}}
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="'default'">
+    <a [routerLink]="navigation?.routerLink" [ngClass]="navigation?.cssClass">
+      <span *ngIf="!!navigation?.icon">{{navigation?.icon}}</span>
+      {{navigation?.label}}
+    </a>
+  </ng-container>
+</ng-container>

@@ -9,6 +9,7 @@ import {Palette, Theme} from "../../models/config.model";
 })
 export class ThemeSelectorComponent {
   @Input() iconMode: boolean = false;
+  dropdownId: string = Date.now().toString();
   constructor(public themeService: ThemeService) {
 
   }

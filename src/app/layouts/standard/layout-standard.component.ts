@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LayoutService} from "../../core/services/layout.service";
 
 @Component({
   selector: 'eurekax-layout-standard',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout-standard.component.scss']
 })
 export class LayoutStandardComponent implements OnInit {
+  layout = this.layoutService.standardLayout;
 
-  constructor() { }
+  constructor(private layoutService: LayoutService) {
+  }
 
   ngOnInit(): void {
   }

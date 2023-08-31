@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {initFlowbite} from "flowbite";
+import {AppConfigService} from "./core/services/app-config.service";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import {initFlowbite} from "flowbite";
 export class AppComponent implements OnInit{
   title = 'EurekaX-Web';
 
-  constructor() {
+  constructor(private appConfigService: AppConfigService) {
+    this.appConfigService.initialize();
   }
 
   ngOnInit() {

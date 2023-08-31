@@ -1,5 +1,6 @@
-import {Component, HostListener, OnInit, signal} from '@angular/core';
+import {Component, HostListener, Input, OnInit, signal} from '@angular/core';
 import {SidenavService} from "./sidenav.service";
+import {Sidenav} from "../../models/config.model";
 
 
 
@@ -15,6 +16,7 @@ export class SidenavComponent implements OnInit {
     const windowWidth: number = event.target.innerWidth
    	this.isMobile.set(windowWidth < 400);
   }
+  @Input() config: Sidenav | null = null;
   isMobile = signal<boolean>(window.innerWidth < 400);
   sidenavStatus = this.sidenavService.sidenavStatus;
 

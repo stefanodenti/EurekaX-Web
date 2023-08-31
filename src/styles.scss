@@ -31,6 +31,17 @@
     inherits: false;
   }
 
+  @property --layout-color {
+    syntax: '<color>';
+    initial-value: 'white';
+    inherits: false;
+  }
+  
+  @property --card-color {
+    syntax: '<color>';
+    initial-value: 'white';
+    inherits: false;
+  }
   @property --success-color {
     syntax: '<color>';
     initial-value: 'green';

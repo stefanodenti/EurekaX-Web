@@ -19,6 +19,8 @@ export interface Palette {
     secondary: string;
     tertiary: string;
     base: string;
+    layout: string;
+    card: string;
     success: string;
     warning: string;
     error: string;
@@ -44,16 +46,19 @@ export interface NavBar {
     navigations: Navigation[];
     configs: {
         showThemeSelector: boolean;
+        showSettings: boolean;
         showDarkModeToggle: boolean;
         showLanguageSelector: boolean;
         showLogo: boolean;
     },
     visible: boolean;
 }
+
 export interface Sidenav {
     navigations: Navigation[];
     configs: {
         showThemeSelector: boolean;
+        showSettings: boolean;
         showDarkModeToggle: boolean;
         showLanguageSelector: boolean;
         showLogo: boolean;

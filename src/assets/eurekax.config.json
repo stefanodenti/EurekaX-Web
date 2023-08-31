@@ -1,156 +1,175 @@
 {
-  "themes": [{
-    "name": "Eurekax",
-    "darkMode": {
-      "defaultSchema": "dark",
-      "detectMode": "auto"
+  "themes": [
+    {
+      "name": "Eurekax",
+      "darkMode": {
+        "defaultSchema": "dark",
+        "detectMode": "auto"
+      },
+      "light": {
+        "primary": "#183AD1",
+        "secondary": "#F7931F",
+        "tertiary": "#BF1923",
+        "base": "#FFFFFF",
+        "layout": "#1F2937",
+        "card": "#132D51",
+        "success": "#00E600",
+        "warning": "#F4A125",
+        "error": "#FF1A1A"
+      },
+      "dark": {
+        "primary": "#183AD1",
+        "secondary": "#F7931F",
+        "tertiary": "#BF1923",
+        "base": "#160E07",
+        "layout": "#1F2937",
+        "card": "#132D51",
+        "success": "#00E600",
+        "warning": "#F4A125",
+        "error": "#FF1A1A"
+      },
+      "logo": "assets/brand/logo.png"
     },
-    "light": {
-      "primary": "#F7931F",
-      "secondary": "#F7D320",
-      "tertiary": "#20C9F7",
-      "base": "#FFFFFF",
-      "success": "#00E600",
-      "warning": "#F4A125",
-      "error": "#FF1A1A"
-    },
-    "dark": {
-      "primary": "#F7931F",
-      "secondary": "#F7D320",
-      "tertiary": "#20C9F7",
-      "base": "#160E07",
-      "success": "#00E600",
-      "warning": "#F4A125",
-      "error": "#FF1A1A"
-    },
-  "logo": "favicon.ico"
-  },
-  {
-    "name": "Space",
-    "darkMode": {
-      "defaultSchema": "dark",
-      "detectMode": "auto"
-    },
-    "light": {
-      "primary": "#504099",
-      "secondary": "#974EC3",
-      "tertiary": "#FE7BE5",
-      "base": "#FFFFFF",
-      "success": "#00E600",
-      "warning": "#F4A125",
-      "error": "#FF1A1A"
-
-    },
-    "dark": {
-      "primary": "#504099",
-      "secondary": "#974EC3",
-      "tertiary": "#FE7BE5",
-      "base": "#313866",
-      "success": "#00E600",
-      "warning": "#F4A125",
-      "error": "#FF1A1A"
+    {
+      "name": "Space",
+      "darkMode": {
+        "defaultSchema": "dark",
+        "detectMode": "auto"
+      },
+      "light": {
+        "primary": "#504099",
+        "secondary": "#974EC3",
+        "tertiary": "#FE7BE5",
+        "base": "#FFFFFF",
+        "layout": "#1F2937",
+        "card": "#132D51",
+        "success": "#00E600",
+        "warning": "#F4A125",
+        "error": "#FF1A1A"
+      },
+      "dark": {
+        "primary": "#504099",
+        "secondary": "#974EC3",
+        "tertiary": "#FE7BE5",
+        "base": "#313866",
+        "layout": "#1F2937",
+        "card": "#132D51",
+        "success": "#00E600",
+        "warning": "#F4A125",
+        "error": "#FF1A1A"
+      },
+      "logo": "assets/brand/logo.png"
     }
-  }],
-  "layouts":[ {
-    "name": "standard",
-    "navbar": {
-      "visible": true,
-      "configs": {
-        "showThemeSelector": true,
-        "showDarkModeToggle": true,
-        "showLanguageSelector": true,
-        "showLogo": true
-      },
-      "navigations": [
-        {
-          "type": "default",
-          "label": "Contacts",
-          "routerLink": "/contacts"
-        }
-      ]
-    },
-    "footer": {
-      "message": "[Standard] Fatto con pazienza da Onzino e Ste.",
-      "navigations":[
-        {
-          "type": "default",
-          "label": "Privacy",
-          "routerLink": "/privacy"
-        }
-      ]
-    },
-    "sidenav": {
-      "visible": true,
-      "configs": {
-        "showThemeSelector": true,
-        "showDarkModeToggle": true,
-        "showLanguageSelector": true,
-        "showLogo": true
-      },
-      "navigations": [
-        {
-          "type": "default",
-          "label": "Home",
-          "routerLink": "/home"
+  ],
+  "layouts": [
+    {
+      "name": "standard",
+      "navbar": {
+        "visible": true,
+        "configs": {
+          "showThemeSelector": true,
+          "showDarkModeToggle": true,
+          "showSettings": true,
+          "showLanguageSelector": true,
+          "showLogo": true
         },
-        {
-          "type": "selector",
-          "label": "Contacts",
-          "childs": [{          "label": "Contacts",
-            "routerLink": "/contacts"}]
-
-        }
-      ]
-    }
-  },
-  {
-    "name": "dashboard",
-    "navbar": {
-      "visible": true,
-      "configs": {
-        "showThemeSelector": true,
-        "showDarkModeToggle": true,
-        "showLanguageSelector": true,
-        "showLogo": true
+        "navigations": [
+          {
+            "type": "default",
+            "label": "Contacts",
+            "routerLink": "/contacts"
+          }
+        ]
       },
-      "navigations": [
-        {
-          "type": "default",
-          "label": "Contacts",
-          "routerLink": "/dashboard/contacts"
-        }
-      ]
-    },
-    "sidenav": {
-      "visible": true,
-      "configs": {
-        "showThemeSelector": true,
-        "showDarkModeToggle": true,
-        "showLanguageSelector": true,
-        "showLogo": true
+      "footer": {
+        "message": "[Standard] Fatto con pazienza da Onzino e Ste.",
+        "navigations": [
+          {
+            "type": "default",
+            "label": "Privacy",
+            "routerLink": "/privacy"
+          }
+        ]
       },
-      "navigations": [
-        {
-          "type": "default",
-          "label": "Home",
-          "routerLink": "/dashboard"
+      "sidenav": {
+        "visible": true,
+        "configs": {
+          "showThemeSelector": true,
+          "showSettings": true,
+          "showDarkModeToggle": true,
+          "showLanguageSelector": true,
+          "showLogo": true
         },
-        {
-          "type": "default",
-          "label": "Contacts",
-          "routerLink": "/dashboard/contacts"
-        }
-      ]
+        "navigations": [
+          {
+            "type": "default",
+            "label": "Home",
+            "routerLink": "/home"
+          },
+          {
+            "type": "selector",
+            "label": "Contacts",
+            "childs": [
+              {
+                "label": "Contacts",
+                "routerLink": "/contacts"
+              }
+            ]
+          }
+        ]
+      }
     },
-    "footer": {
-      "message": "[Dashboard] Fatto con pazienza da Onzino e Ste.",
-      "navigations":[
-        {
-          "type": "default",
-          "label": "Privacy",
-          "routerLink": "/privacy"
-        }
-      ]
+    {
+      "name": "dashboard",
+      "navbar": {
+        "visible": true,
+        "configs": {
+          "showThemeSelector": true,
+          "showSettings": true,
+          "showDarkModeToggle": true,
+          "showLanguageSelector": true,
+          "showLogo": true
+        },
+        "navigations": [
+          {
+            "type": "default",
+            "label": "Contacts",
+            "routerLink": "/dashboard/contacts"
+          }
+        ]
+      },
+      "sidenav": {
+        "visible": true,
+        "configs": {
+          "showThemeSelector": true,
+          "showDarkModeToggle": true,
+          "showSettings": true,
+          "showLanguageSelector": true,
+          "showLogo": true
+        },
+        "navigations": [
+          {
+            "type": "default",
+            "label": "Home",
+            "routerLink": "/dashboard"
+          },
+          {
+            "type": "default",
+            "label": "Contacts",
+            "routerLink": "/dashboard/contacts"
+          }
+        ]
+      },
+      "footer": {
+        "message": "[Dashboard] Fatto con pazienza da Onzino e Ste.",
+        "navigations": [
+          {
+            "type": "default",
+            "label": "Privacy",
+            "routerLink": "/privacy"
+          }
+        ]
+      }
     }
-  }]
+  ]
 }

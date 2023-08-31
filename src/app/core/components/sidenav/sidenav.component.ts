@@ -1,6 +1,7 @@
 import {Component, HostListener, Input, OnInit, signal} from '@angular/core';
 import {SidenavService} from "./sidenav.service";
 import {Sidenav} from "../../models/config.model";
+import { ThemeService } from '../../services/theme.service';
 
 
 
@@ -20,7 +21,7 @@ export class SidenavComponent implements OnInit {
   isMobile = signal<boolean>(window.innerWidth < 400);
   sidenavStatus = this.sidenavService.sidenavStatus;
 
-  constructor(private sidenavService: SidenavService) {
+  constructor(private sidenavService: SidenavService, public themeService: ThemeService) {
   }
 
   ngOnInit(): void {

@@ -1,8 +1,15 @@
 <div class="inset-x-0 top-0" *ngIf="config?.visible">
-  <div class=" h-[50px] bg-primary flex justify-between px-4 py-2 items-center">
-    <div class="flex items-center gap-2">
-      <span *ngIf="showMenuButton" class="cursor-pointer" (click)="toggleSidenav()">Menu</span>
-      <img *ngIf="config?.configs?.showLogo" src="favicon.ico">
+  <div class="px-4 py-2 h-[50px] bg-layout flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <span *ngIf="showMenuButton" class="cursor-pointer" (click)="toggleSidenav()">
+        <svg
+          class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </span>
+      <img *ngIf="config?.configs?.showLogo" class="h-[50px]" [src]="themeService.theme().logo">
     </div>
     <div class="flex justify-end gap-3 text-xl max-md:hidden items-center">
       <ng-container *ngFor="let navigation of config?.navigations">
@@ -13,7 +20,7 @@
       <div class="flex items-center gap-3 ml-2">
         <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>
         <eurekax-dark-mode-toggle *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
-        <a routerLink="/settings">
+        <a routerLink="/settings" *ngIf="config?.configs?.showSettings">
           <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 20 20">
             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -26,14 +33,19 @@
       </div>
     </div>
     <a class="lg:hidden" (click)="showMobileMenu = !showMobileMenu">
-      Menu
+      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+        fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15" />
+      </svg>
     </a>
   </div>
-  <div class="flex flex-col gap-3 bg-amber-300 px-4 py-2 lg:hidden" *ngIf="showMobileMenu">
+  <div class="flex flex-col gap-3 bg-layout px-4 py-2 lg:hidden" *ngIf="showMobileMenu">
     <a routerLink="/home">Home</a>
     <a routerLink="/contacts">Contacts</a>
     <a>Products</a>
-    <div class="border-t border-black dark:border-white pt-2 flex justify-between items-center" *ngIf="config?.configs?.showDarkModeToggle || config?.configs?.showThemeSelector">
+    <div class="border-t border-black dark:border-white pt-2 flex justify-between items-center"
+      *ngIf="config?.configs?.showDarkModeToggle || config?.configs?.showThemeSelector">
       <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>
       <eurekax-dark-mode-toggle *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
     </div>

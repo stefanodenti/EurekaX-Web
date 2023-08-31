@@ -20,7 +20,9 @@ export class ThemeService {
       base: '',
       success: '',
       warning: '',
-      error: ''
+      error: '',
+      layout: '',
+      card: ''
     },
     dark: {
       primary: '',
@@ -29,7 +31,9 @@ export class ThemeService {
       base: '',
       success: '',
       warning: '',
-      error: ''
+      error: '',
+      layout: '',
+      card: ''
     },
     logo: ''
   });
@@ -65,6 +69,8 @@ export class ThemeService {
       document.documentElement.style.setProperty(`--secondary-color`, this.theme()?.dark.secondary);
       document.documentElement.style.setProperty(`--tertiary-color`, this.theme()?.dark.tertiary);
       document.documentElement.style.setProperty(`--base-color`, this.theme()?.dark.base);
+      document.documentElement.style.setProperty(`--layout-color`, this.theme()?.dark.layout);
+      document.documentElement.style.setProperty(`--card-color`, this.theme()?.dark.card);
       document.documentElement.style.setProperty(`--success-color`, this.theme()?.dark.success);
       document.documentElement.style.setProperty(`--warning-color`, this.theme()?.dark.warning);
       document.documentElement.style.setProperty(`--error-color`, this.theme()?.dark.error);
@@ -74,6 +80,8 @@ export class ThemeService {
       document.documentElement.style.setProperty(`--secondary-color`, this.theme()?.light.secondary);
       document.documentElement.style.setProperty(`--tertiary-color`, this.theme()?.light.tertiary);
       document.documentElement.style.setProperty(`--base-color`, this.theme()?.light.base);
+      document.documentElement.style.setProperty(`--layout-color`, this.theme()?.light.layout);
+      document.documentElement.style.setProperty(`--card-color`, this.theme()?.light.card);
       document.documentElement.style.setProperty(`--success-color`, this.theme()?.light.success);
       document.documentElement.style.setProperty(`--warning-color`, this.theme()?.light.warning);
       document.documentElement.style.setProperty(`--error-color`, this.theme()?.light.error);

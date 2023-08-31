@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   @Input() showMenuButton: boolean = true;
   showMobileMenu = false;
 
-  constructor(private sidenavService: SidenavService, private themeService: ThemeService) { }
+  constructor(private sidenavService: SidenavService, public themeService: ThemeService) { }
 
   ngOnInit(): void {
   }

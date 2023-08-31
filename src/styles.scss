@@ -5,6 +5,7 @@
 
 
 :root {
+  --transition-theme-duration: .4s;
 
   @property --primary-color {
     syntax: '<color>';
@@ -48,9 +49,19 @@
     inherits: false;
   }
 
-  * {
-    transition: background-color .4s ease-in-out, color .4s ease-in-out;
+  body.transition-theme {
+    * {
+        transition: background-color var(--transition-theme-duration) ease-in-out, color var(--transition-theme-duration) ease-in-out;
+    }
   }
+
+  //.bg-primary, .bg-secondary, .bg-tertiary, .bg-base {
+  //  transition: all .4s ease-in-out;
+  //}
+  //
+  //.text-primary, .text-secondary, .text-tertiary, .text-base, .text-white, .text-black{
+  //  transition: all .4s ease-in-out;
+  //}
 }
 
 

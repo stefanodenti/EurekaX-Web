@@ -73,6 +73,7 @@ export class ThemeService {
 
   setTheme() {
     console.log('SET THEME')
+    document.getElementsByTagName('body')?.item(0)?.classList.add('transition-theme');
     if (this.isDark()) {
       document.getElementsByTagName('body')?.item(0)?.classList.add('dark');
       document.documentElement.style.setProperty(`--primary-color`, this.theme()?.dark.primary);
@@ -92,6 +93,12 @@ export class ThemeService {
       document.documentElement.style.setProperty(`--warning-color`, this.theme()?.light.warning);
       document.documentElement.style.setProperty(`--error-color`, this.theme()?.light.error);
     }
+    const duration = this.getThemeAnimationDuration();
+    console.log(duration)
+    setTimeout(() => {
+      document.getElementsByTagName('body')?.item(0)?.classList.remove('transition-theme');
+    }, duration + 50)
+
   }
 
   toggleDark() {
@@ -100,8 +107,24 @@ export class ThemeService {
   }
 
   changeTheme(name:string){
-    const theme = this.themes().find(t => t.name === name) ?? this.themes()[0]; 
+    const theme = this.themes().find(t => t.name === name) ?? this.themes()[0];
     this.theme.set(theme);
     this.setTheme();
+  }
+
+  private getThemeAnimationDuration(): number {
+    let durationString = getComputedStyle(document.documentElement)
+      .getPropertyValue('--transition-theme-duration');
+    if(durationString[0] === '.') {
+      durationString = '0' + durationString;
+    }
+    console.log(durationString)
+    if(durationString.includes('ms')) {
+      return +durationString.slice(0, durationString.indexOf('m'));
+    } else if(durationString.includes('s')) {
+      return +durationString.slice(0, durationString.indexOf('s')) * 1000;
+    }
+
+    return 0;
   }
 }

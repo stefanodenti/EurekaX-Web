@@ -5,7 +5,7 @@
 
 
 :root {
-  --transition-theme-duration: .4s;
+  --transition-theme-duration: .2s;
 
   @property --primary-color {
     syntax: '<color>';
@@ -60,9 +60,11 @@
     inherits: false;
   }
 
-  body.transition-theme {
+  body {
     &, * {
-        transition: background-color var(--transition-theme-duration) ease-in-out, color var(--transition-theme-duration) ease-in-out;
+        //transition: background-color var(--transition-theme-duration) ease-in-out, color var(--transition-theme-duration) ease-in-out;
+      @apply transition-colors;
+      transition-duration: var(--transition-theme-duration);
     }
   }
 

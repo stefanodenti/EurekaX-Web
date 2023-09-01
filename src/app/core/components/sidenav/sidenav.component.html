@@ -1,7 +1,7 @@
 <div
   [ngClass]="{'w-60 lg:w-[300px]': sidenavStatus() === 'open', 'w-0': sidenavStatus() === 'close', 'fixed z-[9999]': isMobile(), 'relative': !isMobile()}"
      class="h-screen transition-all duration-200 ease-in-out" *ngIf="config?.visible">
-  <div *ngIf="sidenavStatus() === 'open'" class="overflow-y-auto py-5 px-3 h-full bg-layout border-r border-gray-200 dark:border-gray-700">
+  <div [class.hidden]="sidenavStatus() === 'close'" class="overflow-y-auto py-5 px-3 h-full bg-layout border-r border-gray-200 dark:border-gray-700">
     <div class="flex items-center px-3 mb-5" *ngIf="config?.configs?.showLogo">
       <img *ngIf="config?.configs?.showLogo"  class="w-full" [src]="themeService.theme().logo" alt="App logo">
     </div>

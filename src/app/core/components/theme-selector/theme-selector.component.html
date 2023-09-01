@@ -1,17 +1,17 @@
 <ng-container *ngIf="!iconMode else iconTemplate">
   <button id="states-button" [attr.data-dropdown-toggle]="dropdownId"
-          [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.base : themeService.theme()?.light?.base"
+          [style.background-color]="themeService.isDark() ? themeService.theme().dark.base : themeService.theme().light.base"
           class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 border border-gray-300 rounded-lg hover:bg-gray-200 focus:outline-none  dark:hover:bg-gray-600 dark:text-white dark:border-gray-600"
           type="button">
     <div class="flex items-center gap-1 mr-2.5">
       <div class="h-4 w-2"
-           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.primary : themeService.theme()?.light?.primary"></div>
+           [style.background-color]="themeService.isDark() ? themeService.theme().dark.primary : themeService.theme().light.primary"></div>
       <div class="h-4 w-2"
-           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.secondary : themeService.theme()?.light?.secondary"></div>
+           [style.background-color]="themeService.isDark() ? themeService.theme().dark.secondary : themeService.theme().light.secondary"></div>
       <div class="h-4 w-2"
-           [style.background-color]="themeService.isDark() ? themeService.theme()?.dark?.tertiary : themeService.theme()?.light?.tertiary"></div>
+           [style.background-color]="themeService.isDark() ? themeService.theme().dark.tertiary : themeService.theme().light.tertiary"></div>
     </div>
-    {{themeService.theme()?.name}}
+    {{themeService.theme().name}}
     <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
     </svg>
@@ -34,7 +34,7 @@
       <button (click)="changeTheme(theme)" type="button" class="inline-flex w-full px-4 py-2 text-sm">
         <div class="inline-flex items-center w-full">
           <div class="mr-2 w-3 h-3">
-            <div *ngIf="themeService.theme()?.name === theme.name">
+            <div *ngIf="themeService.theme().name === theme.name">
               <svg class="w-3 h-3 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                    fill="none" viewBox="0 0 16 12">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

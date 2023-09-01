@@ -76,6 +76,11 @@
         "navigations": [
           {
             "type": "default",
+            "label": "Home",
+            "routerLink": "/home"
+          },
+          {
+            "type": "default",
             "label": "Contacts",
             "routerLink": "/contacts"
           }
@@ -111,7 +116,11 @@
             "label": "Contacts",
             "childs": [
               {
-                "label": "Contacts",
+                "label": "Contacts 1",
+                "routerLink": "/contacts"
+              },
+              {
+                "label": "Contacts 2",
                 "routerLink": "/contacts"
               }
             ]
@@ -131,6 +140,11 @@
           "showLogo": true
         },
         "navigations": [
+          {
+            "type": "default",
+            "label": "Home",
+            "routerLink": "/home"
+          },
           {
             "type": "default",
             "label": "Contacts",

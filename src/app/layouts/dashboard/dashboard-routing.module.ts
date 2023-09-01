@@ -4,6 +4,7 @@ import { LayoutDashboardComponent } from './layout-dashboard.component';
 import { HomeComponent } from '../../pages/home/home.component';
 import { ContactsComponent } from '../../pages/contacts/contacts.component';
 import { AppSettingsComponent } from 'src/app/pages/app-settings/app-settings.component';
+import { PrivacyComponent } from 'src/app/pages/privacy/privacy.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     {
       path: 'contacts',
       component: ContactsComponent
+    },
+    {
+      path: 'privacy',
+      component: PrivacyComponent
     },
     {
       path: 'asettings',

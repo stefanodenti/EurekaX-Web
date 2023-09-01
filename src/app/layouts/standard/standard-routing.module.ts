@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../../pages/home/home.component';
 import { LayoutStandardComponent } from './layout-standard.component';
 import { ContactsComponent } from '../../pages/contacts/contacts.component';
+import { PrivacyComponent } from 'src/app/pages/privacy/privacy.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     {
       path: 'contacts',
       component: ContactsComponent
+    },
+    {
+      path: 'privacy',
+      component: PrivacyComponent
     },
     {
       path: 'settings',

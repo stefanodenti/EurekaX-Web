@@ -16,12 +16,14 @@
         <eurekax-navigation [navigation]="navigation"></eurekax-navigation>
       </ng-container>
 
-
-      <div class="flex items-center gap-3 ml-2">
+      <div class="divide-x divide-red-500 w-5"></div>
+      <div class="flex items-center gap-3">
         <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>
         <eurekax-dark-mode-toggle *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
-        <a routerLink="/settings" *ngIf="config?.configs?.showSettings">
-          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+        <eurekax-language-selector  *ngIf="config?.configs?.showLanguageSelector"></eurekax-language-selector>
+
+        <a routerLink="/settings" *ngIf="config?.configs?.showSettings" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 20 20">
             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path
@@ -48,6 +50,7 @@
       *ngIf="config?.configs?.showDarkModeToggle || config?.configs?.showThemeSelector">
       <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>
       <eurekax-dark-mode-toggle *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
+      <eurekax-language-selector  *ngIf="config?.configs?.showLanguageSelector"></eurekax-language-selector>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UikitModule } from 'src/app/uikit/uikit.module';
 
 @Component({
   templateUrl: './contacts.component.html',
@@ -8,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    UikitModule
   ]
 })
 

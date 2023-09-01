@@ -5,9 +5,6 @@ const routes: Routes = [
   {
     path: '',  loadChildren: () => import('./layouts/standard/standard.module').then(m => m.StandardModule),
   },
-  {
-    path: 'dashboard',  loadChildren: () => import('./layouts/standard/standard.module').then(m => m.StandardModule),
-  }
 ];
 
 @NgModule({

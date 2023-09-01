@@ -1,6 +1,6 @@
 export interface AppConfig {
     themes: Theme[];
-    layouts: Layout[];
+    layout: Layout;
 }
 
 export interface Theme {

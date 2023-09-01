@@ -7,7 +7,7 @@ import {LayoutService} from "../../core/services/layout.service";
   styleUrls: ['./layout-standard.component.scss']
 })
 export class LayoutStandardComponent implements OnInit {
-  layout = this.layoutService.standardLayout;
+  layout = this.layoutService.layout;
 
   constructor(private layoutService: LayoutService) {
   }

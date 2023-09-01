@@ -20,9 +20,7 @@ export class AppConfigService {
     this.http.get<AppConfig>(`assets/eurekax.config.json`)
       .subscribe({
         next: (res: AppConfig) => {
-          console.log('LAYOUTS', res.layouts);
-
-          this.layoutService.setLayouts(res.layouts);
+          this.layoutService.setLayouts(res.layout);
           this.themeService.initializeTheme(res.themes[0]);
           this.themeService.themes.set(res.themes);
         },

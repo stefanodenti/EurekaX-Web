@@ -41,7 +41,7 @@
       </ng-container>
     </ul>
   </div>
-  <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-layout 0 z-20 border-r border-gray-200 dark:border-gray-700 items-center" *ngIf="sidenavStatus() === 'open'">
+  <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-layout 0 z-20 border-r border-gray-200 dark:border-gray-700 items-center" [class.lg:hidden]="sidenavStatus() === 'close'">
     <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector" [iconMode]="true"></eurekax-theme-selector>
     <eurekax-dark-mode-toggle  *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
     <eurekax-language-selector  *ngIf="config?.configs?.showLanguageSelector"></eurekax-language-selector>

@@ -36,7 +36,7 @@
     initial-value: 'white';
     inherits: false;
   }
-  
+
   @property --card-color {
     syntax: '<color>';
     initial-value: 'white';
@@ -61,7 +61,7 @@
   }
 
   body.transition-theme {
-    * {
+    &, * {
         transition: background-color var(--transition-theme-duration) ease-in-out, color var(--transition-theme-duration) ease-in-out;
     }
   }

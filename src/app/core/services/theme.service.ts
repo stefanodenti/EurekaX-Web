@@ -89,7 +89,7 @@ export class ThemeService {
     const duration = this.getThemeAnimationDuration();
     setTimeout(() => {
       document.getElementsByTagName('body')?.item(0)?.classList.remove('transition-theme');
-    }, duration + 50)
+    }, duration + 2000)
 
   }
 

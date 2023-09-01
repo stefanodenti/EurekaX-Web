@@ -60,7 +60,7 @@
     inherits: false;
   }
 
-  body {
+  body.transition-theme {
     &, * {
         //transition: background-color var(--transition-theme-duration) ease-in-out, color var(--transition-theme-duration) ease-in-out;
       @apply transition-colors;

@@ -1,0 +1,15 @@
+<div>
+    <div>Accedi</div>
+  <button (click)="googleLogin()">
+   Sign in with Google
+  </button>
+  <div>
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" />
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" />
+  </div>
+  <button (click)="login()">Invia</button>
+</div>

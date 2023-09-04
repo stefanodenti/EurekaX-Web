@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "eurekax-7b3ec": {
+      "hosting": {
+        "EurekaX-Web": [
+          "eurekax-7b3ec"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "eurekax-7b3ec"
+  }
+}

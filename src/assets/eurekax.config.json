@@ -71,7 +71,8 @@
           "showDarkModeToggle": true,
           "showSettings": true,
           "showLanguageSelector": true,
-          "showLogo": true
+          "showLogo": true,
+          "showAuthButtons": true
         },
         "navigations": [
           {
@@ -103,7 +104,8 @@
           "showSettings": true,
           "showDarkModeToggle": true,
           "showLanguageSelector": true,
-          "showLogo": true
+          "showLogo": true,
+          "showAuthButtons": true
         },
         "navigations": [
           {

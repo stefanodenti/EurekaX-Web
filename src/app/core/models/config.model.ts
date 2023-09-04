@@ -50,6 +50,7 @@ export interface NavBar {
         showDarkModeToggle: boolean;
         showLanguageSelector: boolean;
         showLogo: boolean;
+        showAuthButtons: boolean;
     },
     visible: boolean;
 }
@@ -62,6 +63,7 @@ export interface Sidenav {
         showDarkModeToggle: boolean;
         showLanguageSelector: boolean;
         showLogo: boolean;
+        showAuthButtons: boolean;
     },
     visible: boolean;
 }

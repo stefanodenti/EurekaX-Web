@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -6,13 +6,17 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements AfterViewInit{
 
   email: string = '';
   password: string = '';
 
   constructor(private authService: AuthService) {
     console.log('ISLOGGED?', this.authService.userData);
+  }
+
+  ngAfterViewInit() {
+    console.log(this.email, this.password)
   }
 
   register() {

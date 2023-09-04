@@ -1,0 +1,27 @@
+.input{
+    @apply  rounded-lg block w-full p-2.5 sm:text-sm bg-gray-50 border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400;
+}
+
+.input-primary{
+    @apply  focus:ring-primary focus:border-primary;
+}
+
+.input-secondary{
+    @apply  focus:ring-secondary focus:border-secondary;
+}
+
+.input-tertiary{
+    @apply  focus:ring-tertiary focus:border-tertiary;
+}
+
+.label {
+    @apply  block mb-2 text-sm font-medium;
+}
+
+.checkbox {
+    @apply  w-4 h-4 border rounded;
+}
+
+.checkbox-primary {
+    @apply border-primary bg-primary ring-offset-primary focus:ring-primary dark:focus:ring-primary; 
+}

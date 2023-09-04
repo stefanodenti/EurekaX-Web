@@ -21,7 +21,7 @@ export class AppConfigService {
       .subscribe({
         next: (res: AppConfig) => {
           this.layoutService.setLayouts(res.layout);
-          this.themeService.initializeTheme(res.themes[0]);
+          this.themeService.initializeTheme(res.themes[1]);
           this.themeService.themes.set(res.themes);
         },
         error: (err) => {

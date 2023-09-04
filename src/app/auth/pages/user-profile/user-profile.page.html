@@ -1,4 +1,4 @@
-<div>
+<div class="card card-primary">
 
   <div>Profilo Utente</div>
 
@@ -15,11 +15,11 @@
   </div>
   <div>
     <label>Data creazione</label>
-    <div>{{user.metadata.createdAt | date}}</div>
+    <div>{{user.metadata?.createdAt | date}}</div>
   </div>
   <div>
     <label>Data ultimo accesso</label>
-    <div>{{user.metadata.lastSignInTime | date}}</div>
+    <div>{{user.metadata?.lastSignInTime | date}}</div>
   </div>
   <button (click)="verifyEmail()" *ngIf="!user.emailVerified">Verification Email
   </button>

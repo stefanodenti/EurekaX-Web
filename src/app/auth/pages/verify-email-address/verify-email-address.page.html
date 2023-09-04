@@ -1,11 +1,19 @@
-<div>Verify Email</div>
-<div>
-  <div>Abbiamo inviato una email al tuo indirizzo di posta elettronica per confermare la registrazione.
-  </div>
-  <button slot="end" routerLink="/auth/sign-in">Accedi</button>
-</div>
+<div class="flex flex-col items-center justify-center h-screen">
+  <a href="#" class="flex items-center mb-6 text-2xl font-semibold">
+    <img class="w-full" src="assets/brand/logo.png" alt="logo">
+  </a>
+  <div class="max-sm:h-full card card-primary">
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8 w-full">
+      <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
+        Verify Email
+      </h1>
+      <p>Abbiamo inviato una email al tuo indirizzo di posta elettronica per confermare la registrazione.
+      </p>
+      <button class="btn btn-primary" routerLink="/auth/sign-in">Accedi</button>
 
-<div>
-  <div>Non hai ricevuto l'email di verifica?</div>
-  <button slot="end" (click)="resend()">Invia nuovamente</button>
+      <p>Non hai ricevuto l'email di verifica?
+      </p>
+      <button class="btn btn-primary" (click)="resend()">Invia nuovamente</button>
+    </div>
+  </div>
 </div>

@@ -59,6 +59,36 @@
         "error": "#FF1A1A"
       },
       "logo": "assets/brand/logo.png"
+    },
+    {
+      "name": "Gold",
+      "darkMode": {
+        "defaultSchema": "dark",
+        "detectMode": "auto"
+      },
+      "light": {
+        "primary": "#FFD700",
+        "secondary": "#00E2FF",
+        "tertiary": "#667C30",
+        "base": "#FFFFFF",
+        "layout": "#AC8F00",
+        "card": "#E3BE00",
+        "success": "#00E600",
+        "warning": "#F4A125",
+        "error": "#FF1A1A"
+      },
+      "dark": {
+        "primary": "#FFD700",
+        "secondary": "#00E2FF",
+        "tertiary": "#667C30",
+        "base": "#2F2F1B",
+        "layout": "#AC8F00",
+        "card": "#E3BE00",
+        "success": "#00E600",
+        "warning": "#F4A125",
+        "error": "#FF1A1A"
+      },
+      "logo": "assets/brand/logo.png"
     }
   ],
   "layout": 

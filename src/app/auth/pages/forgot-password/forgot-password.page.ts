@@ -7,15 +7,15 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-
+  passwordResetEmail: string = '';
   constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
   }
 
-  forgotPassword(value: string) {
-    this.authService.ForgotPassword(value).then((res) => {
+  forgotPassword() {
+    this.authService.ForgotPassword(this.passwordResetEmail).then((res) => {
       console.log('EMAIL SEND FORGOT', res);
     }).catch((error) => {
       console.log(error);

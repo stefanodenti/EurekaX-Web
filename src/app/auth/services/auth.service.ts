@@ -1,9 +1,9 @@
-import {Injectable, NgZone} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
-import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
-import {Router} from '@angular/router';
-import {GoogleAuthProvider} from 'firebase/auth';
-import {take} from 'rxjs';
+import { Injectable, NgZone } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { take } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -21,9 +21,9 @@ export class AuthService {
         logged in and setting up null when logged out */
         this.afAuth.authState.subscribe((user) => {
             console.warn('CHANGE AUTHSTATE', user);
-            if (user){
+            if (user) {
                 this.SetUserData(user);
-            }else {
+            } else {
                 console.warn('LOGOUT', user);
                 localStorage.setItem('user', 'null');
             }
@@ -33,16 +33,14 @@ export class AuthService {
     // Sign in with Google
     async LoginWithGoogle() {
         return this.afAuth.signInWithPopup(new GoogleAuthProvider()).then((result) => {
-            // this.SetUserData(result.user);
             this.afAuth.authState.subscribe((user) => {
                 if (user) {
                     this.router.navigate(['/']);
                 }
             });
-        })
-            .catch((error) => {
-                window.alert(error.message);
-            });
+        }).catch((error) => {
+            window.alert(error.message);
+        });
     }
 
     // Sign in with email/password
@@ -50,7 +48,6 @@ export class AuthService {
         return this.afAuth
             .signInWithEmailAndPassword(email, password)
             .then((result) => {
-                // this.SetUserData(result.user);
                 this.afAuth.authState.subscribe((user) => {
                     if (user) {
                         this.router.navigate(['/']);
@@ -67,10 +64,7 @@ export class AuthService {
         return this.afAuth
             .createUserWithEmailAndPassword(email, password)
             .then((result) => {
-                /* Call the SendVerificaitonMail() function when new user sign
-                up and returns promise */
                 this.SendVerificationMail();
-                // this.SetUserData(result.user);
             })
             .catch((error) => {
                 window.alert(error.message);
@@ -144,7 +138,7 @@ export class AuthService {
     }
 
     updateUserData(param: Partial<User>) {
-        this.userData = {...this.userData, ...param};
+        this.userData = { ...this.userData, ...param };
         console.warn('updateUserData', this.userData)
         localStorage.setItem('user', JSON.stringify(this.userData));
     }

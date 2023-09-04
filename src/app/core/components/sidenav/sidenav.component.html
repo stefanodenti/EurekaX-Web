@@ -39,6 +39,27 @@
           </ng-container>
         </li>
       </ng-container>
+      <ng-container *ngIf="config?.configs?.showAuthButtons">
+        <li>
+          <ng-container *ngIf="authService.isLoggedIn else loginButton">
+            <a routerLink="/auth/user-profile" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 11 14H9a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 10 19Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+              </svg>
+              <span class="flex-1 ml-3 whitespace-nowrap">Profile</span>
+            </a>
+          </ng-container>
+
+          <ng-template #loginButton>
+            <a routerLink="/auth/login" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+            </a>
+          </ng-template>
+        </li>
+      </ng-container>
     </ul>
   </div>
   <div class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-layout 0 z-20 border-r border-gray-200 dark:border-gray-700 items-center" [class.lg:hidden]="sidenavStatus() === 'close'">

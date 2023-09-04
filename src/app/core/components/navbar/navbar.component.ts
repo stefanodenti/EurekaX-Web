@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SidenavService} from "../sidenav/sidenav.service";
 import {ThemeService} from "../../services/theme.service";
 import {NavBar} from "../../models/config.model";
+import {AuthService} from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'eurekax-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   @Input() showMenuButton: boolean = true;
   showMobileMenu = false;
 
-  constructor(private sidenavService: SidenavService, public themeService: ThemeService) { }
+  constructor(private sidenavService: SidenavService, public themeService: ThemeService, public authService: AuthService) { }
 
   ngOnInit(): void {
   }

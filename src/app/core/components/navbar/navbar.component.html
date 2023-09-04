@@ -32,6 +32,20 @@
             </g>
           </svg>
         </a>
+
+        <ng-container *ngIf="config?.configs?.showAuthButtons">
+          <ng-container *ngIf="authService.isLoggedIn else loginButton">
+            <button routerLink="/auth/user-profile" type="button" class="flex items-center mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 11 14H9a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 10 19Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+              </svg>
+            </button>
+          </ng-container>
+
+          <ng-template #loginButton>
+            <a routerLink="/auth/login" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600" role="menuitem">Sign In</a>
+          </ng-template>
+        </ng-container>
       </div>
     </div>
     <a class="lg:hidden" (click)="showMobileMenu = !showMobileMenu">
@@ -43,9 +57,20 @@
     </a>
   </div>
   <div class="flex flex-col gap-3 bg-layout px-4 py-2 lg:hidden" *ngIf="showMobileMenu">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/contacts">Contacts</a>
-    <a>Products</a>
+    <ng-container *ngFor="let navigation of config?.navigations">
+      <eurekax-navigation [navigation]="navigation"></eurekax-navigation>
+    </ng-container>
+    <ng-container *ngIf="config?.configs?.showAuthButtons">
+      <ng-container *ngIf="authService.isLoggedIn else loginButton">
+        <a routerLink="/auth/user-profile">
+          Profile
+        </a>
+      </ng-container>
+
+      <ng-template #loginButton>
+        <a routerLink="/auth/login">Sign In</a>
+      </ng-template>
+    </ng-container>
     <div class="border-t border-black dark:border-white pt-2 flex justify-between items-center"
       *ngIf="config?.configs?.showDarkModeToggle || config?.configs?.showThemeSelector">
       <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>

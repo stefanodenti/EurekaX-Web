@@ -5,6 +5,7 @@ import { HomeComponent } from '../../pages/home/home.component';
 import { LayoutStandardComponent } from './layout-standard.component';
 import { ContactsComponent } from '../../pages/contacts/contacts.component';
 import { PrivacyComponent } from 'src/app/pages/privacy/privacy.component';
+import { AuthGuard } from 'src/app/auth/interceptor/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
     },
     {
       path: 'settings',
-      component: AppSettingsComponent
+      component: AppSettingsComponent,
+      canActivate: [AuthGuard]
     }
   ]
   },

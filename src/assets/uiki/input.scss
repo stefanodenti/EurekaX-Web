@@ -1,17 +1,17 @@
 .input{
-    @apply  rounded-lg block w-full p-2.5 sm:text-sm bg-gray-50 border border-gray-300 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400;
+    @apply  rounded-lg block w-full p-2.5 sm:text-sm bg-gray-50 border border-gray-50 text-gray-900 dark:bg-gray-700 dark:border-gray-600  dark:placeholder-gray-400;
 }
 
 .input-primary{
-    @apply  focus:ring-primary focus:border-primary;
+    @apply  border-primary dark:border-primary focus:ring-primary focus:border-primary;
 }
 
 .input-secondary{
-    @apply  focus:ring-secondary focus:border-secondary;
+    @apply border-secondary dark:border-secondary focus:ring-secondary focus:border-secondary;
 }
 
 .input-tertiary{
-    @apply  focus:ring-tertiary focus:border-tertiary;
+    @apply border-tertiary dark:border-tertiary focus:ring-tertiary focus:border-tertiary;
 }
 
 .label {

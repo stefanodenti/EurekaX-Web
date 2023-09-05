@@ -1,27 +1,16 @@
-<div class="card card-primary">
-
-  <div>Profilo Utente</div>
-
-  <div>
-    <img [src]="user?.photoURL" alt="user avatar" />
+<div class="flex w-fit flex-col items-center gap-10 rounded-2xl bg-primary md:flex-row p-8" [ngClass]="{'hidden': !authService.userData}">
+  <img [src]="authService.userData?.photoURL" alt="images-5" border="0" class="rounded-full" />
+  <div class="flex flex-col items-start">
+    <p class="pb-2 text-sm font-bold tracking-wide text-gray-400">{{authService.userData?.email || '---@---'}}</p>
+    <h1 class="pb-1 text-2xl font-bold">{{authService.userData?.displayName}}</h1>
+    <div class="flex gap-4 pt-4">
+      <p>Create: {{(authService.userData?.metadata?.createdAt | date) || '--/--/---'   }}</p>
+      <p>Last login: {{(authService.userData?.metadata?.lastSignInTime | date) || '--/--/---'   }}</p>
+    </div>
+    <div class="flex gap-4 pt-4 w-full">
+      <button (click)="verifyEmail()" class="btn btn-secondary w-full" *ngIf="!authService.userData?.emailVerified">Verification Email
+      </button>
+      <button (click)="logout()" class="btn btn-tertiary w-full">Disconnetti Account</button>
+    </div>
   </div>
-  <div>
-    <label>Username</label>
-    <div>{{user.displayName}}</div>
-  </div>
-  <div>
-    <label>Email</label>
-    <div>{{user.email}}</div>
-  </div>
-  <div>
-    <label>Data creazione</label>
-    <div>{{user.metadata?.createdAt | date}}</div>
-  </div>
-  <div>
-    <label>Data ultimo accesso</label>
-    <div>{{user.metadata?.lastSignInTime | date}}</div>
-  </div>
-  <button (click)="verifyEmail()" *ngIf="!user.emailVerified">Verification Email
-  </button>
-  <button (click)="logout()">Disconnetti Account</button>
-s</div>
+</div>

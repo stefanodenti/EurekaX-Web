@@ -7,16 +7,12 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./user-profile.page.scss'],
 })
 export class UserProfilePage implements OnInit {
-  user: any;
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
 
   }
 
   ngOnInit() {
-    console.log('ISLOGGED?', this.authService.userData);
-    this.user = this.authService.userData;
-    console.log('USER', this.user);
   }
 
   verifyEmail() {

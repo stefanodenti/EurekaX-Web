@@ -1,4 +1,4 @@
-<button type="button" data-dropdown-toggle="language-dropdown"
+<button type="button" [attr.data-dropdown-toggle]="dropdownId"
     class="btn btn-icon btn-clear">
     <svg aria-hidden="true" class="h-5 w-5 rounded-full" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3900 3900">
@@ -29,7 +29,7 @@
 </button>
 <!-- Dropdown -->
 <div class="hidden z-50 my-4 list-none bg-card rounded divide-y divide-gray-100 shadow "
-    id="language-dropdown">
+    [id]="dropdownId">
     <ul class="py-1" role="none">
         <li>
             <a href="#"

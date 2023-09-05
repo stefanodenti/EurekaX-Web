@@ -7,7 +7,7 @@
         "detectMode": "auto"
       },
       "light": {
-        "primary": "#183AD1",
+        "primary": "#287CCF",
         "secondary": "#F7931F",
         "tertiary": "#BF1923",
         "base": "#FFFFFF",
@@ -18,7 +18,7 @@
         "error": "#FF1A1A"
       },
       "dark": {
-        "primary": "#183AD1",
+        "primary": "#287CCF",
         "secondary": "#F7931F",
         "tertiary": "#BF1923",
         "base": "#160E07",

@@ -3,13 +3,14 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { take } from 'rxjs';
+import { BehaviorSubject, Subject, take } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
+    userDataChange: Subject<any> = new Subject<any>();
     userData: any; // Save logged in user data
     constructor(
         public afs: AngularFirestore, // Inject Firestore service
@@ -20,7 +21,7 @@ export class AuthService {
         /* Saving user data in localstorage when
         logged in and setting up null when logged out */
         this.afAuth.authState.subscribe((user) => {
-            console.warn('[SERVICE] CHANGE AUTHSTATE', user);
+            console.warn('CHANGE AUTHSTATE', user);
             if (user) {
                 this.SetUserData(user);
             } else {
@@ -33,14 +34,16 @@ export class AuthService {
     // Sign in with Google
     async LoginWithGoogle() {
         return this.afAuth.signInWithPopup(new GoogleAuthProvider()).then((result) => {
+            // this.SetUserData(result.user);
             this.afAuth.authState.subscribe((user) => {
                 if (user) {
                     this.router.navigate(['/']);
                 }
             });
-        }).catch((error) => {
-            window.alert(error.message);
-        });
+        })
+            .catch((error) => {
+                window.alert(error.message);
+            });
     }
 
     // Sign in with email/password
@@ -48,6 +51,7 @@ export class AuthService {
         return this.afAuth
             .signInWithEmailAndPassword(email, password)
             .then((result) => {
+                // this.SetUserData(result.user);
                 this.afAuth.authState.subscribe((user) => {
                     if (user) {
                         this.router.navigate(['/']);
@@ -104,12 +108,20 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(
             `users/${user.uid}`,
         );
+        console.warn('SetUserData 1', user.metadata);
         const userData: Partial<User> = {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName,
             photoURL: user.photoURL,
             emailVerified: user.emailVerified,
+            metadata: {
+                creationTime: user.metadata.creationTime,
+                createdAt: parseInt(user.metadata.createdAt),
+                lastLoginAt: parseInt(user.metadata.lastLoginAt),
+                lastSignInTime: user.metadata.lastSignInTime,
+            },
+            isOnline: true,
         };
         userRef.set(userData, {
             merge: true,
@@ -118,7 +130,8 @@ export class AuthService {
                 next: (user) => {
                     if (user.data()) {
                         this.userData = user.data();
-                        console.warn('SetUserData', this.userData)
+                        this.userDataChange.next(this.userData);
+                        console.warn('SetUserData 2', this.userData);
                         localStorage.setItem('user', JSON.stringify(this.userData));
                     }
                 },
@@ -132,14 +145,40 @@ export class AuthService {
     // Sign out
     SignOut() {
         return this.afAuth.signOut().then(() => {
+            this.offline();
             localStorage.removeItem('user');
             this.router.navigate(['/auth/sign-in']);
         });
     }
 
     updateUserData(param: Partial<User>) {
-        this.userData = { ...this.userData, ...param };
-        console.warn('updateUserData', this.userData)
+        this.userData = {...this.userData, ...param};
+        console.warn('updateUserData', this.userData);
         localStorage.setItem('user', JSON.stringify(this.userData));
+    }
+
+    offline() {
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+            `users/${this.userData.uid}`,
+        );
+        const userData: Partial<User> = {
+            isOnline: false,
+        };
+        userRef.set(userData, {
+            merge: true,
+        }).then(() => {
+            this.afs.collection('users').doc(this.userData.uid).get().pipe(take(1)).subscribe({
+                next: (user) => {
+                    if (user.data()) {
+                        this.userData = user.data();
+                        console.warn('SetUserData 2', this.userData);
+                        localStorage.setItem('user', JSON.stringify(this.userData));
+                    }
+                },
+                error: (err) => {
+                    console.warn(err);
+                },
+            });
+        });
     }
 }

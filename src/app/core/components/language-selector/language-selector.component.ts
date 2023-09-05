@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./language-selector.component.scss']
 })
 export class LanguageSelectorComponent {
+  dropdownId: string = Date.now().toString();
 
 }

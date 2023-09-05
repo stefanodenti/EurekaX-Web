@@ -15,18 +15,9 @@ export class AuthGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
-    return this.af.authState.pipe(
-      take(1),
-      map((user: any) => {
-        console.warn('[GUARD] CHANGE AUTHSTATE', user);
-        if (user != null) {
-          this.authService.SetUserData(user);
-          return true;
-        }
-        else {
-          this.router.navigate(['/auth/sign-in']);
-          return false;
-        }
-      }));
+    if(this.authService.userData){
+      return true;
+    }
+    return this.authService.userDataChange.pipe(map((user: any) => {return !!user}))
   }
 }

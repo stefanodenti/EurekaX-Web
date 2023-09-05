@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {LayoutService} from "../../core/services/layout.service";
-import { initAccordions, initCarousels, initCollapses, initDials, initDismisses, initDrawers, initDropdowns, initModals, initPopovers, initTabs, initTooltips } from 'flowbite';
-
 @Component({
   selector: 'eurekax-layout-standard',
   templateUrl: './layout-standard.component.html',
@@ -14,17 +12,6 @@ export class LayoutStandardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    initAccordions();
-    initCarousels();
-    initCollapses();
-    initDials();
-    initDismisses();
-    initDrawers();
-    initDropdowns();
-    initModals();
-    initPopovers();
-    initTabs();
-    initTooltips();
   }
 
 }

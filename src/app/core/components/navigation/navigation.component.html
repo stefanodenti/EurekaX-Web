@@ -1,39 +1,27 @@
-<ng-container [ngSwitch]="navigation?.type">
-  <ng-container *ngSwitchCase="'selector'">
-    <div class="dropdown">
-      <a
-        tabindex="0"
-        [ngClass]="navigation?.cssClass"
-        class="btn btn-link no-underline hover:no-underline hover:text-secondary"
-      >
-        {{ navigation?.label }}
-      </a>
-      <!-- Dropdown -->
-      <ul
-        tabindex="0"
-        class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52"
-      >
-        <li *ngFor="let subNav of navigation?.childs">
-          <label
+<ul class="menu" [ngClass]="{ 'menu-horizontal': mode === 'horizontal' }">
+  <li *ngFor="let navigation of navigations">
+    <ng-container [ngSwitch]="navigation?.type">
+      <ng-container *ngSwitchCase="'selector'">
+        <details >
+          <summary [ngClass]="navigation?.cssClass">{{ navigation?.label }}</summary>
+          <ul>
+          <li
+            *ngFor="let subNav of navigation?.childs"
             [routerLink]="subNav.routerLink"
-            [ngClass]="subNav.cssClass"
-            class="block py-2 px-4 text-sm hover:bg-primary"
           >
-            <div class="inline-flex items-center">
-              {{ subNav.label }}
-            </div>
-          </label>
-        </li>
-      </ul>
-    </div>
-  </ng-container>
-  <ng-container *ngSwitchCase="'default'">
-    <a
-      [routerLink]="navigation?.routerLink"
-      [ngClass]="navigation?.cssClass"
-      class="btn btn-link no-underline hover:no-underline hover:text-secondary"
-    >
-      {{ navigation?.label }}
-    </a>
-  </ng-container>
-</ng-container>
+            <a class="min-w-[100px]">{{ subNav.label }}</a>
+          </li>
+        </ul>
+        </details>
+      </ng-container>
+      <ng-container *ngSwitchCase="'default'">
+        <a
+          [routerLink]="navigation?.routerLink"
+          [ngClass]="navigation?.cssClass"
+        >
+          {{ navigation?.label }}
+        </a>
+      </ng-container>
+    </ng-container>
+  </li>
+</ul>

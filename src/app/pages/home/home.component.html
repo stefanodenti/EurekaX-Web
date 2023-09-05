@@ -1,7 +1,7 @@
 <eurekax-hero></eurekax-hero>
 
 
-<ng-container
+<!-- <ng-container
 *ngFor="
   let theme of themeService.themes();
   let first = first;
@@ -46,4 +46,23 @@
     </a>
   </div>
 
-</ng-container>
+</ng-container> --><ul class="menu bg-base-200 w-56 rounded-box">
+  <li><a>Item 1</a></li>
+  <li>
+    <span class="menu-dropdown-toggle">Parent</span>
+    <ul class="menu-dropdown">
+      <li><a>level 2 item 1</a></li>
+      <li><a>level 2 item 2</a></li>
+    </ul>
+  </li>
+</ul>
+<ul class="menu bg-base-200 w-56 rounded-box">
+  <li><a>Item 1</a></li>
+  <li>
+    <span class="menu-dropdown-toggle menu-dropdown-show">Parent</span>
+    <ul class="menu-dropdown menu-dropdown-show">
+      <li><a>level 2 item 1</a></li>
+      <li><a>level 2 item 2</a></li>
+    </ul>
+  </li>
+</ul>

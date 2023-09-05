@@ -11,5 +11,6 @@ import {RouterModule} from "@angular/router";
   standalone: true
 })
 export class NavigationComponent {
-  @Input() navigation: Navigation | null = null;
+  @Input() navigations: Navigation[] | null = null;
+  @Input() mode: 'vertical' | 'horizontal' = 'horizontal';
 }

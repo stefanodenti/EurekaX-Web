@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -7,7 +7,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./user-logged-dropdown.component.scss']
 })
 export class UserLoggedDropdownComponent {
+  @Input() showName = false;
   constructor(public authService: AuthService){
-    
+
   }
 }

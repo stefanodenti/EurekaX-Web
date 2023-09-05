@@ -19,7 +19,7 @@
       "navbar": {
         "visible": true,
         "configs": {
-          "showThemeSelector": true,
+          "showThemeSelector": false,
           "showLanguageSelector": true,
           "showLogo": true
         },
@@ -39,7 +39,7 @@
             "label": "Test",
             "childs": [
               {
-                "label": "Contacts 1",
+                "label": "Contacts_____1",
                 "routerLink": "/contacts"
               },
               {

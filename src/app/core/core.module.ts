@@ -10,6 +10,7 @@ import { ThemeSelectorComponent } from './components/theme-selector/theme-select
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { UserLoggedDropdownComponent } from './components/user-logged-dropdown/user-logged-dropdown.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
     NotificationsComponent,
     DarkModeToggleComponent,
     ThemeSelectorComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    UserLoggedDropdownComponent
   ],
   imports: [
     CommonModule,

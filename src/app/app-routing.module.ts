@@ -5,6 +5,11 @@ import { AuthAdminGuard } from './auth/interceptor/auth-admin.guard';
 
 const routes: Routes = [
   {
+    path:'',
+    pathMatch: 'full',
+    redirectTo: '/home'
+  },
+  {
     path: '',  loadChildren: () => import('./layouts/standard/standard.module').then(m => m.StandardModule),
   },
   {

@@ -1,81 +1,68 @@
-<div class="inset-x-0 top-0" [class.hidden]="!config?.visible">
-  <div class="px-4 py-2 h-[50px] bg-layout flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <span *ngIf="showMenuButton" class="cursor-pointer" (click)="toggleSidenav()">
-        <svg
-          class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
-        </svg>
-      </span>
-      <img *ngIf="config?.configs?.showLogo" class="h-[50px]" [src]="themeService.theme().logo">
-    </div>
-    <div class="flex justify-end gap-3 text-xl max-md:hidden items-center">
-      <ng-container *ngFor="let navigation of config?.navigations">
-        <eurekax-navigation [navigation]="navigation"></eurekax-navigation>
-      </ng-container>
-
-      <div class="divide-x divide-red-500 w-5"></div>
-      <div class="flex items-center gap-3">
-        <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>
-        <eurekax-dark-mode-toggle *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
-        <eurekax-language-selector  *ngIf="config?.configs?.showLanguageSelector"></eurekax-language-selector>
-
-        <a routerLink="/settings" *ngIf="config?.configs?.showSettings" class="btn btn-icon btn-clear">
-          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 20 20">
-            <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-              <path
-                d="M19 11V9a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L12 2.757V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L2.929 4.343a1 1 0 0 0 0 1.414l.536.536L2.757 8H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535L8 17.243V18a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H18a1 1 0 0 0 1-1Z" />
-              <path d="M10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-            </g>
-          </svg>
-        </a>
-
-        <ng-container *ngIf="config?.configs?.showAuthButtons">
-          <ng-container *ngIf="authService.isLoggedIn else loginButton">
-            <button routerLink="/user-profile" type="button" class="btn btn-icon btn-clear">
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 11 14H9a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 10 19Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-              </svg>
-            </button>
-          </ng-container>
-
-          <ng-template #loginButton>
-            <a routerLink="/auth/sign-in" class="btn btn-icon btn-clear" role="menuitem">Sign In</a>
-          </ng-template>
-        </ng-container>
-      </div>
-    </div>
-    <a class="lg:hidden" (click)="showMobileMenu = !showMobileMenu">
-      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+<div class="navbar bg-neutral" [class.hidden]="!config?.visible">
+  <div class="flex-1">
+    <a class="btn btn-ghost" (click)="toggleSidenav()">
+      <svg
+        class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
         fill="none" viewBox="0 0 17 14">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M1 1h15M1 7h15M1 13h15" />
       </svg>
     </a>
+    <a class="btn btn-ghost" routerLink="/">
+      <img
+        *ngIf="config?.configs?.showLogo"
+        class="h-full"
+        [src]="themeService.theme().logo"
+        alt="logo"
+      />
+    </a>
   </div>
-  <div class="flex flex-col gap-3 bg-layout px-4 py-2 lg:hidden" *ngIf="showMobileMenu">
+  <a class="lg:hidden" (click)="showMobileMenu = !showMobileMenu">
+    <svg
+      class="w-6 h-6 text-gray-800 dark:text-white"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 17 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M1 1h15M1 7h15M1 13h15"
+      />
+    </svg>
+  </a>
+  <div class="flex-none gap-2 max-md:hidden">
     <ng-container *ngFor="let navigation of config?.navigations">
-      <eurekax-navigation [navigation]="navigation"></eurekax-navigation>
+      <eurekax-navigation [navigation]="navigation" class="mr-4"></eurekax-navigation>
     </ng-container>
-    <ng-container *ngIf="config?.configs?.showAuthButtons">
-      <ng-container *ngIf="authService.isLoggedIn else loginButton">
-        <a routerLink="/user-profile">
-          Profile
-        </a>
-      </ng-container>
-
-      <ng-template #loginButton>
-        <a routerLink="/auth/sign-in">Sign In</a>
-      </ng-template>
-    </ng-container>
-    <div class="border-t border-black dark:border-white pt-2 flex justify-between items-center"
-      *ngIf="config?.configs?.showDarkModeToggle || config?.configs?.showThemeSelector">
-      <eurekax-theme-selector *ngIf="config?.configs?.showThemeSelector"></eurekax-theme-selector>
-      <eurekax-dark-mode-toggle *ngIf="config?.configs?.showDarkModeToggle"></eurekax-dark-mode-toggle>
-      <eurekax-language-selector  *ngIf="config?.configs?.showLanguageSelector"></eurekax-language-selector>
+    <eurekax-theme-selector
+      *ngIf="config?.configs?.showThemeSelector"
+    ></eurekax-theme-selector>
+    <eurekax-language-selector
+      *ngIf="config?.configs?.showLanguageSelector"
+    ></eurekax-language-selector>
+    <eurekax-user-logged-dropdown></eurekax-user-logged-dropdown>
+  </div>
+</div>
+<div
+  class="flex flex-col gap-3 bg-neutral px-4 py-2 lg:hidden"
+  *ngIf="showMobileMenu"
+>
+  <ng-container *ngFor="let navigation of config?.navigations">
+    <eurekax-navigation [navigation]="navigation"></eurekax-navigation>
+  </ng-container>
+  <div class="flex items-center justify-between pt-3 mt-3 border-t border-primary">
+    <eurekax-theme-selector
+      *ngIf="config?.configs?.showThemeSelector"
+    ></eurekax-theme-selector>
+    <div class="flex items-center">
+      <eurekax-language-selector
+        *ngIf="config?.configs?.showLanguageSelector"
+      ></eurekax-language-selector>
+      <eurekax-user-logged-dropdown></eurekax-user-logged-dropdown>
     </div>
   </div>
 </div>

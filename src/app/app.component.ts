@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { initFlowbite } from "flowbite";
 import { AppConfigService } from "./core/services/app-config.service";
 
 @Component({
@@ -15,8 +14,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      initFlowbite()
-    }, 2000);
+
   }
 }

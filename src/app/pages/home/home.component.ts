@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { initDropdowns, initFlowbite } from 'flowbite';
+import { ThemeService } from 'src/app/core/services/theme.service';
 import { UikitModule } from 'src/app/uikit/uikit.module';
 
 @Component({
@@ -16,15 +16,11 @@ import { UikitModule } from 'src/app/uikit/uikit.module';
 
 export class HomeComponent implements OnInit {
   test = true;
-  constructor() { }
+  constructor(public themeService:ThemeService) { }
 
   ngOnInit(): void {
   }
   toggleBTN(){
     this.test = !this.test;
-    setTimeout(()=>{
-      initDropdowns();
-
-    }, 2000)
   }
 }

@@ -5,25 +5,7 @@ export interface AppConfig {
 
 export interface Theme {
     name: string;
-    darkMode: {
-        defaultSchema: 'dark' | 'light';
-        detectMode: 'auto' | 'manual';
-    },
-    light: Palette;
-    dark: Palette;
     logo: string;
-}
-
-export interface Palette {
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    base: string;
-    layout: string;
-    card: string;
-    success: string;
-    warning: string;
-    error: string;
 }
 
 export interface Layout {
@@ -34,7 +16,6 @@ export interface Layout {
 }
 export interface Navigation {
     type: 'default' | 'dynamic' | 'selector';
-    icon?: string;
     label: string;
     routerLink: string;
     component?: string;
@@ -46,11 +27,8 @@ export interface NavBar {
     navigations: Navigation[];
     configs: {
         showThemeSelector: boolean;
-        showSettings: boolean;
-        showDarkModeToggle: boolean;
         showLanguageSelector: boolean;
         showLogo: boolean;
-        showAuthButtons: boolean;
     },
     visible: boolean;
 }
@@ -59,8 +37,6 @@ export interface Sidenav {
     navigations: Navigation[];
     configs: {
         showThemeSelector: boolean;
-        showSettings: boolean;
-        showDarkModeToggle: boolean;
         showLanguageSelector: boolean;
         showLogo: boolean;
         showAuthButtons: boolean;

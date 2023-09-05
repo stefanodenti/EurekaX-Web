@@ -12,5 +12,4 @@ import {RouterModule} from "@angular/router";
 })
 export class NavigationComponent {
   @Input() navigation: Navigation | null = null;
-
 }

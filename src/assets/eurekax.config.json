@@ -1,93 +1,15 @@
 {
   "themes": [
     {
-      "name": "Eurekax",
-      "darkMode": {
-        "defaultSchema": "dark",
-        "detectMode": "auto"
-      },
-      "light": {
-        "primary": "#287CCF",
-        "secondary": "#F7931F",
-        "tertiary": "#BF1923",
-        "base": "#FFFFFF",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
-      "dark": {
-        "primary": "#287CCF",
-        "secondary": "#F7931F",
-        "tertiary": "#BF1923",
-        "base": "#160E07",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
+      "name": "synthwave",
       "logo": "assets/brand/logo.png"
     },
     {
-      "name": "Space",
-      "darkMode": {
-        "defaultSchema": "dark",
-        "detectMode": "auto"
-      },
-      "light": {
-        "primary": "#504099",
-        "secondary": "#974EC3",
-        "tertiary": "#FE7BE5",
-        "base": "#FFFFFF",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
-      "dark": {
-        "primary": "#504099",
-        "secondary": "#974EC3",
-        "tertiary": "#FE7BE5",
-        "base": "#313866",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
+      "name": "dark",
       "logo": "assets/brand/logo.png"
     },
     {
-      "name": "Gold",
-      "darkMode": {
-        "defaultSchema": "dark",
-        "detectMode": "auto"
-      },
-      "light": {
-        "primary": "#FFD700",
-        "secondary": "#00E2FF",
-        "tertiary": "#667C30",
-        "base": "#FFFFFF",
-        "layout": "#AC8F00",
-        "card": "#E3BE00",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
-      "dark": {
-        "primary": "#FFD700",
-        "secondary": "#00E2FF",
-        "tertiary": "#667C30",
-        "base": "#2F2F1B",
-        "layout": "#AC8F00",
-        "card": "#E3BE00",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
+      "name": "light",
       "logo": "assets/brand/logo.png"
     }
   ],
@@ -98,11 +20,8 @@
         "visible": true,
         "configs": {
           "showThemeSelector": true,
-          "showDarkModeToggle": true,
-          "showSettings": true,
           "showLanguageSelector": true,
-          "showLogo": true,
-          "showAuthButtons": true
+          "showLogo": true
         },
         "navigations": [
           {
@@ -114,6 +33,20 @@
             "type": "default",
             "label": "Contacts",
             "routerLink": "/contacts"
+          },
+          {
+            "type": "selector",
+            "label": "Test",
+            "childs": [
+              {
+                "label": "Contacts 1",
+                "routerLink": "/contacts"
+              },
+              {
+                "label": "Contacts 2",
+                "routerLink": "/contacts"
+              }
+            ]
           }
         ]
       },
@@ -131,8 +64,6 @@
         "visible": true,
         "configs": {
           "showThemeSelector": true,
-          "showSettings": true,
-          "showDarkModeToggle": true,
           "showLanguageSelector": true,
           "showLogo": true,
           "showAuthButtons": true

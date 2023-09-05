@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'eurekax-language-selector',
@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./language-selector.component.scss']
 })
 export class LanguageSelectorComponent {
-  dropdownId: string = Date.now().toString();
+  @Input() position: 'top' | 'end' = 'end';
 
 }

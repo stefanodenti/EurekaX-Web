@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class UserLoggedDropdownComponent {
   @Input() showName = false;
+  @Input() position: 'top' | 'end' = 'end';
   constructor(public authService: AuthService){
 
   }

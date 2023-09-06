@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 import { UserLoggedDropdownComponent } from './components/user-logged-dropdown/user-logged-dropdown.component';
+import { AlertListComponent } from './components/alert-list/alert-list.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { UserLoggedDropdownComponent } from './components/user-logged-dropdown/u
     DarkModeToggleComponent,
     ThemeSelectorComponent,
     LanguageSelectorComponent,
-    UserLoggedDropdownComponent
+    UserLoggedDropdownComponent,
+    AlertListComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -30,15 +34,16 @@ import { UserLoggedDropdownComponent } from './components/user-logged-dropdown/u
     FormsModule,
     NavigationComponent
   ],
-  exports: [
-    NavbarComponent,
-    FooterComponent,
-    SidenavComponent,
-    NotificationsComponent,
-    DarkModeToggleComponent,
-    ThemeSelectorComponent,
-    LanguageSelectorComponent
-  ],
+    exports: [
+        NavbarComponent,
+        FooterComponent,
+        SidenavComponent,
+        NotificationsComponent,
+        DarkModeToggleComponent,
+        ThemeSelectorComponent,
+        LanguageSelectorComponent,
+        AlertListComponent
+    ],
 })
 export class CoreModule {
 

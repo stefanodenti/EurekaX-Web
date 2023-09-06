@@ -1,0 +1,23 @@
+<div
+  (mouseover)="pauseDismiss()"
+  (mouseleave)="restartDismiss()"
+  [ngClass]="getNotificationClass()"
+  class="alert shadow-lg relative overflow-x-hidden">
+	<div *ngIf="!!notification.icon"></div>
+  <div>
+    <div class="text-xs">{{notification.createdAt | date: 'medium'}}</div>
+    <div class="font-bold mt-0.5">{{notification.message}}</div>
+  </div>
+
+  <div *ngIf="!!notification.routerLink || showCloseButton">
+      <button [ngClass]="{'mr-2': showCloseButton}" class="btn btn-sm" *ngIf="!!notification.routerLink" [routerLink]="notification.routerLink">
+        See
+      </button>
+
+    <button class="btn btn-sm" *ngIf="showCloseButton" (click)="closeClicked.emit()">
+      Close
+    </button>
+  </div>
+
+  <progress *ngIf="duration > 0" class="progress w-full absolute bottom-0" [value]="currentProgress" [max]="duration"></progress>
+</div>

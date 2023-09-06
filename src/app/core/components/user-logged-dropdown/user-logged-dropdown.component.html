@@ -23,7 +23,7 @@
       <li>
         <a routerLink="/settings">Settings</a>
       </li>
-      <li><a>Logout</a></li>
+      <li><a (click)="authService.SignOut()">Logout</a></li>
     </ul>
   </div>
 </ng-container>

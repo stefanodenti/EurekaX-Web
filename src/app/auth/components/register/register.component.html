@@ -1,5 +1,6 @@
-<div class="card card-primary sm:max-w-md">
-  <div class="p-6 space-y-4 md:space-y-6 sm:p-8 w-full">
+<div class="card bg-neutral sm:max-w-md">
+  <div class="card-body
+  ">
     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
       Registration
     </h1>
@@ -7,34 +8,32 @@
       <div>
         <label for="email" class="label">Your email</label>
         <input type="email" [(ngModel)]="email" name="email" id="email"
-          class="input input-primary"
+        class="input input-bordered input-primary w-full"
           placeholder="name@domain.com" required>
       </div>
       <div>
         <label for="password" class="label">Password</label>
         <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="••••••••"
-          class="input input-primary"
+        class="input input-bordered input-primary w-full"
           required>
       </div>
       <ng-container>
         <div class="flex items-start">
           <div class="flex items-center h-5">
             <input id="privacy" aria-describedby="privacy" type="checkbox" [(ngModel)]="privacyCheck" name="privacy"
-              class="checkbox checkbox-primary"
-              required="">
+              class="checkbox checkbox-primary">
           </div>
           <div class="ml-3 text-sm">
-            <label for="privacy" class="text-gray-500 dark:text-gray-300">Accept <a class="text-white hover:text-primary" routerLink="/privacy" target="_blank">Privacy Policy</a> </label>
+            <label for="privacy">Accept <a class="text-white hover:text-primary" routerLink="/privacy" target="_blank">Privacy Policy</a> </label>
           </div>
         </div>
         <div class="flex items-start">
           <div class="flex items-center h-5">
             <input id="terms" aria-describedby="terms" type="checkbox" [(ngModel)]="termsCheck" name="terms"
-              class="checkbox checkbox-primar"
-              required="">
+              class="checkbox checkbox-primary">
           </div>
           <div class="ml-3 text-sm">
-            <label for="terms" class="text-gray-500 dark:text-gray-300">Accept <a class="hover:text-primary" routerLink="/terms" target="_blank">Terms and conditions</a> </label>
+            <label for="terms">Accept <a class="hover:text-primary" routerLink="/terms" target="_blank">Terms and conditions</a> </label>
           </div>
         </div>
       </ng-container>

@@ -10,11 +10,11 @@
   </div>
 
   <div *ngIf="!!notification.routerLink || showCloseButton">
-      <button [ngClass]="{'mr-2': showCloseButton}" class="btn btn-sm" *ngIf="!!notification.routerLink" [routerLink]="notification.routerLink">
+      <button [ngClass]="{'mr-2': showCloseButton}" class="btn btn-sm btn-ghost" *ngIf="!!notification.routerLink" [routerLink]="notification.routerLink">
         See
       </button>
 
-    <button class="btn btn-sm" *ngIf="showCloseButton" (click)="closeClicked.emit()">
+    <button class="btn btn-sm btn-ghost" *ngIf="showCloseButton" (click)="closeClicked.emit()">
       Close
     </button>
   </div>

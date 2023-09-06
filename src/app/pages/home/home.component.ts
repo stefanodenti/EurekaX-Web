@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from 'src/app/core/services/theme.service';
 import { UikitModule } from 'src/app/uikit/uikit.module';
 
 @Component({
@@ -14,10 +15,12 @@ import { UikitModule } from 'src/app/uikit/uikit.module';
 })
 
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  test = true;
+  constructor(public themeService:ThemeService) { }
 
   ngOnInit(): void {
   }
-
+  toggleBTN(){
+    this.test = !this.test;
+  }
 }

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {LayoutService} from "../../core/services/layout.service";
-
 @Component({
   selector: 'eurekax-layout-standard',
   templateUrl: './layout-standard.component.html',

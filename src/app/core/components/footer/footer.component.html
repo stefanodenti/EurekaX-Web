@@ -1,10 +1,14 @@
-<div class=" inset-x-0 bottom-0">
-  <div class=" h-[50px] bg-layout flex justify-between px-4 py-2 items-center">
-    <p>{{config?.message}}</p>
-    <div class="flex gap-3" *ngIf="!!config?.navigations?.length">
-      <ng-container *ngFor="let navigation of config?.navigations">
-        <eurekax-navigation [navigation]="navigation"></eurekax-navigation>
-      </ng-container>
+<footer class="footer items-center px-4 bg-neutral text-neutral-content">
+  <aside class="items-center grid-flow-col">
+    <img src="assets/brand/logo-square.png" class="w-20" alt="logo" />
+    <div class="flex flex-col">
+      <p>{{ config?.message }}</p>
+      <p>Copyright © 2023 - All right reserved</p>
     </div>
-  </div>
-</div>
+  </aside>
+  <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+    <eurekax-navigation
+      [navigations]="config?.navigations ?? []"
+    ></eurekax-navigation>
+  </nav>
+</footer>

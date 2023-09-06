@@ -10,6 +10,9 @@ import { ThemeSelectorComponent } from './components/theme-selector/theme-select
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { UserLoggedDropdownComponent } from './components/user-logged-dropdown/user-logged-dropdown.component';
+import { AlertListComponent } from './components/alert-list/alert-list.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
     NotificationsComponent,
     DarkModeToggleComponent,
     ThemeSelectorComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    UserLoggedDropdownComponent,
+    AlertListComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -28,15 +34,16 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
     FormsModule,
     NavigationComponent
   ],
-  exports: [
-    NavbarComponent,
-    FooterComponent,
-    SidenavComponent,
-    NotificationsComponent,
-    DarkModeToggleComponent,
-    ThemeSelectorComponent,
-    LanguageSelectorComponent
-  ],
+    exports: [
+        NavbarComponent,
+        FooterComponent,
+        SidenavComponent,
+        NotificationsComponent,
+        DarkModeToggleComponent,
+        ThemeSelectorComponent,
+        LanguageSelectorComponent,
+        AlertListComponent
+    ],
 })
 export class CoreModule {
 

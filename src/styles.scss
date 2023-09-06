@@ -2,87 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "scss/index";
 
 
-:root {
-  --transition-theme-duration: .2s;
-
-  @property --primary-color {
-    syntax: '<color>';
-    initial-value: 'pink';
-    inherits: false;
-  }
-
-  @property --secondary-color {
-    syntax: '<color>';
-    initial-value: 'purple';
-    inherits: false;
-  }
-
-  @property --tertiary-color {
-    syntax: '<color>';
-    initial-value: 'orange';
-    inherits: false;
-  }
-
-  @property --base-color {
-    syntax: '<color>';
-    initial-value: 'white';
-    inherits: false;
-  }
-
-  @property --layout-color {
-    syntax: '<color>';
-    initial-value: 'white';
-    inherits: false;
-  }
-
-  @property --card-color {
-    syntax: '<color>';
-    initial-value: 'white';
-    inherits: false;
-  }
-  @property --success-color {
-    syntax: '<color>';
-    initial-value: 'green';
-    inherits: false;
-  }
-
-  @property --warning-color {
-    syntax: '<color>';
-    initial-value: 'yellow';
-    inherits: false;
-  }
-
-  @property --error-color {
-    syntax: '<color>';
-    initial-value: 'red';
-    inherits: false;
-  }
-
-  body.transition-theme {
-    &, * {
-        //transition: background-color var(--transition-theme-duration) ease-in-out, color var(--transition-theme-duration) ease-in-out;
-      @apply transition-colors;
-      transition-duration: var(--transition-theme-duration);
-    }
-  }
-
-  .btn-primary{
-    @apply cursor-pointer w-full rounded border border-primary bg-primary px-12 py-3 text-sm font-medium hover:bg-transparent focus:outline-none focus:ring active:text-opacity-75 sm:w-auto
-  }
-  .btn-secondary {
-    @apply cursor-pointer w-full rounded border border-secondary bg-secondary px-12 py-3 text-sm font-medium hover:bg-transparent focus:outline-none focus:ring active:text-opacity-75 sm:w-auto
-  }
-
-  .btn-tertiary {
-    @apply cursor-pointer w-full rounded border border-tertiary bg-tertiary px-12 py-3 text-sm font-medium hover:bg-transparent focus:outline-none focus:ring active:text-opacity-75 sm:w-auto
-  }
-
-  .btn-icon{
-    @apply  flex gap-3 items-center
-  }
-}
 
 
 

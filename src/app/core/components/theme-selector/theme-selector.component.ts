@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
-import {Palette, Theme} from "../../models/config.model";
+import {Theme} from "../../models/config.model";
 
 @Component({
   selector: 'eurekax-theme-selector',
@@ -16,12 +16,6 @@ export class ThemeSelectorComponent {
 
 
   changeTheme(theme: Theme) {
-    this.themeService.changeTheme(theme.name);
-  }
-
-  setOptionStyle(palette: Palette) {
-    return {
-      'background-color': palette.base
-    };
+    this.themeService.changeTheme(theme);
   }
 }

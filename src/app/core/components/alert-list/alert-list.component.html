@@ -1,0 +1,5 @@
+<div class="flex flex-col gap-2.5">
+  <ng-container *ngFor="let alert of alerts(); let i = index">
+    <eurekax-alert [dismissDuration]="5000" class="my-2" [cssClass]="'fade-in-right'" [notification]="alert" (closeClicked)="removeAlert(alert.id)"></eurekax-alert>
+  </ng-container>
+</div>

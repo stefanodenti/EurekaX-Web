@@ -1,63 +1,15 @@
 {
   "themes": [
     {
-      "name": "Eurekax",
-      "darkMode": {
-        "defaultSchema": "dark",
-        "detectMode": "auto"
-      },
-      "light": {
-        "primary": "#183AD1",
-        "secondary": "#F7931F",
-        "tertiary": "#BF1923",
-        "base": "#FFFFFF",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
-      "dark": {
-        "primary": "#183AD1",
-        "secondary": "#F7931F",
-        "tertiary": "#BF1923",
-        "base": "#160E07",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
+      "name": "synthwave",
       "logo": "assets/brand/logo.png"
     },
     {
-      "name": "Space",
-      "darkMode": {
-        "defaultSchema": "dark",
-        "detectMode": "auto"
-      },
-      "light": {
-        "primary": "#504099",
-        "secondary": "#974EC3",
-        "tertiary": "#FE7BE5",
-        "base": "#FFFFFF",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
-      "dark": {
-        "primary": "#504099",
-        "secondary": "#974EC3",
-        "tertiary": "#FE7BE5",
-        "base": "#313866",
-        "layout": "#1F2937",
-        "card": "#132D51",
-        "success": "#00E600",
-        "warning": "#F4A125",
-        "error": "#FF1A1A"
-      },
+      "name": "dark",
+      "logo": "assets/brand/logo.png"
+    },
+    {
+      "name": "light",
       "logo": "assets/brand/logo.png"
     }
   ],
@@ -67,9 +19,7 @@
       "navbar": {
         "visible": true,
         "configs": {
-          "showThemeSelector": true,
-          "showDarkModeToggle": true,
-          "showSettings": true,
+          "showThemeSelector": false,
           "showLanguageSelector": true,
           "showLogo": true
         },
@@ -83,6 +33,20 @@
             "type": "default",
             "label": "Contacts",
             "routerLink": "/contacts"
+          },
+          {
+            "type": "selector",
+            "label": "Test",
+            "childs": [
+              {
+                "label": "Contacts_____1",
+                "routerLink": "/contacts"
+              },
+              {
+                "label": "Contacts 2",
+                "routerLink": "/contacts"
+              }
+            ]
           }
         ]
       },
@@ -100,10 +64,9 @@
         "visible": true,
         "configs": {
           "showThemeSelector": true,
-          "showSettings": true,
-          "showDarkModeToggle": true,
           "showLanguageSelector": true,
-          "showLogo": true
+          "showLogo": true,
+          "showAuthButtons": true
         },
         "navigations": [
           {

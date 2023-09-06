@@ -21,8 +21,9 @@ export class AlertListComponent {
 
     setTimeout(() => {
       this.notificationService.createAlert({
-        type: NotificationType.success,
-        message: 'MESSAGGIO DI SUCCESSO',
+        type: NotificationType.danger,
+        title: 'Ottimo lavoro!',
+        message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
         routerLink: '/home'
       })
     }, 3000);

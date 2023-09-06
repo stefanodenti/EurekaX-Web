@@ -1,5 +1,6 @@
 export interface Notification {
   id: string,
+  title: string;
   message: string,
   presentation: NotificationPresentationType,
   icon?: string,

@@ -33,13 +33,14 @@ export class NotificationsService {
     this.notificationCenterStatus.set('close');
   }
 
-  createAlert(config: {message: string, icon?: string, type: NotificationType, routerLink?: string}) {
+  createAlert(config: Partial<Notification>) {
     this.newAlert$.next({
       id: Date.now().toString(),
       icon: config.icon,
       createdAt: Date.now(),
-      message: config.message,
-      type: config.type,
+      title: config.title ?? '',
+      message: config.message ?? '',
+      type: config.type ?? NotificationType.base,
       presentation: NotificationPresentationType.alert,
       read: false,
       routerLink: config.routerLink,

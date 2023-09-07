@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {NotificationsService} from "../../services/notifications.service";
-import {Notification, NotificationType} from "../../models/notification.model";
+import {Notification, NotificationPresentationType, NotificationType} from "../../models/notification.model";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
@@ -24,7 +24,8 @@ export class AlertListComponent {
         type: NotificationType.danger,
         title: 'Ottimo lavoro!',
         message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
-        routerLink: '/home'
+        routerLink: '/home',
+        presentation: NotificationPresentationType.both
       });
 
 
@@ -32,7 +33,8 @@ export class AlertListComponent {
         type: NotificationType.info,
         title: 'Ottimo lavoro!',
         message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
-        routerLink: '/home'
+        routerLink: '/home',
+        presentation: NotificationPresentationType.both
       })
     }, 3000);
   }

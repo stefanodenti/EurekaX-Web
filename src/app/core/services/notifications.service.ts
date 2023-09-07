@@ -47,7 +47,7 @@ export class NotificationsService {
       title: config.title ?? '',
       message: config.message ?? '',
       type: config.type ?? NotificationType.base,
-      presentation: NotificationPresentationType.alert,
+      presentation: config.presentation === NotificationPresentationType.both ? config.presentation : NotificationPresentationType.alert,
       read: false,
       routerLink: config.routerLink,
     });
@@ -55,7 +55,7 @@ export class NotificationsService {
 
   createNotification(config: Partial<Notification>) {
     const notification: Notification = {
-      id: Date.now().toString(),
+      id: config.id ?? Date.now().toString(),
       icon: config.icon,
       createdAt: Date.now(),
       title: config.title ?? '',

@@ -39,8 +39,76 @@ EurekaX is all about flexibility. Whether you're working on a small pet project 
 2. **Customize Away**: Start molding your project into the masterpiece you envision.
 3. **Launch**: Deploy with Firebase and watch your creation come to life!
 
-## Get Involved with EurekaX!
+
+#
+#
+#
+#
+# Get Involved with EurekaX!
 
 Have some ideas for improvements? We'd love to hear from you! Feel free to open issues, submit pull requests, or just drop by to say hello. We're all in this together. 😊
 
-So, what are you waiting for? Let's get coding, with EurekaX, the project starter kit crafted by Marco Onzo and Stefano Denti! 🚀👨‍💻
+
+
+## Contribution Process 
+
+Thank you for your interest in contributing to the EurekaX project! We are excited to welcome new contributors who want to help us improve our Angular template. Before you begin, please read and follow the guidelines below for contributing.
+
+## Steps to Contribute
+
+### 1. Fork the Repository
+
+To get started, fork the [EurekaX Repository](insert your repository link here) by clicking the "Fork" button at the top of the page.
+
+### 2. Clone Your Fork
+
+After forking, clone your repository to your local machine:
+
+`git clone https://github.com/tuonomeutente/Nome-del-Repository.git
+cd Nome-del-Repository`
+
+### 3\. Create a Branch
+
+Create a new branch for your changes. The branch name should clearly reflect the purpose of your modification or new feature:
+
+`git checkout -b nome-del-tuo-branch`
+
+### 4\. Make Your Changes
+
+Now you can start working on your changes or new feature. Make sure to follow the project's coding style guidelines and properly document your code if necessary.
+
+### 5\. Commit Your Changes
+
+Once your changes are complete, commit them and include a meaningful commit message describing your changes:
+
+`git add .
+git commit -m "Descrizione del tuo commit"`
+
+### 6\. Push Your Changes
+
+Upload your changes to your GitHub repository:
+
+`git push origin nome-del-tuo-branch`
+
+### 7\. Open a Pull Request
+
+Go back to your fork's GitHub page and open a new Pull Request (PR) towards the main repository. Be sure to provide a clear description of the changes you've made and indicate if your PR addresses an existing issue.
+
+### 8\. Review and Discussion
+The project maintainers will review your PR and provide feedback. You may need to make additional changes or address issues raised during the review.
+
+### 9\.  PR Merging
+
+Once your PR is approved, it will be merged into the main repository. Congratulations!
+
+Additional Guidelines
+----------------------
+
+- Ensure that you respect the licenses and copyrights of any libraries used in the project.
+- Don't hesitate to seek clarification or assistance if needed.
+- Maintain a respectful and collaborative tone in discussions and PR comments.
+
+Thank you for your contribution to the EurekaX project. Your collaboration is highly appreciated!
+
+So, what are you waiting for? Let's get coding, with EurekaX! 🚀👨‍💻
+

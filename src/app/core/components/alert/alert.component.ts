@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
-import {Notification, NotificationType} from "../../models/notification.model";
-import {interval, Subject, Subscription, take, takeUntil, timer} from "rxjs";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {Notification, NotificationPresentationType, NotificationType} from "../../models/notification.model";
+import {interval, Subject, Subscription, takeUntil} from "rxjs";
+import {Router} from "@angular/router";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'eurekax-alert',
@@ -30,6 +31,12 @@ export class AlertComponent implements OnDestroy {
   duration: number = 0;
   private elapsedTime: number = 0;
   private destroyTimer: Subject<void> = new Subject<void>();
+
+  constructor(
+    private router: Router,
+    private notificationService: NotificationsService
+  ) {
+  }
 
   ngOnDestroy() {
     this.stopDismissTimer();
@@ -85,5 +92,16 @@ export class AlertComponent implements OnDestroy {
   private stopDismissTimer() {
     this.destroyTimer.next();
     this.destroyTimer.complete();
+  }
+
+  navigate() {
+    this.router.navigateByUrl(this.notification.routerLink as string).then();
+    this.closeClicked.emit();
+    this.stopDismissTimer();
+    this.duration = 0;
+
+    if(this.notification.presentation === NotificationPresentationType.both) {
+      this.notificationService.readNotification(this.notification.id);
+    }
   }
 }

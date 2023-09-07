@@ -13,6 +13,9 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
 import { UserLoggedDropdownComponent } from './components/user-logged-dropdown/user-logged-dropdown.component';
 import { AlertListComponent } from './components/alert-list/alert-list.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { NotificationCenterComponent } from './components/notification-center/notification-center.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { AlertComponent } from './components/alert/alert.component';
     LanguageSelectorComponent,
     UserLoggedDropdownComponent,
     AlertListComponent,
-    AlertComponent
+    AlertComponent,
+    NotificationCenterComponent,
+    NotificationComponent,
+    NotificationButtonComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +48,8 @@ import { AlertComponent } from './components/alert/alert.component';
         DarkModeToggleComponent,
         ThemeSelectorComponent,
         LanguageSelectorComponent,
-        AlertListComponent
+        AlertListComponent,
+        NotificationCenterComponent
     ],
 })
 export class CoreModule {

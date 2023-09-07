@@ -20,7 +20,7 @@ export class AlertListComponent {
       });
 
     setTimeout(() => {
-      this.notificationService.createAlert({
+      this.notificationService.createNotification({
         type: NotificationType.danger,
         title: 'Ottimo lavoro!',
         message: 'E\' stato aggiunto correttamente il tuo nuovo video.',

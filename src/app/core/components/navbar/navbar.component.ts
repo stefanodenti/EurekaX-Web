@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, computed, Input, OnInit} from '@angular/core';
 import {SidenavService} from "../sidenav/sidenav.service";
 import {ThemeService} from "../../services/theme.service";
 import {NavBar} from "../../models/config.model";
 import {AuthService} from "../../../auth/services/auth.service";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'eurekax-navbar',

@@ -1,11 +1,11 @@
 <div
-  class="h-screen transition-all duration-200 ease-in-out w-screen lg:w-[500px]"
+  class="h-screen transition-all duration-200 ease-in-out w-screen md:w-[500px]"
 >
   <div
     class="overflow-y-auto py-5 px-3 h-full bg-neutral"
   >
     <div class="grid grid-cols-3 items-center">
-      <div class="opacity-100 lg:opacity-0 lg:pointer-events-none">
+      <div class="opacity-100 md:opacity-0 md:pointer-events-none">
         	<button (click)="toggleNotifications()" class="btn btn-ghost btn-xs">Close</button>
       </div>
       <div class="text-center font-bold text-lg lg:text-xl mb-2">Notifications</div>
@@ -18,7 +18,7 @@
         </div>
       </li>
       <ng-container *ngFor="let notification of notifications()">
-        <li class="border-y py-4 ">
+        <li class="border-t py-4 ">
          <eurekax-notification [notification]="notification"></eurekax-notification>
         </li>
       </ng-container>

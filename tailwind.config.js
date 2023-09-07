@@ -9,7 +9,13 @@ module.exports = {
     themes: [
       "synthwave",
       "dark",
-      "light"
+      "light",
+      "forest",
+      "cupcake",
+      "corporate",
+      "black",
+      "valentine",
+      "night"
     ], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
     darkTheme: "dark", // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default

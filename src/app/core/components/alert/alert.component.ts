@@ -15,10 +15,12 @@ export class AlertComponent implements OnDestroy {
 
   @Input() set dismissDuration(duration: number) {
     this.duration = duration;
-    this.startDismissDate = new Date();
-    this.currentProgress = 0;
+    if(this.duration > 0) {
+      this.startDismissDate = new Date();
+      this.currentProgress = 0;
 
-    this.restartDismissTimer(duration);
+      this.restartDismissTimer(duration);
+    }
   };
 
   @Output() closeClicked: EventEmitter<void> = new EventEmitter<void>();

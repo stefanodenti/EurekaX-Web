@@ -1,4 +1,4 @@
-<div class="navbar bg-neutral" [class.hidden]="!config?.visible">
+<div class="navbar bg-neutral relative" [class.hidden]="!config?.visible">
   <div class="flex-1">
     <label class="btn btn-ghost swap swap-rotate">
 
@@ -57,28 +57,30 @@
     <eurekax-notification-button></eurekax-notification-button>
     <eurekax-user-logged-dropdown></eurekax-user-logged-dropdown>
   </div>
-</div>
-<div
-  class="flex flex-col gap-3 bg-neutral px-4 py-2 lg:hidden"
-  *ngIf="showMobileMenu"
->
-  <eurekax-navigation
-    [navigations]="config?.navigations ?? []"
-    [mode]="'vertical'"
-  ></eurekax-navigation>
   <div
-    class="flex items-center justify-between pt-3 mt-3 border-t border-primary"
+    class="flex flex-col lg:hidden slide-in-top w-full absolute bottom-0 top-full left-0 z-50"
+    *ngIf="showMobileMenu"
   >
-    <eurekax-theme-selector
-      *ngIf="config?.configs?.showThemeSelector"
-    ></eurekax-theme-selector>
-    <div class="flex items-center">
-      <eurekax-language-selector
-        [position]="'start'"
-        *ngIf="config?.configs?.showLanguageSelector"
-      ></eurekax-language-selector>
-      <eurekax-user-logged-dropdown></eurekax-user-logged-dropdown>
+    <div class="w-full bg-neutral">
+      <eurekax-navigation
+        [navigations]="config?.navigations ?? []"
+        [mode]="'vertical'"
+      ></eurekax-navigation>
     </div>
-    <eurekax-notification-button></eurekax-notification-button>
+    <div
+      class="flex items-center justify-between pt-3 border-t border-primary w-full bg-neutral"
+    >
+      <eurekax-theme-selector
+        *ngIf="config?.configs?.showThemeSelector"
+      ></eurekax-theme-selector>
+      <div class="flex items-center">
+        <eurekax-language-selector
+          [position]="'start'"
+          *ngIf="config?.configs?.showLanguageSelector"
+        ></eurekax-language-selector>
+        <eurekax-user-logged-dropdown></eurekax-user-logged-dropdown>
+      </div>
+      <eurekax-notification-button></eurekax-notification-button>
+    </div>
   </div>
 </div>

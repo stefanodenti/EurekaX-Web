@@ -37,7 +37,7 @@
       "logo": "assets/brand/logo.png"
     }
   ],
-  "layout": 
+  "layout":
     {
       "name": "standard",
       "navbar": {
@@ -63,8 +63,8 @@
             "label": "Test",
             "childs": [
               {
-                "label": "Contacts_____1",
-                "routerLink": "/contacts"
+                "label": "Privacy",
+                "routerLink": "/privacy"
               },
               {
                 "label": "Contacts 2",

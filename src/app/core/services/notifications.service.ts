@@ -41,7 +41,7 @@ export class NotificationsService {
 
   createAlert(config: Partial<Notification>) {
     this.newAlert$.next({
-      id: Date.now().toString(),
+      id: config.id ?? Date.now().toString(),
       icon: config.icon,
       createdAt: Date.now(),
       title: config.title ?? '',

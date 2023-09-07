@@ -3,21 +3,21 @@
     <ng-container [ngSwitch]="navigation?.type">
       <ng-container *ngSwitchCase="'selector'">
         <details >
-          <summary [ngClass]="navigation?.cssClass">{{ navigation?.label }}</summary>
-          <ul>
+          <summary [ngClass]="getCssClass(navigation)" class="hover:text-primary">{{ navigation?.label }}</summary>
+          <ul class=" bg-base-200">
           <li
             *ngFor="let subNav of navigation?.childs"
-            [routerLink]="subNav.routerLink"
           >
-            <a class="min-w-[100px]">{{ subNav.label }}</a>
+            <a  [ngClass]="getCssClass(subNav)" [routerLink]="subNav.routerLink" class="hover:text-primary min-w-[100px]">{{ subNav.label }}</a>
           </li>
         </ul>
         </details>
       </ng-container>
       <ng-container *ngSwitchCase="'default'">
         <a
+          class="hover:text-primary"
           [routerLink]="navigation?.routerLink"
-          [ngClass]="navigation?.cssClass"
+          [ngClass]="getCssClass(navigation)"
         >
           {{ navigation?.label }}
         </a>

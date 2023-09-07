@@ -30,6 +30,7 @@ export class AlertListComponent {
 
 
       this.notificationService.createNotification({
+        id: '1',
         type: NotificationType.info,
         title: 'Ottimo lavoro!',
         message: 'E\' stato aggiunto correttamente il tuo nuovo video.',

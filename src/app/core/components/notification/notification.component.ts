@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Notification} from "../../models/notification.model";
+import {Notification, NotificationType} from "../../models/notification.model";
 import {NotificationsService} from "../../services/notifications.service";
 import {Router} from "@angular/router";
 
@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class NotificationComponent {
   @Input({required: true}) notification!: Notification;
+  notificationType = NotificationType;
 
   constructor(private notificationService: NotificationsService, private router: Router) {
   }

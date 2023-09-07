@@ -1,4 +1,4 @@
-<div class="navbar bg-neutral relative" [class.hidden]="!config?.visible">
+<div class="navbar bg-neutral text-neutral-content relative" [class.hidden]="!config?.visible">
   <div class="flex-1">
     <label class="btn btn-ghost swap swap-rotate">
 
@@ -61,14 +61,14 @@
     class="flex flex-col lg:hidden slide-in-top w-full absolute bottom-0 top-full left-0"
     *ngIf="showMobileMenu"
   >
-    <div class="w-full bg-neutral">
+    <div class="w-full bg-neutral text-neutral-content">
       <eurekax-navigation
         [navigations]="config?.navigations ?? []"
         [mode]="'vertical'"
       ></eurekax-navigation>
     </div>
     <div
-      class="flex items-center justify-between pt-3 border-t border-primary w-full bg-neutral"
+      class="flex items-center justify-between pt-3 border-t border-primary w-full bg-neutral text-neutral-content"
     >
       <eurekax-theme-selector
         *ngIf="config?.configs?.showThemeSelector"

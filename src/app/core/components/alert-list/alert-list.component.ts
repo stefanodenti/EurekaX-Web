@@ -25,6 +25,14 @@ export class AlertListComponent {
         title: 'Ottimo lavoro!',
         message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
         routerLink: '/home'
+      });
+
+
+      this.notificationService.createNotification({
+        type: NotificationType.info,
+        title: 'Ottimo lavoro!',
+        message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
+        routerLink: '/home'
       })
     }, 3000);
   }

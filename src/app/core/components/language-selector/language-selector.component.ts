@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./language-selector.component.scss']
 })
 export class LanguageSelectorComponent {
-  @Input() position: 'top' | 'end' = 'end';
+  @Input() position: 'top' | 'end' | 'start' = 'end';
 
 }

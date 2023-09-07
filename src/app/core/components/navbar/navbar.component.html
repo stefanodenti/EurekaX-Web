@@ -27,23 +27,27 @@
     </a>
   </div>
   <a class="lg:hidden" (click)="showMobileMenu = !showMobileMenu">
-    <svg
-      class="w-6 h-6 text-gray-800 dark:text-white"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 17 14"
-    >
-      <path
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M1 1h15M1 7h15M1 13h15"
-      />
-    </svg>
+    <div class="indicator">
+       <span *ngIf="unreadNotifications() > 0"
+             class="indicator-item badge badge-secondary z-0 h-3.5 px-1.5"></span>
+      <svg
+        class="w-6 h-6 text-gray-800 dark:text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </div>
   </a>
-  <div class="flex-none gap-2 max-md:hidden">
+  <div class="flex-none gap-2 max-lg:hidden">
     <eurekax-navigation
       [navigations]="config?.navigations ?? []"
       class="mr-4"
@@ -75,6 +79,7 @@
     ></eurekax-theme-selector>
     <div class="flex items-center">
       <eurekax-language-selector
+        [position]="'start'"
         *ngIf="config?.configs?.showLanguageSelector"
       ></eurekax-language-selector>
       <eurekax-user-logged-dropdown></eurekax-user-logged-dropdown>

@@ -14,8 +14,13 @@ export class NavbarComponent implements OnInit {
   @Input() config: NavBar | null = null;
   @Input() showMenuButton: boolean = true;
   showMobileMenu = false;
+  unreadNotifications = computed(() => this.notificationService.notifications().filter(not => !not.read).length);
 
-  constructor(private sidenavService: SidenavService, public themeService: ThemeService, public authService: AuthService) { }
+  constructor(
+    private notificationService: NotificationsService,
+    private sidenavService: SidenavService,
+    public themeService: ThemeService,
+    public authService: AuthService) { }
 
   ngOnInit(): void {
   }

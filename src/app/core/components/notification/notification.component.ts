@@ -19,7 +19,9 @@ export class NotificationComponent {
   }
 
   readNotification() {
-    this.notificationService.readNotification(this.notification.id);
+    if(!this.notification.read) {
+      this.notificationService.readNotification(this.notification.id);
+    }
   }
 
   navigate() {

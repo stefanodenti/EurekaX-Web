@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationsService,
-    private sidenavService: SidenavService,
+    public sidenavService: SidenavService,
     public themeService: ThemeService,
     public authService: AuthService) { }
 

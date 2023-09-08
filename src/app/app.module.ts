@@ -30,8 +30,8 @@ import {AppConfigService} from "./core/services/app-config.service";
     provideFirestore(() => getFirestore()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
+    provideAnalytics(() => getAnalytics()),
     FontAwesomeModule
-    /* provideAnalytics(() => getAnalytics()),*/
   ],
   providers: [
     ScreenTrackingService,

@@ -13,6 +13,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     providePerformance(() => getPerformance()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    FontAwesomeModule
     /* provideAnalytics(() => getAnalytics()),*/
   ],
   providers: [

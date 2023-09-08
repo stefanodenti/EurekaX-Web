@@ -26,6 +26,7 @@ export interface Navigation {
     component?: string;
     cssClass?: string;
     childs?: Navigation[];
+    icon?: string
 }
 
 export interface NavBar {

@@ -10,7 +10,9 @@
       />
 
       <!-- hamburger icon -->
-      <fa-icon icon="bars" size="xl" class="swap-off"></fa-icon>
+      <svg class="w-6 h-6 swap-off" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
 
       <!-- close icon -->
       <fa-icon icon="xmark" size="xl" class="swap-on"></fa-icon>
@@ -26,7 +28,9 @@
   </div>
   <eurekax-notification-button class="lg:hidden"></eurekax-notification-button>
   <a class="lg:hidden btn btn-ghost" (click)="showMobileMenu = !showMobileMenu">
-		<fa-icon icon="bars" size="xl"></fa-icon>
+    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+    </svg>
   </a>
   <div class="flex-none max-lg:hidden">
     <eurekax-navigation

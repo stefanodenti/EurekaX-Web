@@ -16,10 +16,10 @@ export class SidenavComponent implements OnInit {
   onResize(event: any) {
     console.log(event.target.innerWidth)
     const windowWidth: number = event.target.innerWidth
-   	this.isMobile.set(windowWidth < 400);
+   	this.isMobile.set(windowWidth < 1024);
   }
   @Input() config: Sidenav | null = null;
-  isMobile = signal<boolean>(window.innerWidth < 400);
+  isMobile = signal<boolean>(window.innerWidth < 1024);
   sidenavStatus = this.sidenavService.sidenavStatus;
 
   constructor(private sidenavService: SidenavService, public themeService: ThemeService, public authService: AuthService) {

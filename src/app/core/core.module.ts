@@ -16,6 +16,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { NotificationCenterComponent } from './components/notification-center/notification-center.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -34,12 +35,13 @@ import { NotificationButtonComponent } from './components/notification-button/no
     NotificationComponent,
     NotificationButtonComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    NavigationComponent
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        NavigationComponent,
+        FontAwesomeModule
+    ],
     exports: [
         NavbarComponent,
         FooterComponent,

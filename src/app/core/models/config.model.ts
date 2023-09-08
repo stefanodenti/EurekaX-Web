@@ -1,6 +1,11 @@
 export interface AppConfig {
     themes: Theme[];
     layout: Layout;
+    general: GeneralConfig;
+}
+
+export interface GeneralConfig {
+  iconStyle: 'solid' | 'regular';
 }
 
 export interface Theme {

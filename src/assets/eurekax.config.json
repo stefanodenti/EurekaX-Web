@@ -1,4 +1,7 @@
 {
+  "general": {
+    "iconStyle": "solid"
+  },
   "themes": [
     {
       "name": "synthwave",

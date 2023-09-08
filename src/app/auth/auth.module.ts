@@ -10,6 +10,7 @@ import { SignUpPage } from './pages/sign-up/sign-up.page';
 import { ForgotPasswordPage } from './pages/forgot-password/forgot-password.page';
 import { VerifyEmailAddressPage } from './pages/verify-email-address/verify-email-address.page';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -22,11 +23,12 @@ import { UserProfilePage } from './pages/user-profile/user-profile.page';
     VerifyEmailAddressPage,
     UserProfilePage
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    FormsModule,
-  ],
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        FormsModule,
+        FontAwesomeModule,
+    ],
   exports: [
     LoginComponent,
     RegisterComponent

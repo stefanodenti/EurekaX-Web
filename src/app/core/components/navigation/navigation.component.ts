@@ -3,12 +3,13 @@ import {Navigation} from "../../models/config.model";
 import {CommonModule} from "@angular/common";
 import {ActivatedRoute, Router, RouterModule} from "@angular/router";
 import {NotificationType} from "../../models/notification.model";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'eurekax-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule],
   standalone: true
 })
 export class NavigationComponent {

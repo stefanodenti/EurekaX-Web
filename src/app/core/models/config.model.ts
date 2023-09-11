@@ -1,6 +1,11 @@
 export interface AppConfig {
     themes: Theme[];
     layout: Layout;
+    general: GeneralConfig;
+}
+
+export interface GeneralConfig {
+  iconStyle: 'solid' | 'regular';
 }
 
 export interface Theme {
@@ -21,6 +26,7 @@ export interface Navigation {
     component?: string;
     cssClass?: string;
     childs?: Navigation[];
+    icon?: string
 }
 
 export interface NavBar {

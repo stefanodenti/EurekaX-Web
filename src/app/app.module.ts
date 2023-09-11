@@ -14,6 +14,7 @@ import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {AppConfigService} from "./core/services/app-config.service";
 
 @NgModule({
   declarations: [
@@ -29,8 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     provideFirestore(() => getFirestore()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
+    provideAnalytics(() => getAnalytics()),
     FontAwesomeModule
-    /* provideAnalytics(() => getAnalytics()),*/
   ],
   providers: [
     ScreenTrackingService,
@@ -40,4 +41,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   bootstrap: [AppComponent],
 })
 export class AppModule {
+
+  constructor(private appConfigService: AppConfigService) {
+  }
 }

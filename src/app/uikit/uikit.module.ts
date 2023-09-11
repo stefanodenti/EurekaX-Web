@@ -4,6 +4,7 @@ import { BaseCardComponent } from './components/base-card/base-card.component';
 import { ImageCardComponent } from './components/image-card/image-card.component';
 import { HeroComponent } from './blocks/hero/hero.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 
@@ -14,9 +15,10 @@ import { DropdownDirective } from './directives/dropdown.directive';
     HeroComponent,
     DropdownDirective,
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        FontAwesomeModule
+    ],
   exports: [
     BaseCardComponent,
     ImageCardComponent,

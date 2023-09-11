@@ -7,7 +7,7 @@
   <div class="flex flex-col gap-1 lg:w-[400px]">
     <div class="flex gap-3 justify-between">
       <div>
-        <div *ngIf="!!notification.icon"></div>
+        <fa-icon [icon]="$any(notification.icon)" *ngIf="!!notification.icon"></fa-icon>
         <div class="text-start">
           <div class="text-xs">
             {{ notification.createdAt | date : "medium" }}
@@ -21,21 +21,7 @@
         class="btn btn-sm btn-ghost hover:rotate-90 p-0 rounded-full"
         (click)="closeClicked.emit()"
       >
-        <svg
-          class="w-6 h-6"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 20 20"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-          />
-        </svg>
+        <fa-icon icon="circle-xmark" size="xl"></fa-icon>
       </button>
     </div>
     <div class="flex justify-end" *ngIf="!!notification.routerLink">

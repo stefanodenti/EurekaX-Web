@@ -1,4 +1,7 @@
 {
+  "general": {
+    "iconStyle": "solid"
+  },
   "themes": [
     {
       "name": "synthwave",
@@ -96,11 +99,13 @@
           {
             "type": "default",
             "label": "Home",
-            "routerLink": "/home"
+            "routerLink": "/home",
+            "icon": "home"
           },
           {
             "type": "selector",
             "label": "Contacts",
+            "icon": "address-book",
             "childs": [
               {
                 "label": "Contacts 1",

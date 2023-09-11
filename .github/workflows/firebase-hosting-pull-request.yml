@@ -15,5 +15,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EUREKAX_7B3EC }}'
           projectId: eurekax-7b3ec
-       env:
+        env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks

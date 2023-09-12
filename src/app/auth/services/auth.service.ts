@@ -182,7 +182,20 @@ export class AuthService {
         });
     }
 
-    getUserss(fullName: string, userTypeCode: string){
-        this.afs.collection('users').get()
-    }
+    search(keyword: string, keyProp: string, limit: number, lastVisibleEl: any) {
+        let query;
+        if (lastVisibleEl) {
+          if (keyProp === 'userType.name') {
+            query = this.afs.collection<User>('/users', ref =>
+              ref.where(keyProp, 'array-contains', keyword).orderBy('name').startAfter(lastVisibleEl).limit(limit),
+            );
+          }  else {
+            query = this.afs.collection<User>('/users', ref =>
+              ref.where(keyProp, '>=', keyword)
+                .where(keyProp, '<=', keyword + '\uf8ff').orderBy(keyProp).limit(limit),
+            );
+          }
+        }
+        return query?.get();
+      }
 }

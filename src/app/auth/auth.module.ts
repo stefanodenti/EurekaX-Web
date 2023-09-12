@@ -11,6 +11,12 @@ import { ForgotPasswordPage } from './pages/forgot-password/forgot-password.page
 import { VerifyEmailAddressPage } from './pages/verify-email-address/verify-email-address.page';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { AuthManagerComponent } from './pages/auth-manager/auth-manager.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
+import { UsertypeTableComponent } from './components/usertype-table/usertype-table.component';
+import { RoleTableComponent } from './components/role-table/role-table.component';
+import { ActionTableComponent } from './components/action-table/action-table.component';
+import { UsersManagerComponent } from './pages/users-manager/users-manager.component';
 
 
 @NgModule({
@@ -21,7 +27,13 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     SignUpPage,
     ForgotPasswordPage,
     VerifyEmailAddressPage,
-    UserProfilePage
+    UserProfilePage,
+    AuthManagerComponent,
+    UsersTableComponent,
+    UsertypeTableComponent,
+    RoleTableComponent,
+    ActionTableComponent,
+    UsersManagerComponent
   ],
     imports: [
         CommonModule,

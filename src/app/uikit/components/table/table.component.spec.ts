@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoleTableComponent } from './role-table.component';
+import { TableComponent } from './table.component';
 
-describe('RoleTableComponent', () => {
-  let component: RoleTableComponent;
-  let fixture: ComponentFixture<RoleTableComponent>;
+describe('TableComponent', () => {
+  let component: TableComponent;
+  let fixture: ComponentFixture<TableComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RoleTableComponent]
+      declarations: [TableComponent]
     });
-    fixture = TestBed.createComponent(RoleTableComponent);
+    fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

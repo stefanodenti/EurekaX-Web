@@ -181,4 +181,8 @@ export class AuthService {
             });
         });
     }
+
+    getUserss(fullName: string, userTypeCode: string){
+        this.afs.collection('users').get()
+    }
 }

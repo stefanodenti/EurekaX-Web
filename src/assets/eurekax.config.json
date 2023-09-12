@@ -63,15 +63,16 @@
           },
           {
             "type": "selector",
-            "label": "Test",
+            "label": "Admin",
+            "icon": "lock",
             "childs": [
               {
-                "label": "Privacy",
-                "routerLink": "/privacy"
+                "label": "Users",
+                "routerLink": "/admin/users"
               },
               {
-                "label": "Contacts 2",
-                "routerLink": "/contacts"
+                "label": "Permissions",
+                "routerLink": "/admin/permissions"
               }
             ]
           }
@@ -104,16 +105,16 @@
           },
           {
             "type": "selector",
-            "label": "Contacts",
-            "icon": "address-book",
+            "label": "Admin",
+            "icon": "lock",
             "childs": [
               {
-                "label": "Contacts 1",
-                "routerLink": "/contacts"
+                "label": "Users",
+                "routerLink": "/admin/users"
               },
               {
-                "label": "Contacts 2",
-                "routerLink": "/contacts"
+                "label": "Permissions",
+                "routerLink": "/admin/permissions"
               }
             ]
           }

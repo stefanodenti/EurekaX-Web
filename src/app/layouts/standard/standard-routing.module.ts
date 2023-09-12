@@ -9,6 +9,7 @@ import { AuthGuard } from 'src/app/auth/interceptor/auth.guard';
 import { UserProfilePage } from 'src/app/auth/pages/user-profile/user-profile.page';
 import { AuthManagerComponent } from '../../auth/pages/auth-manager/auth-manager.component';
 import { AuthAdminGuard } from 'src/app/auth/interceptor/auth-admin.guard';
+import { UsersManagerComponent } from 'src/app/auth/pages/users-manager/users-manager.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,16 @@ const routes: Routes = [
     children: [
       {
         path: 'admin',
-        loadChildren: () => import('../../admin/admin.module').then(m => m.AdminModule),
+        children: [
+          {
+            path: 'users',
+            component: UsersManagerComponent,
+          },
+          {
+            path: 'permissions',
+            component: AuthManagerComponent,
+          },
+        ],
         canActivate: [AuthAdminGuard]
       },
       {

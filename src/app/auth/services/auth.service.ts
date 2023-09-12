@@ -4,10 +4,12 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Subject, take } from 'rxjs';
 import { Role, User, UserType, Action } from '../models/user';
+import { Filter } from 'src/app/core/models/query.model';
+import { CollectionReference } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -201,25 +203,6 @@ export class AuthService {
       });
   }
 
-  search<T>(
-    keyword: string,
-    keyProp: string,
-    limit: number,
-    lastVisibleEl: any,
-    collection: string
-  ) {
-    let query;
-    if (lastVisibleEl) {
-      query = this.afs.collection<T>(collection, (ref) =>
-        ref
-          .where(keyProp, '>=', keyword)
-          .where(keyProp, '<=', keyword + '\uf8ff')
-          .orderBy(keyProp)
-          .limit(limit)
-      );
-    }
-    return query?.get();
-  }
 
   createUserType(userType: UserType) {}
 

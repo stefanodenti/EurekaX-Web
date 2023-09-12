@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SignInPage } from './pages/sign-in/sign-in.page';
@@ -18,6 +18,8 @@ import { RoleTableComponent } from './components/role-table/role-table.component
 import { ActionTableComponent } from './components/action-table/action-table.component';
 import { UsersManagerComponent } from './pages/users-manager/users-manager.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { ActionFormComponent } from './components/action-form/action-form.component';
 
 
 @NgModule({
@@ -34,14 +36,17 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     UsertypeTableComponent,
     RoleTableComponent,
     ActionTableComponent,
-    UsersManagerComponent
+    UsersManagerComponent,
+    UserFormComponent,
+    ActionFormComponent
   ],
     imports: [
         CommonModule,
         AuthRoutingModule,
         FormsModule,
         FontAwesomeModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+      ReactiveFormsModule,
     ],
   exports: [
     LoginComponent,

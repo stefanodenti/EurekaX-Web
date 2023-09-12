@@ -17,6 +17,7 @@ import { UsertypeTableComponent } from './components/usertype-table/usertype-tab
 import { RoleTableComponent } from './components/role-table/role-table.component';
 import { ActionTableComponent } from './components/action-table/action-table.component';
 import { UsersManagerComponent } from './pages/users-manager/users-manager.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { UsersManagerComponent } from './pages/users-manager/users-manager.compo
         AuthRoutingModule,
         FormsModule,
         FontAwesomeModule,
+        NgxDatatableModule
     ],
   exports: [
     LoginComponent,

@@ -1,4 +1,3 @@
-import { Action } from './../models/user';
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -7,9 +6,8 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { BehaviorSubject, Observable, Subject, map, take } from 'rxjs';
-import { Role, User, UserType } from '../models/user';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { Subject, take } from 'rxjs';
+import { Role, User, UserType, Action } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -202,17 +200,23 @@ export class AuthService {
           });
       });
   }
-  
-  search<T>(keyword: string, keyProp: string, limit: number, lastVisibleEl: any, collection: string) {
+
+  search<T>(
+    keyword: string,
+    keyProp: string,
+    limit: number,
+    lastVisibleEl: any,
+    collection: string
+  ) {
     let query;
     if (lastVisibleEl) {
-        query = this.afs.collection<T>(collection, (ref) =>
-          ref
-            .where(keyProp, '>=', keyword)
-            .where(keyProp, '<=', keyword + '\uf8ff')
-            .orderBy(keyProp)
-            .limit(limit)
-        );
+      query = this.afs.collection<T>(collection, (ref) =>
+        ref
+          .where(keyProp, '>=', keyword)
+          .where(keyProp, '<=', keyword + '\uf8ff')
+          .orderBy(keyProp)
+          .limit(limit)
+      );
     }
     return query?.get();
   }

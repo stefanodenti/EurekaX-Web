@@ -33,7 +33,7 @@ const routes: Routes = [
     canActivate: [AuthAdminGuard]
   },
   {
-    path: 'user-manager',
+    path: 'users-manager',
     component: UsersManagerComponent,
     canActivate: [AuthAdminGuard]
   },

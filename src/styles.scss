@@ -4,8 +4,8 @@
 @tailwind utilities;
 @import "scss/index";
 
-
-
-
+@import "node_modules/@swimlane/ngx-datatable/index.css";
+@import "node_modules/@swimlane/ngx-datatable/themes/dark.css";
+@import "node_modules/@swimlane/ngx-datatable/assets/icons.css";
 
 

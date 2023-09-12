@@ -17,6 +17,7 @@ import { NotificationCenterComponent } from './components/notification-center/no
 import { NotificationComponent } from './components/notification/notification.component';
 import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { IsAuthorizedDirective } from './directives/is-authorized.directive';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     AlertComponent,
     NotificationCenterComponent,
     NotificationComponent,
-    NotificationButtonComponent
+    NotificationButtonComponent,
+    IsAuthorizedDirective
   ],
     imports: [
         CommonModule,
@@ -51,7 +53,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
         ThemeSelectorComponent,
         LanguageSelectorComponent,
         AlertListComponent,
-        NotificationCenterComponent
+        NotificationCenterComponent,
+        IsAuthorizedDirective
     ],
 })
 export class CoreModule {

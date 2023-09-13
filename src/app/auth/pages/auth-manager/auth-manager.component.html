@@ -17,12 +17,18 @@
 
         <ng-container *ngSwitchCase="'User Types'">
           <div class="card-title">User Type Form</div>
-          <eurekax-user-type-form (userTypeSubmit)="saveUserType($event)"  (cancel)="formVisible = false"></eurekax-user-type-form>
+          <eurekax-user-type-form
+            (userTypeSubmit)="saveUserType($event)"
+            (cancel)="formVisible = false"
+          ></eurekax-user-type-form>
         </ng-container>
 
         <ng-container *ngSwitchCase="'Roles'">
           <div class="card-title">Role Form</div>
-          <eurekax-role-form (roleSubmit)="saveRole($event)" (cancel)="formVisible = false"></eurekax-role-form>
+          <eurekax-role-form
+            (roleSubmit)="saveRole($event)"
+            (cancel)="formVisible = false"
+          ></eurekax-role-form>
         </ng-container>
       </ng-container>
     </eurekax-base-card>
@@ -35,13 +41,19 @@
     </button>
     <div class="clear-right"></div>
   </div>
-  <eurekax-table
-    [columns]="cols"
-    [rows]="rows"
-    [actions]="tableActions"
-    (fireAction)="fireAction($event)"
-    [hover]="true"
-    [zebra]="true"
-    [stickyheader]="true"
-  ></eurekax-table>
+  <eurekax-base-card>
+    <input type="text" placeholder="Filter by name" [(ngModel)]="filters[0].keyword" (change)="filter()" class="input  input-sm w-full" />
+    <eurekax-table
+    class="h-96"
+      [limit]="limit"
+      [columns]="cols"
+      [rows]="rows"
+      [actions]="tableActions"
+      (fireAction)="fireAction($event)"
+      (nextSearch)="search()"
+      [hover]="true"
+      [zebra]="true"
+      [stickyheader]="true"
+    ></eurekax-table>
+  </eurekax-base-card>
 </eurekax-tab-page>

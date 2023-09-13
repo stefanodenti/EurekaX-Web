@@ -22,6 +22,7 @@ export class TableComponent {
   cols: Columns[] = [];
   @Input() actions: TableAction[] = []
   @Input() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
+  @Input() limit: number = 15;
   @Input() hover: boolean = false;
   @Input() zebra: boolean = false;
   @Input() stickyheader: boolean = false;
@@ -33,6 +34,7 @@ export class TableComponent {
     this.cols = data ?? [];
   }
   @Output() fireAction: EventEmitter<{row: any,actionCode: string}> = new EventEmitter<{row: any,actionCode: string}>();
+  @Output() nextSearch: EventEmitter<null> = new EventEmitter<null>();
   selected: any[] = [];
 
   createCols(object: any) {

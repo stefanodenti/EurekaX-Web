@@ -44,6 +44,7 @@ export class AuthManagerComponent {
       type: 'string',
     },
   ];
+  limit = 3;
   formVisible = false;
   selectedTab: 'User Types' | 'Roles' | 'Actions' = 'User Types';
   selectedRow: UserType | Role | Action | null = null;
@@ -58,7 +59,7 @@ export class AuthManagerComponent {
 
   search() {
     this.queryService
-      .search(this.filters, 'name', 10, this.lastVisibleEl, this.getCollection())
+      .search(this.filters, 'name', this.limit, this.lastVisibleEl, this.getCollection())
       .subscribe({
         next: (res) => {
           console.log('ReS', res);
@@ -116,7 +117,10 @@ export class AuthManagerComponent {
     this.rows = [];
     this.lastVisibleEl = null;
   }
-
+  filter(){
+    this.reset();
+    this.search();
+  }
   fireAction(event: { row: Action | Role | UserType; actionCode: string }) {
     if (event.actionCode === 'delete') {
       if (confirm('Are you sure?') === true) {
@@ -145,4 +149,6 @@ export class AuthManagerComponent {
     }
     return '';
   }
+
+  
 }

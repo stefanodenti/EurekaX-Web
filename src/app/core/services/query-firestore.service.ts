@@ -26,11 +26,11 @@ export class QueryFirestoreService {
           ref.where(f.keyProp, f.type, f.keyword);
         }
       });
-      ref.orderBy(orderBy);
       if (lastVisibleEl) {
-        ref.startAfter(lastVisibleEl);
+        ref.orderBy(orderBy).startAfter(lastVisibleEl).limit(limit);
+      } else {
+        ref.orderBy(orderBy).limit(limit);
       }
-      ref.limit(limit);
       return ref;
     });
     return query?.get();

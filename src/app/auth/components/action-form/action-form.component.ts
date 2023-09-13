@@ -9,6 +9,7 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 })
 export class ActionFormComponent implements OnChanges{
   @Input() action: Action | null = null;
+  @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() actionSubmit: EventEmitter<Action> = new EventEmitter<Action>();
   form = this.fb.group({
     code: this.fb.nonNullable.control<string>('', Validators.required),
@@ -35,5 +36,7 @@ export class ActionFormComponent implements OnChanges{
       code:( this.form.value.code as string), name: this.form.value.name as string, description: this.form.value.description ?? null
     });
   }
-
+  cancelClick(){
+    this.cancel.emit(true);
+  }
 }

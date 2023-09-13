@@ -22,6 +22,7 @@ export class AuthManagerComponent {
       type: 'string',
     },
   ];
+  formVisible = false;
   private lastVisibleEl: any;
 
   constructor(

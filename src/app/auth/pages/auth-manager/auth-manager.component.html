@@ -5,11 +5,20 @@
   (tabChange)="changeTab($event)"
 >
   <div class="mb-4">
-    <eurekax-base-card>
+    <eurekax-base-card *ngIf="formVisible">
       <eurekax-action-form
+        (cancel)="formVisible = false"
         (actionSubmit)="saveAction($event)"
       ></eurekax-action-form>
     </eurekax-base-card>
+    <button
+      *ngIf="!formVisible"
+      (click)="formVisible = !formVisible"
+      class="btn btn-outline btn-success btn-sm float-right"
+    >
+      <fa-icon [icon]="'plus'"></fa-icon> New
+    </button>
+    <div class="clear-right"></div>
   </div>
   <eurekax-table
     [columns]="cols"

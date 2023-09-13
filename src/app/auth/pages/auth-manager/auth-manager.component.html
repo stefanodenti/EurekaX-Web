@@ -1,4 +1,4 @@
-<eurekax-base-page [title]="'Permissions'">
+<eurekax-tab-page [tabs]="['Roles', 'Actions']" [activeTab]="'Actions'" (tabChange)="changeTab($event)">
   <eurekax-action-form
     (actionSubmit)="saveAction($event)"
   ></eurekax-action-form>
@@ -7,4 +7,4 @@
     [rows]="rows"
     [theme]="'dark'"
   ></eurekax-table>
-</eurekax-base-page>
+</eurekax-tab-page>

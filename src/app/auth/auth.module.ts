@@ -16,6 +16,7 @@ import { UsersManagerComponent } from './pages/users-manager/users-manager.compo
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ActionFormComponent } from './components/action-form/action-form.component';
 import { UikitModule } from '../uikit/uikit.module';
+import { RoleFormComponent } from './components/role-form/role-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UikitModule } from '../uikit/uikit.module';
     UsersManagerComponent,
     UserFormComponent,
     ActionFormComponent,
+    RoleFormComponent,
   ],
   imports: [
     CommonModule,

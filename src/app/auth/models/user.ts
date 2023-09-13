@@ -27,7 +27,7 @@ export interface Role{
   id: string;
   code: string;
   name: string;
-  description: string; 
+  description: string;
   actions: Action[];
 }
 
@@ -35,5 +35,5 @@ export interface Action {
   id: string;
   code: string;
   name: string;
-  description: string;
+  description: string | null;
 }

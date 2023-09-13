@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Action} from "../../models/user";
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AuthManagerComponent {
 
+  saveAction(action: Action) {
+    console.log(action)
+  }
 }

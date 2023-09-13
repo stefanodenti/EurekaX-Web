@@ -1,4 +1,9 @@
-<eurekax-tab-page [tabs]="['Roles', 'Actions']" [activeTab]="'Actions'" (tabChange)="changeTab($event)">
+<eurekax-tab-page
+  [tabs]="['Roles', 'Actions']"
+  [activeTab]="'Actions'"
+  [bordered]="true"
+  (tabChange)="changeTab($event)"
+>
   <eurekax-action-form
     (actionSubmit)="saveAction($event)"
   ></eurekax-action-form>

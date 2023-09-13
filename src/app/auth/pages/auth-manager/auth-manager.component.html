@@ -35,6 +35,8 @@
   <eurekax-table
     [columns]="cols"
     [rows]="rows"
+    [actions]="tableActions"
+    (fireAction)="fireAction($event)"
     [hover]="true"
     [zebra]="true"
     [stickyheader]="true"

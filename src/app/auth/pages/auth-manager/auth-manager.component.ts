@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Action, Role, UserType} from '../../models/user';
+import { Action, Role, UserType } from '../../models/user';
 import { QueryFirestoreService } from 'src/app/core/services/query-firestore.service';
 import { Filter } from 'src/app/core/models/query.model';
 import {
@@ -7,8 +7,8 @@ import {
   NotificationType,
 } from 'src/app/core/models/notification.model';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
-import {user} from "@angular/fire/auth";
-import { Columns } from 'src/app/uikit/components/table/table.component';
+import { user } from '@angular/fire/auth';
+import { Columns, TableAction } from 'src/app/uikit/components/table/table.component';
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -16,7 +16,22 @@ import { Columns } from 'src/app/uikit/components/table/table.component';
 })
 export class AuthManagerComponent {
   rows: Action[] | Role[] = [];
-  cols: Columns[] = [{ prop: 'name', value: 'Name' }, { prop: 'code',  value: 'Code' }];
+  cols: Columns[] = [
+    { prop: 'name', value: 'Name' },
+    { prop: 'code', value: 'Code' },
+  ];
+  tableActions: TableAction[] = [
+    {
+      code: 'edit',
+      icon: 'pen-to-square',
+      cssClass: 'text-warning'
+    },
+    {
+      code: 'delete',
+      icon: 'trash',
+      cssClass: 'text-error'
+    }
+  ]
   filters: Filter[] = [
     {
       keyProp: 'name',
@@ -61,19 +76,10 @@ export class AuthManagerComponent {
         },
       });
   }
-  
-  saveAction(action: Action) {
-    console.warn(action);
-    this.queryService.create(action, 'auth-actions').then((res) => {
-      console.warn('ADD ACTION RES: ', res);
-      this.search(this.selectedTab)
-    });
-  }
 
-  changeTab(tab: string) {      this.rows = [];
+  changeTab(tab: string) {
     this.selectedTab = tab as 'User Types' | 'Roles' | 'Actions';
-    this.rows = [];
-    this.lastVisibleEl = null;
+    this.reset();
     if (tab === 'Roles') {
       this.search('auth-roles');
     } else if (tab === 'Actions') {
@@ -85,15 +91,32 @@ export class AuthManagerComponent {
 
   saveUserType(userType: UserType) {
     this.queryService.create(userType, 'auth-usertypes').then((res) => {
-      console.warn('ADD ACTION RES: ', res);
-      this.search(this.selectedTab)
+      this.reset();
+      this.search(this.selectedTab);
     });
   }
 
   saveRole(role: Role) {
     this.queryService.create(role, 'auth-roles').then((res) => {
-      console.warn('ADD ACTION RES: ', res);
-      this.search(this.selectedTab)
+      this.reset();
+      this.search(this.selectedTab);
     });
+  }
+
+  saveAction(action: Action) {
+    console.warn(action);
+    this.queryService.create(action, 'auth-actions').then((res) => {
+      this.reset();
+      this.search(this.selectedTab);
+    });
+  }
+
+  reset() {
+    this.formVisible = false;
+    this.rows = [];
+    this.lastVisibleEl = null;
+  }
+  fireAction(event: {row:any, actionCode: string}){
+    console.warn(event)
   }
 }

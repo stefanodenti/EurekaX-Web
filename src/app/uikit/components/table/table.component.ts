@@ -1,8 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 export interface Columns{
   prop: string,
   value: string
+}
+export interface TableAction {
+  label?: string;
+  icon?: string;
+  cssClass?: string;
+  code: string;
 }
 @Component({
   selector: 'eurekax-table',
@@ -12,24 +19,19 @@ export interface Columns{
 export class TableComponent {
   elements: any[] = [];
   cols: Columns[] = [];
-  rowElements: any[][] = [[]];
+  @Input() actions: TableAction[] = []
   @Input() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
   @Input() hover: boolean = false;
   @Input() zebra: boolean = false;
   @Input() stickyheader: boolean = false;
   @Input() set rows(data: any[]) {
     this.elements = data ?? [];
-    this.rowElements = [[]];
-    this.elements.forEach((e) => {
-      this.rowElements.push(this.generateRow(e));
-    });
-    console.log(this.rowElements);
   }
 
   @Input() set columns(data: Columns[]) {
     this.cols = data ?? [];
   }
-
+  @Output() fireAction: EventEmitter<{row: any,actionCode: string}> = new EventEmitter<{row: any,actionCode: string}>();
   selected: any[] = [];
 
   createCols(object: any) {
@@ -45,15 +47,10 @@ export class TableComponent {
     console.log('Event: select', event, this.selected);
   }
 
-  generateRow(row: any) {
-    const results: any[] = [];
-    if (this.cols) {
-      this.cols.forEach((col: any) => {
-        results.push(row[col.prop]);
-      });
-    }
-    console.log('CHECK');
-    return results;
+  emitAction(row: any, actionCode: string){
+    this.fireAction.emit({
+      actionCode, 
+      row
+    });
   }
-
 }

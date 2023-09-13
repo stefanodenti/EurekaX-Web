@@ -15,11 +15,15 @@
         <ng-container *ngFor="let col of cols">
           <th>{{ col.value }}</th>
         </ng-container>
+        <th *ngIf="actions">Actions</th>
       </tr>
     </thead>
     <tbody *ngIf="elements">
-      <tr *ngFor="let row of rowElements" [ngClass]="{ hover: hover }">
-        <th *ngFor="let data of row">{{ data }}</th>
+      <tr *ngFor="let row of elements" [ngClass]="{ 'hover': hover }">
+        <th *ngFor="let col of cols">{{ row[col.prop] }}</th>
+        <th *ngIf="actions" class="flex gap-3">
+          <a *ngFor="let action of actions" class="btn btn-link no-underline"  [ngClass]="action.cssClass" (click)="emitAction(row, action.code)"><fa-icon *ngIf="action.icon" [icon]="$any(action.icon)"></fa-icon> {{action.label}}</a>
+        </th>
       </tr>
     </tbody>
   </table>

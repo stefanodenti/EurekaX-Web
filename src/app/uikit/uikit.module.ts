@@ -7,6 +7,7 @@ import { HeroComponent } from './blocks/hero/hero.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { TableComponent } from './components/table/table.component';
+import { BasePageComponent } from './page-layout/base-page/base-page.component';
 
 
 
@@ -17,6 +18,7 @@ import { TableComponent } from './components/table/table.component';
     HeroComponent,
     DropdownDirective,
     TableComponent,
+    BasePageComponent,
   ],
     imports: [
         CommonModule,
@@ -28,7 +30,8 @@ import { TableComponent } from './components/table/table.component';
     ImageCardComponent,
     HeroComponent,
     DropdownDirective,
-    TableComponent
+    TableComponent,
+    BasePageComponent
   ]
 })
 export class UikitModule { }

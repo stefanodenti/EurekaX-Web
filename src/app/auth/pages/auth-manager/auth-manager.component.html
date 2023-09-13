@@ -1,1 +1,10 @@
-<eurekax-action-form (actionSubmit)="saveAction($event)"></eurekax-action-form>
+<eurekax-base-page [title]="'Permissions'">
+  <eurekax-action-form
+    (actionSubmit)="saveAction($event)"
+  ></eurekax-action-form>
+  <eurekax-table
+    [columns]="cols"
+    [rows]="rows"
+    [theme]="'dark'"
+  ></eurekax-table>
+</eurekax-base-page>

@@ -15,7 +15,7 @@ import { User } from '../../models/user';
 })
 export class UsersManagerComponent {
   rows: User[] = [];
-  cols = [{ prop: 'fullName' }, { name: 'email' }];
+  cols = [];
   filters: Filter[] = [
     {
       keyProp: 'name',

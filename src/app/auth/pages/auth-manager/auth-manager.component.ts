@@ -23,6 +23,7 @@ export class AuthManagerComponent {
     },
   ];
   formVisible = false;
+  selectedTab: 'User Types' | 'Roles' | 'Actions' = 'User Types';
   private lastVisibleEl: any;
 
   constructor(
@@ -65,8 +66,9 @@ export class AuthManagerComponent {
     });
   }
 
-  changeTab(tab: string) {      this.rows = []; 
-    this.rows = []; 
+  changeTab(tab: string) {      this.rows = [];
+    this.selectedTab = tab as 'User Types' | 'Roles' | 'Actions';
+    this.rows = [];
     if (tab === 'Roles') {
       this.search('auth-roles');
     } else if (tab === 'Actions') {

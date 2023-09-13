@@ -1,12 +1,9 @@
 <form [formGroup]="form" class="space-y-4">
   <div class="form-control w-full">
     <label class="label">
-      <span class="label-text">Code*</span>
+      <span class="label-text">Image</span>
     </label>
     <input type="text" formControlName="code" placeholder="Type the action code here" class="input input-bordered w-full" />
-    <label class="label" *ngIf="!!form.get('code')?.errors && form.get('code')?.dirty">
-      <span class="label-text-alt text-error" *ngIf="!!form.get('code')?.hasError('required')">This field is required</span>
-    </label>
   </div>
 
   <div class="form-control w-full">
@@ -25,7 +22,7 @@
 </form>
 
 <div class="flex w-full justify-center pt-4">
-  <button class="btn btn-primary mt-4" [disabled]="form.invalid" (click)="submitAction()">Submit</button>
+  <button class="btn btn-primary" [disabled]="form.invalid" (click)="submitAction()">Submit</button>
   <button class="btn btn-ghost"  (click)="cancelClick()">Cancel</button>
 </div>
 

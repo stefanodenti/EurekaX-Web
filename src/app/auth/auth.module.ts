@@ -17,6 +17,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { ActionFormComponent } from './components/action-form/action-form.component';
 import { UikitModule } from '../uikit/uikit.module';
 import { RoleFormComponent } from './components/role-form/role-form.component';
+import { UserTypeFormComponent } from './components/user-type-form/user-type-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RoleFormComponent } from './components/role-form/role-form.component';
     UserFormComponent,
     ActionFormComponent,
     RoleFormComponent,
+    UserTypeFormComponent,
   ],
   imports: [
     CommonModule,

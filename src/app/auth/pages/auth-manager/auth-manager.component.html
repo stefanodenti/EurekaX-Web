@@ -6,10 +6,22 @@
 >
   <div class="mb-4">
     <eurekax-base-card *ngIf="formVisible">
-      <eurekax-action-form
-        (cancel)="formVisible = false"
-        (actionSubmit)="saveAction($event)"
-      ></eurekax-action-form>
+      <ng-container [ngSwitch]="selectedTab">
+        <ng-container *ngSwitchCase="'Actions'">
+          <eurekax-action-form
+            (cancel)="formVisible = false"
+            (actionSubmit)="saveAction($event)"
+          ></eurekax-action-form>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'User Types'">
+          <eurekax-user-type-form  (cancel)="formVisible = false"></eurekax-user-type-form>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'Roles'">
+          <eurekax-role-form  (cancel)="formVisible = false"></eurekax-role-form>
+        </ng-container>
+      </ng-container>
     </eurekax-base-card>
     <button
       *ngIf="!formVisible"

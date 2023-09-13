@@ -19,15 +19,15 @@ export interface User {
 export interface UserType {
   id: string;
   name: string;
-  description: string;
-  imageUrl: string;
+  description: string | null;
+  imageUrl: string | null;
   roles: Role[];
 }
 export interface Role{
   id: string;
   code: string;
   name: string;
-  description: string;
+  description: string | null;
   actions: Action[];
 }
 

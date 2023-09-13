@@ -19,6 +19,7 @@ export class TableComponent {
   @Input() stickyheader: boolean = false;
   @Input() set rows(data: any[]) {
     this.elements = data ?? [];
+    this.rowElements = [[]];
     this.elements.forEach((e) => {
       this.rowElements.push(this.generateRow(e));
     });

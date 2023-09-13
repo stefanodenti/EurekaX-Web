@@ -36,7 +36,7 @@ export class AuthManagerComponent {
 
   search(collection: string) {
     this.queryService
-      .search(this.filters, 'name', 10, null, collection)
+      .search(this.filters, 'name', 10, this.lastVisibleEl, collection)
       .subscribe({
         next: (res) => {
           console.log('ReS', res);
@@ -60,6 +60,7 @@ export class AuthManagerComponent {
         },
       });
   }
+  
   saveAction(action: Action) {
     console.warn(action);
     this.queryService.create(action, 'auth-actions').then((res) => {
@@ -70,6 +71,7 @@ export class AuthManagerComponent {
   changeTab(tab: string) {      this.rows = [];
     this.selectedTab = tab as 'User Types' | 'Roles' | 'Actions';
     this.rows = [];
+    this.lastVisibleEl = null;
     if (tab === 'Roles') {
       this.search('auth-roles');
     } else if (tab === 'Actions') {

@@ -1,14 +1,6 @@
-<div class="rounded-lg shadow dark:border bg-card border-primary">
-  <div class="p-4 bg-primary">Primary</div>
-  <div class="p-4 bg-secondary text-primary">Secondary</div>
-  <div class="p-4 bg-tertiary mb-4">Tertiary</div>
-  <div class="p-4 bg-layout mb-4">Layout</div>
-  <div class="p-4 bg-card mb-4">Card</div>
-  <div class="p-4 bg-card-50 mb-4">Card 50</div>
-  <div class="p-4 bg-card-500 mb-4">Card 500</div>
-
-  <div class="p-4 bg-success">Success</div>
-  <div class="p-4 bg-warning">Warning</div>
-  <div class="p-4 bg-error">Error</div>
-  <div class="p-4 bg-base  text-black dark:text-white">Base</div>
+<div class="card w-full shadow-xl" [ngClass]="bgColor">
+  <div class="card-body">
+    <div *ngIf="title" class="card-title">{{title}}</div>
+    <ng-content></ng-content>
+  </div>
 </div>

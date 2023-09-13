@@ -70,6 +70,8 @@ export class AuthManagerComponent {
       this.search('auth-roles');
     } else if (tab === 'Actions') {
       this.search('auth-actions');
+    } else if (tab === 'User Types') {
+      this.search('auth-usertypes');
     }
   }
 }

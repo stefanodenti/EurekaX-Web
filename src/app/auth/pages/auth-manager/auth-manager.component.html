@@ -1,12 +1,16 @@
 <eurekax-tab-page
-  [tabs]="['Roles', 'Actions']"
+  [tabs]="['User Types', 'Roles', 'Actions']"
   [activeTab]="'Actions'"
   [bordered]="true"
   (tabChange)="changeTab($event)"
 >
-  <eurekax-action-form
-    (actionSubmit)="saveAction($event)"
-  ></eurekax-action-form>
+  <div class="mb-4">
+    <eurekax-base-card>
+      <eurekax-action-form
+        (actionSubmit)="saveAction($event)"
+      ></eurekax-action-form>
+    </eurekax-base-card>
+  </div>
   <eurekax-table
     [columns]="cols"
     [rows]="rows"

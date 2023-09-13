@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Filter } from '../models/query.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { collection } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QueryFirestoreService {
-  
   constructor(private afs: AngularFirestore) {}
 
   search<T>(
@@ -34,5 +34,15 @@ export class QueryFirestoreService {
       return ref;
     });
     return query?.get();
+  }
+
+  create<T>(object: any, collection: string) {
+    return this.afs.collection<T>(collection).add(object);
+  }
+  update<T>(id: string, object: any, collection: string) {
+    return this.afs.collection<T>(collection).doc(id).update(object);
+  }
+  delete<T>(id: string, object: any, collection: string) {
+    return this.afs.collection<T>(collection).doc(id).update(object);
   }
 }

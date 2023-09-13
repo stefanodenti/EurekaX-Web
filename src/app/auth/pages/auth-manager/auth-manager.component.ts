@@ -7,8 +7,11 @@ import {
   NotificationType,
 } from 'src/app/core/models/notification.model';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
-import { user } from '@angular/fire/auth';
-import { Columns, TableAction } from 'src/app/uikit/components/table/table.component';
+import {
+  Columns,
+  TableAction,
+} from 'src/app/uikit/components/table/table.component';
+import { User } from '@angular/fire/auth';
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -24,14 +27,16 @@ export class AuthManagerComponent {
     {
       code: 'edit',
       icon: 'pen-to-square',
-      cssClass: 'text-warning'
+      cssClass: 'text-warning',
+      tooltip: { label: 'Edit', cssClass: 'tooltip tooltip-warning' },
     },
     {
       code: 'delete',
       icon: 'trash',
-      cssClass: 'text-error'
-    }
-  ]
+      cssClass: 'text-error',
+      tooltip: { label: 'Delete', cssClass: 'tooltip tooltip-error' },
+    },
+  ];
   filters: Filter[] = [
     {
       keyProp: 'name',
@@ -41,18 +46,19 @@ export class AuthManagerComponent {
   ];
   formVisible = false;
   selectedTab: 'User Types' | 'Roles' | 'Actions' = 'User Types';
+  selectedRow: UserType | Role | Action | null = null;
   private lastVisibleEl: any;
 
   constructor(
     private queryService: QueryFirestoreService,
     private notificationService: NotificationsService
   ) {
-    this.search('auth-actions');
+    this.search();
   }
 
-  search(collection: string) {
+  search() {
     this.queryService
-      .search(this.filters, 'name', 10, this.lastVisibleEl, collection)
+      .search(this.filters, 'name', 10, this.lastVisibleEl, this.getCollection())
       .subscribe({
         next: (res) => {
           console.log('ReS', res);
@@ -80,34 +86,28 @@ export class AuthManagerComponent {
   changeTab(tab: string) {
     this.selectedTab = tab as 'User Types' | 'Roles' | 'Actions';
     this.reset();
-    if (tab === 'Roles') {
-      this.search('auth-roles');
-    } else if (tab === 'Actions') {
-      this.search('auth-actions');
-    } else if (tab === 'User Types') {
-      this.search('auth-usertypes');
-    }
+    this.search();
   }
 
   saveUserType(userType: UserType) {
-    this.queryService.create(userType, 'auth-usertypes').then((res) => {
+    this.queryService.create<UserType>(userType, 'auth-usertypes').then((res) => {
       this.reset();
-      this.search(this.selectedTab);
+      this.search();
     });
   }
 
   saveRole(role: Role) {
-    this.queryService.create(role, 'auth-roles').then((res) => {
+    this.queryService.create<Role>(role, 'auth-roles').then((res) => {
       this.reset();
-      this.search(this.selectedTab);
+      this.search();
     });
   }
 
   saveAction(action: Action) {
-    console.warn(action);
-    this.queryService.create(action, 'auth-actions').then((res) => {
+    console.warn("SAVE ACTION", action);
+    this.queryService.create<Action>(action, 'auth-actions').then((res) => {
       this.reset();
-      this.search(this.selectedTab);
+      this.search();
     });
   }
 
@@ -116,7 +116,33 @@ export class AuthManagerComponent {
     this.rows = [];
     this.lastVisibleEl = null;
   }
-  fireAction(event: {row:any, actionCode: string}){
-    console.warn(event)
+
+  fireAction(event: { row: Action | Role | UserType; actionCode: string }) {
+    if (event.actionCode === 'delete') {
+      if (confirm('Are you sure?') === true) {
+        this.queryService
+          .delete<typeof event.row>(
+            event.row.id,
+            this.getCollection()
+          )
+          .then((res) => {
+            this.reset();
+            this.search();
+          });
+      }
+    } else if (event.actionCode === 'edit') {
+      this.selectedRow = event.row;
+    }
+  }
+
+  getCollection() {
+    if (this.selectedTab === 'Roles') {
+      return 'auth-roles';
+    } else if (this.selectedTab === 'Actions') {
+      return 'auth-actions';
+    } else if (this.selectedTab === 'User Types') {
+      return 'auth-usertypes';
+    }
+    return '';
   }
 }

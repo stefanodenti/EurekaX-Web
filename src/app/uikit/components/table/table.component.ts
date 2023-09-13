@@ -10,6 +10,7 @@ export interface TableAction {
   icon?: string;
   cssClass?: string;
   code: string;
+  tooltip?:{label: string, cssClass: string};
 }
 @Component({
   selector: 'eurekax-table',

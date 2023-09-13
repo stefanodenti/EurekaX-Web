@@ -42,7 +42,7 @@ export class QueryFirestoreService {
   update<T>(id: string, object: any, collection: string) {
     return this.afs.collection<T>(collection).doc(id).update(object);
   }
-  delete<T>(id: string, object: any, collection: string) {
-    return this.afs.collection<T>(collection).doc(id).update(object);
+  delete<T>(id: string, collection: string) {
+    return this.afs.collection<T>(collection).doc(id).delete();
   }
 }

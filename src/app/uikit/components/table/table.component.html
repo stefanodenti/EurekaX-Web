@@ -19,10 +19,21 @@
       </tr>
     </thead>
     <tbody *ngIf="elements">
-      <tr *ngFor="let row of elements" [ngClass]="{ 'hover': hover }">
+      <tr *ngFor="let row of elements" [ngClass]="{ hover: hover }">
         <th *ngFor="let col of cols">{{ row[col.prop] }}</th>
         <th *ngIf="actions" class="flex gap-3">
-          <a *ngFor="let action of actions" class="btn btn-link no-underline"  [ngClass]="action.cssClass" (click)="emitAction(row, action.code)"><fa-icon *ngIf="action.icon" [icon]="$any(action.icon)"></fa-icon> {{action.label}}</a>
+          <div  *ngFor="let action of actions" [ngClass]="action.tooltip?.cssClass" [attr.data-tip]="action.tooltip?.label">
+            <a
+              class="btn btn-link no-underline"
+              [ngClass]="action.cssClass"
+              (click)="emitAction(row, action.code)"
+              ><fa-icon
+                *ngIf="action.icon"
+                [icon]="$any(action.icon)"
+              ></fa-icon>
+              {{ action.label }}</a
+            >
+          </div>
         </th>
       </tr>
     </tbody>

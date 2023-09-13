@@ -7,6 +7,7 @@ import {
   NotificationType,
 } from 'src/app/core/models/notification.model';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
+import { Columns } from 'src/app/uikit/components/table/table.component';
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -14,7 +15,7 @@ import { NotificationsService } from 'src/app/core/services/notifications.servic
 })
 export class AuthManagerComponent {
   rows: Action[] | Role[] = [];
-  cols = [{ prop: 'fullName' }, { name: 'email' }];
+  cols: Columns[] = [{ prop: 'name', value: 'Name' }, { prop: 'code',  value: 'Code' }];
   filters: Filter[] = [
     {
       keyProp: 'name',

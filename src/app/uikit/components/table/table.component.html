@@ -1,14 +1,26 @@
-    <ngx-datatable
-            class="selection-cell" [ngClass]="theme"
-            [limit]="10"
-            [rows]="elements"
-            [rowHeight]="50"
-            [columns]="cols"
-            [columnMode]="'force'"
-            [sortType]="SortType.multi"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [selected]="selected"
-            [selectionType]="SelectionType.multi"
-            (select)="onSelect($event)">
-    </ngx-datatable>
+<div class="overflow-x-auto">
+  <table
+    class="table"
+    [ngClass]="{
+      'table-xs': size === 'xs',
+      'table-sm': size === 'sm',
+      'table-md': size === 'md',
+      'table-lg': size === 'lg',
+      'table-pin-rows': stickyheader,
+      'table-zebra': zebra
+    }"
+  >
+    <thead>
+      <tr>
+        <ng-container *ngFor="let col of cols">
+          <th>{{ col.value }}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody *ngIf="elements">
+      <tr *ngFor="let row of rowElements" [ngClass]="{ hover: hover }">
+        <th *ngFor="let data of row">{{ data }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>

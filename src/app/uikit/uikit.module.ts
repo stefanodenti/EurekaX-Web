@@ -1,4 +1,3 @@
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseCardComponent } from './components/base-card/base-card.component';
@@ -25,7 +24,6 @@ import { TabPageComponent } from './page-layout/tab-page/tab-page.component';
     imports: [
         CommonModule,
         FontAwesomeModule,
-        NgxDatatableModule
     ],
   exports: [
     BaseCardComponent,

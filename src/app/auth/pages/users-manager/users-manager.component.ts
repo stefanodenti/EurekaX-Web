@@ -8,6 +8,7 @@ import { QueryFirestoreService } from 'src/app/core/services/query-firestore.ser
 import { Filter } from 'src/app/core/models/query.model';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
 import { User } from '../../models/user';
+import { Columns } from 'src/app/uikit/components/table/table.component';
 
 @Component({
   templateUrl: './users-manager.component.html',
@@ -15,7 +16,9 @@ import { User } from '../../models/user';
 })
 export class UsersManagerComponent {
   rows: User[] = [];
-  cols = [];
+  cols: Columns[] = [{
+  prop: 'email', value: 'Email'
+  }];
   filters: Filter[] = [
     {
       keyProp: 'name',

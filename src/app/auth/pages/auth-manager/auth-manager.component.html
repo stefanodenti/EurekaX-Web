@@ -15,11 +15,11 @@
         </ng-container>
 
         <ng-container *ngSwitchCase="'User Types'">
-          <eurekax-user-type-form  (cancel)="formVisible = false"></eurekax-user-type-form>
+          <eurekax-user-type-form (userTypeSubmit)="saveUserType($event)"  (cancel)="formVisible = false"></eurekax-user-type-form>
         </ng-container>
 
         <ng-container *ngSwitchCase="'Roles'">
-          <eurekax-role-form  (cancel)="formVisible = false"></eurekax-role-form>
+          <eurekax-role-form (roleSubmit)="saveRole($event)" (cancel)="formVisible = false"></eurekax-role-form>
         </ng-container>
       </ng-container>
     </eurekax-base-card>

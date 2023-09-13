@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Action, Role } from '../../models/user';
+import {Action, Role, UserType} from '../../models/user';
 import { QueryFirestoreService } from 'src/app/core/services/query-firestore.service';
 import { Filter } from 'src/app/core/models/query.model';
 import {
@@ -7,6 +7,7 @@ import {
   NotificationType,
 } from 'src/app/core/models/notification.model';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
+import {user} from "@angular/fire/auth";
 import { Columns } from 'src/app/uikit/components/table/table.component';
 
 @Component({
@@ -64,6 +65,7 @@ export class AuthManagerComponent {
     console.warn(action);
     this.queryService.create(action, 'auth-actions').then((res) => {
       console.warn('ADD ACTION RES: ', res);
+      this.search(this.selectedTab)
     });
   }
 
@@ -77,5 +79,19 @@ export class AuthManagerComponent {
     } else if (tab === 'User Types') {
       this.search('auth-usertypes');
     }
+  }
+
+  saveUserType(userType: UserType) {
+    this.queryService.create(userType, 'auth-usertypes').then((res) => {
+      console.warn('ADD ACTION RES: ', res);
+      this.search(this.selectedTab)
+    });
+  }
+
+  saveRole(role: Role) {
+    this.queryService.create(role, 'auth-roles').then((res) => {
+      console.warn('ADD ACTION RES: ', res);
+      this.search(this.selectedTab)
+    });
   }
 }

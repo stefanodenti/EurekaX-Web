@@ -21,6 +21,7 @@ export interface UserType {
   name: string;
   description: string | null;
   imageUrl: string | null;
+  roleIds: string[]
   roles: Role[];
 }
 export interface Role{
@@ -28,6 +29,7 @@ export interface Role{
   code: string;
   name: string;
   description: string | null;
+  actionIds: string[]
   actions: Action[];
 }
 

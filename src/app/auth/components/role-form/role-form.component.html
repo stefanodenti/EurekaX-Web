@@ -3,7 +3,7 @@
     <label class="label">
       <span class="label-text">Code*</span>
     </label>
-    <input type="text" formControlName="code" placeholder="Type the action code here" class="input input-bordered w-full" />
+    <input type="text" formControlName="code" placeholder="Type the role code here" class="input input-bordered w-full" />
     <label class="label" *ngIf="!!form.get('code')?.errors && form.get('code')?.dirty">
       <span class="label-text-alt text-error" *ngIf="!!form.get('code')?.hasError('required')">This field is required</span>
     </label>
@@ -13,14 +13,14 @@
     <label class="label">
       <span class="label-text">Name*</span>
     </label>
-    <input type="text" formControlName="name" placeholder="Type the action name here" class="input input-bordered w-full" />
+    <input type="text" formControlName="name" placeholder="Type the role name here" class="input input-bordered w-full" />
   </div>
 
   <div class="form-control">
     <label class="label">
       <span class="label-text">Description</span>
     </label>
-    <textarea class="textarea textarea-bordered h-24" formControlName="description" placeholder="Type the action description here"></textarea>
+    <textarea class="textarea textarea-bordered h-24" formControlName="description" placeholder="Type the role description here"></textarea>
   </div>
 
 
@@ -41,8 +41,11 @@
           </div>
         </ng-container>
         <input #actionInput (input)="search(actionInput.value)" type="text" placeholder="Add Action..." class="w-full bg-transparent outline-0 text-base-content">
+        <label class="label" *ngIf="!!form.get('actions')?.errors && form.get('actions')?.dirty">
+          <span class="label-text-alt text-error" *ngIf="!!form.get('actions')?.hasError('required')">You have to add at least one action.</span>
+        </label>
         <span *ngIf="isAutoCompleteLoading" class="loading loading-dots loading-xs text-base-content"></span>
-        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full -bottom-[13rem]" *ngIf="openDropdown">
+        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full " *ngIf="openDropdown">
           <li *ngFor="let action of actionsArray">
             <a (click)="selectAction(action); actionInput.value = ''; actionInput.focus()">
               {{action.name}} (code: {{action.code}})

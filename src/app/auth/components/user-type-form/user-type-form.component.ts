@@ -39,10 +39,12 @@ export class UserTypeFormComponent {
   }
 
   submitAction() {
-    this.userTypeSubmit.emit(!this.userType ? {id: '', imageUrl:( this.form.value.imageUrl as string) ?? null, name: this.form.value.name as string, description: this.form.value.description ?? null, roles: [] } : {
+    const roleIds = this.form.value.roles?.map(role => role.id) ?? [];
+    this.userTypeSubmit.emit(!this.userType ? {id: '', imageUrl:( this.form.value.imageUrl as string) ?? null, name: this.form.value.name as string, description: this.form.value.description ?? null, roles: [], roleIds } : {
       ...this.userType as UserType,
       imageUrl:( this.form.value.imageUrl as string) ?? null, name: this.form.value.name as string, description: this.form.value.description ?? null,
-      roles: []
+      roles: [],
+      roleIds
     });
   }
 

@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Filter } from '../models/query.model';
 import { AngularFirestore, QueryFn } from '@angular/fire/compat/firestore';
-import { DocumentSnapshot, Query, collection } from '@angular/fire/firestore';
+import {DocumentSnapshot, Query, collection, FieldPath, documentId} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QueryFirestoreService {
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore) {
+  }
+
+  getUserById(id: string[]) {
+    return this.afs.collection('auth.users', ref => ref.where(documentId(), 'in', id)).valueChanges();
+  }
 
   search<T>(
     filters: Filter[],
@@ -17,19 +22,19 @@ export class QueryFirestoreService {
     collection: string
   ) {
     let query: any = this.afs.collection<T>(collection).ref;
-    if (filters) {
+    if (filters.length > 0) {
       filters.forEach((f) => {
           query = query.where(f.keyProp, f.type, f.keyword);
 
       });
     }
-    if (orderBy) {
+    if (!!orderBy) {
       query = query.orderBy(orderBy);
     }
-    if (lastVisibleEl) {
+    if (!!lastVisibleEl) {
       query = query.startAfter(lastVisibleEl);
     }
-    if (limit) {
+    if (!!limit) {
       query = query.limit(limit);
     }
     return query.get();

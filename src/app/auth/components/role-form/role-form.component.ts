@@ -39,18 +39,20 @@ export class RoleFormComponent {
   }
 
   submitAction() {
+    const actionIds = this.form.value.actions?.map(action => action.id) ?? [];
     this.roleSubmit.emit(!this.role ?
       {
         id: '',
         code:( this.form.value.code as string),
         name: this.form.value.name as string,
         description: this.form.value.description ?? null,
-        actions: (this.form.value.actions as Action[]) ?? [] } : {
+        actions: [], actionIds } : {
       ...this.role as Role,
       code:( this.form.value.code as string),
       name: this.form.value.name as string,
       description: this.form.value.description ?? null,
-      actions: (this.form.value.actions as Action[]) ?? []
+      actions: [],
+        actionIds
     });
   }
 

@@ -11,8 +11,7 @@ import {
   Columns,
   TableAction,
 } from 'src/app/uikit/components/table/table.component';
-import { User } from '@angular/fire/auth';
-import { DocumentSnapshot } from '@angular/fire/firestore';
+import {documentId, DocumentSnapshot, FieldPath} from '@angular/fire/firestore';
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -49,6 +48,7 @@ export class AuthManagerComponent {
   formVisible = false;
   selectedTab: 'User Types' | 'Roles' | 'Actions' = 'User Types';
   selectedRow: UserType | Role | Action | null = null;
+  loadingForm: boolean = false;
   private lastVisibleEl: DocumentSnapshot | null = null;
 
   constructor(
@@ -56,6 +56,11 @@ export class AuthManagerComponent {
     private notificationService: NotificationsService
   ) {
     this.search();
+
+    this.queryService.getUserById(['C8eWJcdlDGQ38X2xe7iYtfKbPZf1', 'FxlluuGfFBOookvfXsXNfWzgfXq1'])
+      .subscribe((res: any) => {
+        console.error('USERS', res.docs)
+      })
   }
 
   search() {
@@ -72,6 +77,8 @@ export class AuthManagerComponent {
               return data;
             }),
           ]
+
+        console.log(this.rows)
         }).catch((err: Error) => {
           const notification: Partial<Notification> = {
             title: 'Unable to load elemtents!',
@@ -134,6 +141,7 @@ export class AuthManagerComponent {
       }
     } else if (event.actionCode === 'edit') {
       this.selectedRow = event.row;
+      this.showForm(this.selectedRow);
     }
   }
 
@@ -149,4 +157,54 @@ export class AuthManagerComponent {
   }
 
 
+  showForm(item: Role | UserType | Action) {
+    this.loadingForm = true;
+    switch (this.selectedTab) {
+      case 'Roles':
+        const role = item as Role
+        console.log(documentId())
+        this.queryService.search(
+          [{keyProp: documentId(), type: 'in', keyword: role.actionIds}],
+          '',
+          999,
+          null,
+          'auth.actions'
+        ).then((res: any) => {
+          role.actions = res.docs.map((re: any) => {
+            let data = re.data() as Action;
+            data.id = re.id;
+            return data;
+          });
+          console.log(role.actions, res.docs)
+          this.loadingForm = false;
+          this.formVisible = true;
+        });
+
+        break;
+      case 'User Types':
+        const userType = item as UserType
+        this.queryService.search(
+          [{keyProp: 'id', type: 'array-contains-any', keyword: userType.roleIds}],
+          'name',
+          999,
+          null,
+          'auth.roles'
+        ).then((res: any) => {
+          userType.roles = res.docs.map((re: any) => {
+            let data = re.data() as Action;
+            data.id = re.id;
+            return data;
+          });
+          this.loadingForm = false;
+          this.formVisible = true;
+        });
+
+        break;
+
+      case 'Actions':
+        this.loadingForm = false;
+        this.formVisible = true;
+        break;
+    }
+  }
 }

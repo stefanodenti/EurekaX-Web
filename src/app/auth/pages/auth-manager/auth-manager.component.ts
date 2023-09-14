@@ -174,7 +174,7 @@ export class AuthManagerComponent {
             '',
             999,
             null,
-            'auth.actions'
+            'auth-actions'
           )
           .then((res: any) => {
             role.actions = res.docs.map((re: any) => {
@@ -202,7 +202,7 @@ export class AuthManagerComponent {
             'name',
             999,
             null,
-            'auth.roles'
+            'auth-roles' 
           )
           .then((res: any) => {
             userType.roles = res.docs.map((re: any) => {

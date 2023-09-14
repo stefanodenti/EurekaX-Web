@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import {Action, Role} from "../../models/user";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {concatMap, finalize, Subscription, take, timer} from "rxjs";
+import {QueryFirestoreService} from "../../../core/services/query-firestore.service";
 
 @Component({
   selector: 'eurekax-role-form',
@@ -17,8 +19,13 @@ export class RoleFormComponent {
     description: new FormControl<string>(''),
     actions: new FormControl<Action[]>([])
   });
+  isAutoCompleteLoading: boolean = false;
+  openDropdown: boolean = false;
+  actionsArray: Action[] = [];
+  private debounceAutoComplete: number = 300;
+  private subscriptionAutoComplete: Subscription | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private queryService: QueryFirestoreService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -51,4 +58,53 @@ export class RoleFormComponent {
     this.cancel.emit(true);
   }
 
+  search(text: string) {
+    console.log('search')
+    if(!!text) {
+      if(!!this.subscriptionAutoComplete) {
+        this.subscriptionAutoComplete.unsubscribe();
+      }
+
+      this.isAutoCompleteLoading = true;
+      console.log(text)
+      this.subscriptionAutoComplete = timer(this.debounceAutoComplete)
+        .pipe(
+          take(1),
+          concatMap(() => {
+            return this.queryService.search(
+              [
+                // {keyProp: 'id', type: "not-in", keyword: this.form.value.actions?.map(action => action.id) ?? []},
+                {keyProp: 'name', type: 'string', keyword: text}
+              ],
+            'name',
+              999,
+              null,
+              'auth-actions'
+            )
+          }),
+          finalize(() => this.isAutoCompleteLoading = false)
+        )
+        .subscribe({
+          next: (res) => {
+            console.log(res.docs)
+            this.actionsArray = res.docs.map((re) => {
+              let data = re.data() as Action;
+              data.id = re.id;
+              return data;
+            });
+
+            this.openDropdown = true
+          }
+        })
+    }
+  }
+
+  selectAction(action: Action) {
+    this.form.value.actions?.push(action);
+    this.openDropdown = false;
+  }
+
+  removeAction(id: string) {
+    this.form.value.actions = this.form.value.actions?.filter(action => action.id !== id);
+  }
 }

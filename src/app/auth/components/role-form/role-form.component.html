@@ -22,6 +22,36 @@
     </label>
     <textarea class="textarea textarea-bordered h-24" formControlName="description" placeholder="Type the action description here"></textarea>
   </div>
+
+
+  <div class="form-control">
+    <label class="label">
+      <span class="label-text">Actions</span>
+    </label>
+    <div class="dropdown" [class.dropdown-open]="openDropdown">
+      <div class="input input-bordered flex items-center gap-1 ">
+        <ng-container *ngFor="let action of form.value.actions">
+          <div class="tooltip" [attr.data-tip]="action.code">
+            <div class="badge badge-primary badge-outline gap-2.5 whitespace-nowrap">
+              <a class="cursor-pointer">
+                <fa-icon (click)="removeAction(action.id)" icon="xmark"></fa-icon>
+              </a>
+              {{action.name}}
+            </div>
+          </div>
+        </ng-container>
+        <input #actionInput (input)="search(actionInput.value)" type="text" placeholder="Add Action..." class="w-full bg-transparent outline-0 text-base-content">
+        <span *ngIf="isAutoCompleteLoading" class="loading loading-dots loading-xs text-base-content"></span>
+        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full -bottom-[13rem]" *ngIf="openDropdown">
+          <li *ngFor="let action of actionsArray">
+            <a (click)="selectAction(action); actionInput.value = ''; actionInput.focus()">
+              {{action.name}} ({{action.code}})
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </form>
 
 <div class="flex w-full justify-center pt-4">

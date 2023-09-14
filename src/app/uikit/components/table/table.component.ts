@@ -52,8 +52,10 @@ export class TableComponent {
 
   emitAction(row: any, actionCode: string){
     this.fireAction.emit({
-      actionCode, 
+      actionCode,
       row
     });
   }
+
+  protected readonly Array = Array;
 }

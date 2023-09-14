@@ -19,6 +19,35 @@
     </label>
     <textarea class="textarea textarea-bordered h-24" formControlName="description" placeholder="Type the action description here"></textarea>
   </div>
+
+  <div class="form-control">
+    <label class="label">
+      <span class="label-text">Roles</span>
+    </label>
+    <div class="dropdown" [class.dropdown-open]="openDropdown">
+      <div class="input input-bordered flex items-center gap-1 ">
+        <ng-container *ngFor="let role of form.value.roles">
+          <div class="tooltip" [attr.data-tip]="role.code">
+            <div class="badge badge-primary badge-outline gap-2.5 whitespace-nowrap">
+              <a class="cursor-pointer">
+                <fa-icon (click)="removeRole(role.id)" icon="xmark"></fa-icon>
+              </a>
+              {{role.name}}
+            </div>
+          </div>
+        </ng-container>
+        <input #roleInput (input)="search(roleInput.value)" type="text" placeholder="Add Role..." class="w-full bg-transparent outline-0 text-base-content">
+        <span *ngIf="isAutoCompleteLoading" class="loading loading-dots loading-xs text-base-content"></span>
+        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full -bottom-[6rem]" *ngIf="openDropdown">
+          <li *ngFor="let role of rolesArray">
+            <a (click)="selectRole(role); roleInput.value = ''; roleInput.focus()">
+              {{role.name}} (code: {{role.code}})
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </form>
 
 <div class="flex w-full justify-center pt-4">

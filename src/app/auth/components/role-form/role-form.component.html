@@ -45,7 +45,7 @@
         <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full -bottom-[13rem]" *ngIf="openDropdown">
           <li *ngFor="let action of actionsArray">
             <a (click)="selectAction(action); actionInput.value = ''; actionInput.focus()">
-              {{action.name}} ({{action.code}})
+              {{action.name}} (code: {{action.code}})
             </a>
           </li>
         </ul>

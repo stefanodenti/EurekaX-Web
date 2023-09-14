@@ -64,7 +64,7 @@ export class AuthManagerComponent {
       .subscribe({
         next: (res) => {
           console.log('ReS', res);
-          this.lastVisibleEl = res.docs[res.docs.length - 1];
+          this.lastVisibleEl = res.docs[res.docs.length - 1] as any;
           this.rows = [
             ...this.rows,
             ...res.docs.map((re) => {
@@ -151,5 +151,5 @@ export class AuthManagerComponent {
     return '';
   }
 
-  
+
 }

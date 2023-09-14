@@ -18,7 +18,8 @@
         <th *ngIf="actions">Actions</th>
       </tr>
     </thead>
-    <tbody *ngIf="elements">
+    <tbody >
+      <div *ngIf="elements.length === 0" class="w-full p-3">No elements.</div>
       <tr *ngFor="let row of elements" [ngClass]="{ hover: hover }">
         <th *ngFor="let col of cols">{{ row[col.prop] }}</th>
         <th *ngIf="actions" class="flex gap-3">

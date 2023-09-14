@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Filter } from '../models/query.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { collection } from '@angular/fire/firestore';
+import { DocumentSnapshot, collection } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class QueryFirestoreService {
     filters: Filter[],
     orderBy: string,
     limit: number,
-    lastVisibleEl: any,
+    lastVisibleEl: DocumentSnapshot | null,
     collection: string
   ) {
     let query = this.afs.collection<T>(collection, (ref: any) => {

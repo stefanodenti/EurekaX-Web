@@ -12,6 +12,7 @@ import {
   TableAction,
 } from 'src/app/uikit/components/table/table.component';
 import { User } from '@angular/fire/auth';
+import { DocumentSnapshot } from '@angular/fire/firestore';
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -48,7 +49,7 @@ export class AuthManagerComponent {
   formVisible = false;
   selectedTab: 'User Types' | 'Roles' | 'Actions' = 'User Types';
   selectedRow: UserType | Role | Action | null = null;
-  private lastVisibleEl: any;
+  private lastVisibleEl: DocumentSnapshot | null = null;
 
   constructor(
     private queryService: QueryFirestoreService,

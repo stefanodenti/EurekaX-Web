@@ -21,9 +21,9 @@ export class UsersManagerComponent {
   }];
   filters: Filter[] = [
     {
-      keyProp: 'name',
+      keyProp: 'displayName',
       keyword: '',
-      type: 'string',
+      type: '!=',
     },
   ];
   private lastVisibleEl: any;
@@ -36,27 +36,24 @@ export class UsersManagerComponent {
   }
 
   loadUsers() {
-    this.qfService.search(this.filters, 'name', 10, null, 'users').subscribe({
-      next: (res) => {
+    this.qfService.search(this.filters, 'displayName', 10, null, 'users').then((res: any) => {
         console.log('ReS', res);
         this.lastVisibleEl = res.docs[res.docs.length - 1];
         this.rows = [
           ...this.rows,
-          ...res.docs.map((user) => {
+          ...res.docs.map((user: any) => {
             let data = user.data() as User;
             data.uid = user.id;
             return data;
           }),
         ];
-      },
-      error: (err) => {
+      }).catch((err: Error) => {
         const notification: Partial<Notification> = {
           title: 'Unable to load users!',
-          message: err.error.message,
+          message: err.message,
           type: NotificationType.danger,
         };
         this.notificationService.createAlert(notification);
-      },
-    });
+      });;
   }
 }

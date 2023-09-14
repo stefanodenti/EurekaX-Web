@@ -66,7 +66,7 @@ export class UserTypeFormComponent {
             return this.queryService.search(
               [
                 // {keyProp: 'id', type: "not-in", keyword: this.form.value.actions?.map(action => action.id) ?? []},
-                {keyProp: 'name', type: 'string', keyword: text}
+                {keyProp: 'name', type: '==', keyword: text}
               ],
               'name',
               999,
@@ -77,9 +77,9 @@ export class UserTypeFormComponent {
           finalize(() => this.isAutoCompleteLoading = false)
         )
         .subscribe({
-          next: (res) => {
+          next: (res: any) => {
             console.log(res.docs)
-            this.rolesArray = res.docs.map((re) => {
+            this.rolesArray = res.docs.map((re: any) => {
               let data = re.data() as Role;
               data.id = re.id;
               return data;

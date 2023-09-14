@@ -42,7 +42,7 @@ export class AuthManagerComponent {
     {
       keyProp: 'name',
       keyword: '',
-      type: 'string',
+      type: '>=',
     },
   ];
   limit = 3;
@@ -61,28 +61,25 @@ export class AuthManagerComponent {
   search() {
     this.queryService
       .search(this.filters, 'name', this.limit, this.lastVisibleEl, this.getCollection())
-      .subscribe({
-        next: (res) => {
+      .then((res: any) => {
           console.log('ReS', res);
           this.lastVisibleEl = res.docs[res.docs.length - 1] as any;
           this.rows = [
             ...this.rows,
-            ...res.docs.map((re) => {
+            ...res.docs.map((re: any) => {
               let data = re.data() as Action | Role;
               data.id = re.id;
               return data;
             }),
-          ];
-        },
-        error: (err) => {
+          ]
+        }).catch((err: Error) => {
           const notification: Partial<Notification> = {
-            title: 'Unable to load users!',
-            message: err.error.message,
+            title: 'Unable to load elemtents!',
+            message: err.message,
             type: NotificationType.danger,
           };
           this.notificationService.createAlert(notification);
-        },
-      });
+        });
   }
 
   changeTab(tab: string) {

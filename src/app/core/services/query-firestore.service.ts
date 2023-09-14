@@ -16,15 +16,11 @@ export class QueryFirestoreService {
     lastVisibleEl: DocumentSnapshot | null,
     collection: string
   ) {
-    let query: any;
+    let query: any = this.afs.collection<T>(collection).ref;
     if (filters) {
-      query = this.afs
-        .collection<T>(collection)
-        .ref.where(filters[0].keyProp, filters[0].type, filters[0].keyword);
-      filters.forEach((f, index) => {
-        if (index > 0) {
+      filters.forEach((f) => {
           query = query.where(f.keyProp, f.type, f.keyword);
-        }
+
       });
     }
     if (orderBy) {

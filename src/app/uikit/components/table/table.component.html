@@ -49,7 +49,7 @@
           </button>
         </th>
         <th><span class="font-bold">Loaded:</span> {{ elements.length }}</th>
-        <th *ngFor="let _ of Array((!actions || actions.length === 0) ? (cols.length - 2) : cols.length - 1)"></th>
+        <th *ngFor="let _ of Array((cols.length > 2 && (!actions || actions?.length === 0)) ? (cols.length - 2) : cols.length - 1)"></th>
       </tr>
     </tfoot>
   </table>

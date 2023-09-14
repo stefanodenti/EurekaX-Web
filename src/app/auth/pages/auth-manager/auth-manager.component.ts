@@ -11,7 +11,11 @@ import {
   Columns,
   TableAction,
 } from 'src/app/uikit/components/table/table.component';
-import {documentId, DocumentSnapshot, FieldPath} from '@angular/fire/firestore';
+import {
+  documentId,
+  DocumentSnapshot,
+  FieldPath,
+} from '@angular/fire/firestore';
 
 @Component({
   templateUrl: './auth-manager.component.html',
@@ -57,36 +61,39 @@ export class AuthManagerComponent {
   ) {
     this.search();
 
-    this.queryService.getUserById(['C8eWJcdlDGQ38X2xe7iYtfKbPZf1', 'FxlluuGfFBOookvfXsXNfWzgfXq1'])
-      .subscribe((res: any) => {
-        console.error('USERS', res.docs)
-      })
-  }
 
+  }
   search() {
     this.queryService
-      .search(this.filters, 'name', this.limit, this.lastVisibleEl, this.getCollection())
+      .search(
+        this.filters,
+        'name',
+        this.limit,
+        this.lastVisibleEl,
+        this.getCollection()
+      )
       .then((res: any) => {
-          console.log('ReS', res);
-          this.lastVisibleEl = res.docs[res.docs.length - 1] as any;
-          this.rows = [
-            ...this.rows,
-            ...res.docs.map((re: any) => {
-              let data = re.data() as Action | Role;
-              data.id = re.id;
-              return data;
-            }),
-          ]
+        console.log('ReS', res);
+        this.lastVisibleEl = res.docs[res.docs.length - 1] as any;
+        this.rows = [
+          ...this.rows,
+          ...res.docs.map((re: any) => {
+            let data = re.data() as Action | Role;
+            data.id = re.id;
+            return data;
+          }),
+        ];
 
-        console.log(this.rows)
-        }).catch((err: Error) => {
-          const notification: Partial<Notification> = {
-            title: 'Unable to load elemtents!',
-            message: err.message,
-            type: NotificationType.danger,
-          };
-          this.notificationService.createAlert(notification);
-        });
+        console.log(this.rows);
+      })
+      .catch((err: Error) => {
+        const notification: Partial<Notification> = {
+          title: 'Unable to load elemtents!',
+          message: err.message,
+          type: NotificationType.danger,
+        };
+        this.notificationService.createAlert(notification);
+      });
   }
 
   changeTab(tab: string) {
@@ -96,10 +103,12 @@ export class AuthManagerComponent {
   }
 
   saveUserType(userType: UserType) {
-    this.queryService.create<UserType>(userType, 'auth-usertypes').then((res) => {
-      this.reset();
-      this.search();
-    });
+    this.queryService
+      .create<UserType>(userType, 'auth-usertypes')
+      .then((res) => {
+        this.reset();
+        this.search();
+      });
   }
 
   saveRole(role: Role) {
@@ -110,7 +119,7 @@ export class AuthManagerComponent {
   }
 
   saveAction(action: Action) {
-    console.warn("SAVE ACTION", action);
+    console.warn('SAVE ACTION', action);
     this.queryService.create<Action>(action, 'auth-actions').then((res) => {
       this.reset();
       this.search();
@@ -122,7 +131,7 @@ export class AuthManagerComponent {
     this.rows = [];
     this.lastVisibleEl = null;
   }
-  filter(){
+  filter() {
     this.reset();
     this.search();
   }
@@ -130,10 +139,7 @@ export class AuthManagerComponent {
     if (event.actionCode === 'delete') {
       if (confirm('Are you sure?') === true) {
         this.queryService
-          .delete<typeof event.row>(
-            event.row.id,
-            this.getCollection()
-          )
+          .delete<typeof event.row>(event.row.id, this.getCollection())
           .then((res) => {
             this.reset();
             this.search();
@@ -156,48 +162,57 @@ export class AuthManagerComponent {
     return '';
   }
 
-
   showForm(item: Role | UserType | Action) {
     this.loadingForm = true;
     switch (this.selectedTab) {
       case 'Roles':
-        const role = item as Role
-        console.log(documentId())
-        this.queryService.search(
-          [{keyProp: documentId(), type: 'in', keyword: role.actionIds}],
-          '',
-          999,
-          null,
-          'auth.actions'
-        ).then((res: any) => {
-          role.actions = res.docs.map((re: any) => {
-            let data = re.data() as Action;
-            data.id = re.id;
-            return data;
+        const role = item as Role;
+        console.log(documentId());
+        this.queryService
+          .search(
+            [{ keyProp: documentId(), type: 'in', keyword: role.actionIds }],
+            '',
+            999,
+            null,
+            'auth.actions'
+          )
+          .then((res: any) => {
+            role.actions = res.docs.map((re: any) => {
+              let data = re.data() as Action;
+              data.id = re.id;
+              return data;
+            });
+            console.log(role.actions, res.docs);
+            this.loadingForm = false;
+            this.formVisible = true;
           });
-          console.log(role.actions, res.docs)
-          this.loadingForm = false;
-          this.formVisible = true;
-        });
 
         break;
       case 'User Types':
-        const userType = item as UserType
-        this.queryService.search(
-          [{keyProp: 'id', type: 'array-contains-any', keyword: userType.roleIds}],
-          'name',
-          999,
-          null,
-          'auth.roles'
-        ).then((res: any) => {
-          userType.roles = res.docs.map((re: any) => {
-            let data = re.data() as Action;
-            data.id = re.id;
-            return data;
+        const userType = item as UserType;
+        this.queryService
+          .search(
+            [
+              {
+                keyProp: 'id',
+                type: 'array-contains-any',
+                keyword: userType.roleIds,
+              },
+            ],
+            'name',
+            999,
+            null,
+            'auth.roles'
+          )
+          .then((res: any) => {
+            userType.roles = res.docs.map((re: any) => {
+              let data = re.data() as Action;
+              data.id = re.id;
+              return data;
+            });
+            this.loadingForm = false;
+            this.formVisible = true;
           });
-          this.loadingForm = false;
-          this.formVisible = true;
-        });
 
         break;
 

@@ -33,7 +33,8 @@ export class RoleFormComponent {
       this.form.reset(!!this.role ? {
         name: this.role.name,
         code: this.role.code,
-        description: this.role.description
+        description: this.role.description,
+        actions: this.role.actions
       } : {});
     }
   }
@@ -61,7 +62,6 @@ export class RoleFormComponent {
   }
 
   search(text: string) {
-    console.log('search')
     if(!!text) {
       if(!!this.subscriptionAutoComplete) {
         this.subscriptionAutoComplete.unsubscribe();
@@ -76,7 +76,7 @@ export class RoleFormComponent {
             return this.queryService.search(
               [
                 // {keyProp: 'id', type: "not-in", keyword: this.form.value.actions?.map(action => action.id) ?? []},
-                {keyProp: 'name', type: '==', keyword: text}
+                {keyProp: 'name', type: '>=', keyword: text}
               ],
             'name',
               999,
@@ -88,7 +88,6 @@ export class RoleFormComponent {
         )
         .subscribe({
           next: (res: any) => {
-            console.log(res.docs)
             this.actionsArray = res.docs.map((re: any) => {
               let data = re.data() as Action;
               data.id = re.id;

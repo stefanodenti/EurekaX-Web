@@ -10,6 +10,7 @@
         <ng-container *ngSwitchCase="'Actions'">
           <div class="card-title">Action Form</div>
           <eurekax-action-form
+            [action]="$any(selectedRow)"
             (cancel)="formVisible = false"
             (actionSubmit)="saveAction($event)"
           ></eurekax-action-form>
@@ -18,6 +19,7 @@
         <ng-container *ngSwitchCase="'User Types'">
           <div class="card-title">User Type Form</div>
           <eurekax-user-type-form
+            [userType]="$any(selectedRow)"
             (userTypeSubmit)="saveUserType($event)"
             (cancel)="formVisible = false"
           ></eurekax-user-type-form>
@@ -26,6 +28,7 @@
         <ng-container *ngSwitchCase="'Roles'">
           <div class="card-title">Role Form</div>
           <eurekax-role-form
+            [role]="$any(selectedRow)"
             (roleSubmit)="saveRole($event)"
             (cancel)="formVisible = false"
           ></eurekax-role-form>
@@ -34,7 +37,7 @@
     </eurekax-base-card>
     <button
       *ngIf="!formVisible"
-      (click)="formVisible = !formVisible"
+      (click)="selectedRow=null;formVisible = !formVisible"
       class="btn btn-outline btn-success btn-sm float-right"
     >
       <fa-icon [icon]="'plus'"></fa-icon> New

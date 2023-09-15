@@ -45,7 +45,7 @@
           <span class="label-text-alt text-error" *ngIf="!!form.get('actions')?.hasError('required')">You have to add at least one action.</span>
         </label>
         <span *ngIf="isAutoCompleteLoading" class="loading loading-dots loading-xs text-base-content"></span>
-        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full " *ngIf="openDropdown">
+        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full " *ngIf="openDropdown && actionsArray.length > 0">
           <li *ngFor="let action of actionsArray">
             <a (click)="selectAction(action); actionInput.value = ''; actionInput.focus()">
               {{action.name}} (code: {{action.code}})

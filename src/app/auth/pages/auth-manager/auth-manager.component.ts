@@ -146,8 +146,7 @@ export class AuthManagerComponent {
           });
       }
     } else if (event.actionCode === 'edit') {
-      this.selectedRow = event.row;
-      this.showForm(this.selectedRow);
+      this.showForm(event.row);
     }
   }
 
@@ -167,7 +166,6 @@ export class AuthManagerComponent {
     switch (this.selectedTab) {
       case 'Roles':
         const role = item as Role;
-        console.log(documentId());
         this.queryService
           .search(
             [{ keyProp: documentId(), type: 'in', keyword: role.actionIds }],
@@ -182,8 +180,8 @@ export class AuthManagerComponent {
               data.id = re.id;
               return data;
             });
-            console.log(role.actions, res.docs);
             this.loadingForm = false;
+            this.selectedRow = item;
             this.formVisible = true;
           });
 
@@ -194,15 +192,15 @@ export class AuthManagerComponent {
           .search(
             [
               {
-                keyProp: 'id',
-                type: 'array-contains-any',
+                keyProp: documentId(),
+                type: 'in',
                 keyword: userType.roleIds,
               },
             ],
             'name',
             999,
             null,
-            'auth-roles' 
+            'auth-roles'
           )
           .then((res: any) => {
             userType.roles = res.docs.map((re: any) => {
@@ -211,13 +209,16 @@ export class AuthManagerComponent {
               return data;
             });
             this.loadingForm = false;
+            this.selectedRow = item;
             this.formVisible = true;
+
           });
 
         break;
 
       case 'Actions':
         this.loadingForm = false;
+        this.selectedRow = item;
         this.formVisible = true;
         break;
     }

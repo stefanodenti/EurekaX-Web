@@ -33,7 +33,8 @@ export class UserTypeFormComponent {
       this.form.reset(!!this.userType ? {
         name: this.userType.name,
         imageUrl: this.userType.imageUrl,
-        description: this.userType.description
+        description: this.userType.description,
+        roles: this.userType.roles
       } : {});
     }
   }
@@ -53,14 +54,12 @@ export class UserTypeFormComponent {
   }
 
   search(text: string) {
-    console.log('search')
     if(!!text) {
       if(!!this.subscriptionAutoComplete) {
         this.subscriptionAutoComplete.unsubscribe();
       }
 
       this.isAutoCompleteLoading = true;
-      console.log(text)
       this.subscriptionAutoComplete = timer(this.debounceAutoComplete)
         .pipe(
           take(1),
@@ -68,7 +67,7 @@ export class UserTypeFormComponent {
             return this.queryService.search(
               [
                 // {keyProp: 'id', type: "not-in", keyword: this.form.value.actions?.map(action => action.id) ?? []},
-                {keyProp: 'name', type: '==', keyword: text}
+                {keyProp: 'name', type: '>=', keyword: text}
               ],
               'name',
               999,
@@ -80,7 +79,6 @@ export class UserTypeFormComponent {
         )
         .subscribe({
           next: (res: any) => {
-            console.log(res.docs)
             this.rolesArray = res.docs.map((re: any) => {
               let data = re.data() as Role;
               data.id = re.id;
@@ -94,7 +92,9 @@ export class UserTypeFormComponent {
   }
 
   selectRole(role: Role) {
+    console.log(role)
     this.form.value.roles?.push(role);
+    console.log(this.form.value.roles)
     this.openDropdown = false;
   }
 

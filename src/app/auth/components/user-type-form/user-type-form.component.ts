@@ -35,7 +35,7 @@ export class UserTypeFormComponent {
         imageUrl: this.userType.imageUrl,
         description: this.userType.description,
         roles: this.userType.roles
-      } : {});
+      } : {roles: []});
     }
   }
 

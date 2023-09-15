@@ -35,7 +35,7 @@ export class RoleFormComponent {
         code: this.role.code,
         description: this.role.description,
         actions: this.role.actions
-      } : {});
+      } : {actions: []});
     }
   }
 

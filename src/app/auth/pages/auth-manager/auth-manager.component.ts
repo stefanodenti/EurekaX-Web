@@ -103,27 +103,48 @@ export class AuthManagerComponent {
   }
 
   saveUserType(userType: UserType) {
-    this.queryService
-      .create<UserType>(userType, 'auth-usertypes')
-      .then((res) => {
-        this.reset();
-        this.search();
-      });
+    if(!userType.id) {
+      this.queryService
+        .create<UserType>(userType, 'auth-usertypes')
+        .then((res) => {
+          this.reset();
+          this.search();
+        });
+    } else {
+      this.queryService.update<UserType>(userType.id, userType, 'auth-usertypes')
+        .then((res) => {
+          this.reset();
+          this.search();
+        });
+    }
   }
 
   saveRole(role: Role) {
-    this.queryService.create<Role>(role, 'auth-roles').then((res) => {
-      this.reset();
-      this.search();
-    });
+    if(!role.id) {
+      this.queryService.create<Role>(role, 'auth-roles').then((res) => {
+        this.reset();
+        this.search();
+      });
+    } else {
+      this.queryService.update<Role>(role.id, role, 'auth-roles').then((res) => {
+        this.reset();
+        this.search();
+      });
+    }
   }
 
   saveAction(action: Action) {
-    console.warn('SAVE ACTION', action);
-    this.queryService.create<Action>(action, 'auth-actions').then((res) => {
-      this.reset();
-      this.search();
-    });
+    if(!action.id) {
+      this.queryService.create<Action>(action, 'auth-actions').then((res) => {
+        this.reset();
+        this.search();
+      });
+    } else {
+      this.queryService.update<Action>(action.id, action, 'auth-actions').then((res) => {
+        this.reset();
+        this.search();
+      });
+    }
   }
 
   reset() {
@@ -162,62 +183,72 @@ export class AuthManagerComponent {
   }
 
   showForm(item: Role | UserType | Action) {
-    this.loadingForm = true;
     switch (this.selectedTab) {
       case 'Roles':
         const role = item as Role;
-        this.queryService
-          .search(
-            [{ keyProp: documentId(), type: 'in', keyword: role.actionIds }],
-            '',
-            999,
-            null,
-            'auth-actions'
-          )
-          .then((res: any) => {
-            role.actions = res.docs.map((re: any) => {
-              let data = re.data() as Action;
-              data.id = re.id;
-              return data;
+        if(role.actionIds.length > 0) {
+          this.loadingForm = true;
+          this.queryService
+            .search(
+              [{ keyProp: documentId(), type: 'in', keyword: role.actionIds }],
+              '',
+              999,
+              null,
+              'auth-actions'
+            )
+            .then((res: any) => {
+              role.actions = res.docs.map((re: any) => {
+                let data = re.data() as Action;
+                data.id = re.id;
+                return data;
+              });
+              this.loadingForm = false;
+              this.selectedRow = item;
+              this.formVisible = true;
             });
-            this.loadingForm = false;
-            this.selectedRow = item;
-            this.formVisible = true;
-          });
+        } else {
+          this.selectedRow = item;
+          this.formVisible = true;
+        }
 
         break;
       case 'User Types':
         const userType = item as UserType;
-        this.queryService
-          .search(
-            [
-              {
-                keyProp: documentId(),
-                type: 'in',
-                keyword: userType.roleIds,
-              },
-            ],
-            'name',
-            999,
-            null,
-            'auth-roles'
-          )
-          .then((res: any) => {
-            userType.roles = res.docs.map((re: any) => {
-              let data = re.data() as Action;
-              data.id = re.id;
-              return data;
-            });
-            this.loadingForm = false;
-            this.selectedRow = item;
-            this.formVisible = true;
+        if(userType.roleIds?.length > 0) {
+          this.loadingForm = true;
+          this.queryService
+            .search(
+              [
+                {
+                  keyProp: documentId(),
+                  type: 'in',
+                  keyword: userType.roleIds,
+                },
+              ],
+              '',
+              999,
+              null,
+              'auth-roles'
+            )
+            .then((res: any) => {
+              userType.roles = res.docs.map((re: any) => {
+                let data = re.data() as Action;
+                data.id = re.id;
+                return data;
+              });
+              this.loadingForm = false;
+              this.selectedRow = item;
+              this.formVisible = true;
 
-          });
+            });
+        } else {
+          this.selectedRow = item;
+          this.formVisible = true;
+        }
 
         break;
 
       case 'Actions':
-        this.loadingForm = false;
         this.selectedRow = item;
         this.formVisible = true;
         break;

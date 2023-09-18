@@ -10,6 +10,7 @@ import { UserProfilePage } from 'src/app/auth/pages/user-profile/user-profile.pa
 import { AuthManagerComponent } from '../../auth/pages/auth-manager/auth-manager.component';
 import { AuthAdminGuard } from 'src/app/auth/interceptor/auth-admin.guard';
 import { UsersManagerComponent } from 'src/app/auth/pages/users-manager/users-manager.component';
+import { LicenseComponent } from 'src/app/pages/license/license.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'privacy',
         component: PrivacyComponent,
+      },
+      {
+        path: 'license',
+        component: LicenseComponent,
       },
       {
         path: 'settings',

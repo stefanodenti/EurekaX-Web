@@ -85,6 +85,11 @@
             "type": "default",
             "label": "Privacy",
             "routerLink": "/privacy"
+          },
+          {
+            "type": "default",
+            "label": "License",
+            "routerLink": "/license"
           }
         ]
       },

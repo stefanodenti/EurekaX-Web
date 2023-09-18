@@ -18,7 +18,7 @@ export class ModalService {
               @Inject(DOCUMENT) private document: Document) {
   }
 
-  openModal<T>(content: TemplateRef<any> | Type<T>, options?: {title?: string, showCloseButton?: boolean, backdropDismiss?: boolean, position?: 'center' | 'top' | 'bottom'} ) {
+  openModal<T>(content: TemplateRef<any> | Type<T>, options?: {title?: string, showCloseButton?: boolean, backdropDismiss?: boolean, position?: 'center' | 'top' | 'bottom', size?: 'sm' | 'md' | 'lg'} ) {
     let modalComponent;
     if(content instanceof TemplateRef) {
       modalComponent = createComponent(ModalComponent,
@@ -35,6 +35,7 @@ export class ModalService {
       modalComponent.instance.showCloseButton = options?.showCloseButton ?? true;
       modalComponent.instance.backdropDismiss = options?.backdropDismiss ?? true;
       modalComponent.instance.position = options?.position ?? 'center';
+      modalComponent.instance.size = options?.size ?? 'lg';
       const modalNotifier = new Subject<string>();
       modalComponent.instance.closeEvent.subscribe(() => modalNotifier?.next('close'));
       modalComponent.hostView.detectChanges();

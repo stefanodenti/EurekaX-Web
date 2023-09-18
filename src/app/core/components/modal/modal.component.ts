@@ -11,6 +11,7 @@ export class ModalComponent {
   @Input() position: 'center' | 'top' | 'bottom' = 'center';
   @Input() showCloseButton: boolean = true;
   @Input() backdropDismiss: boolean = true;
+  @Input() size: 'sm' | 'md' | 'lg' = 'lg';
   @Output() closeEvent: EventEmitter<void> = new EventEmitter<void>();
   @ViewChild(ModalContainerDirective, {static: true}) modalDirective!: ModalContainerDirective;
 

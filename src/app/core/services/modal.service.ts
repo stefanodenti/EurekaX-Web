@@ -1,0 +1,41 @@
+import {
+  ApplicationRef, createComponent,
+  Inject,
+  Injectable,
+  TemplateRef,
+  Type
+} from '@angular/core';
+import {ModalComponent} from "../components/modal/modal.component";
+import {Subject} from "rxjs";
+import {DOCUMENT} from "@angular/common";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ModalService {
+  constructor(
+              private applicationRef: ApplicationRef,
+              @Inject(DOCUMENT) private document: Document) {
+  }
+
+  openModal<T>(content: TemplateRef<any> | Type<T>, options?: {title?: string} ) {
+    let modalComponent;
+    if(content instanceof TemplateRef) {
+      modalComponent = createComponent(ModalComponent,
+        {environmentInjector: this.applicationRef.injector,
+        projectableNodes: [content.createEmbeddedView(null).rootNodes]});
+    } else {
+      modalComponent = createComponent(ModalComponent, {environmentInjector: this.applicationRef.injector});
+      const componentViewRef = modalComponent.instance.modalDirective.viewContainerRef;
+      componentViewRef.clear();
+      componentViewRef.createComponent(content);
+    }
+
+      modalComponent.instance.title = options?.title;
+      const modalNotifier = new Subject<string>();
+      modalComponent.instance.closeEvent.subscribe(() => modalNotifier?.next('close'));
+      modalComponent.hostView.detectChanges();
+      this.document.body.appendChild(modalComponent.location.nativeElement);
+      return modalNotifier.asObservable();
+  }
+}

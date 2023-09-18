@@ -1,14 +1,14 @@
 {
   "targets": {
-    "eurekax-7b3ec": {
+    "eurekax-XXX": {
       "hosting": {
         "EurekaX-Web": [
-          "eurekax-7b3ec"
+          "eurekax-XXX"
         ]
       }
     }
   },
   "projects": {
-    "default": "eurekax-7b3ec"
+    "default": "eurekax-XXX"
   }
 }

@@ -1,5 +1,11 @@
-<eurekax-base-card [title]="title ?? ''" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-  <div class="flex justify-end">
+<eurekax-base-card [title]="title ?? ''"
+                   [ngClass]="{
+                   'top-1/2 -translate-y-1/2': position === 'center',
+                   'top-3': position === 'top',
+                   'bottom-3': position === 'bottom',
+                   }"
+                   class="absolute -translate-x-1/2 left-1/2  z-50">
+  <div class="flex justify-end" *ngIf="showCloseButton">
     <button class="btn btn-ghost" (click)="close()">
       <fa-icon icon="xmark" size="lg"></fa-icon>
     </button>
@@ -8,4 +14,4 @@
   <ng-template eurekaxModalContainer></ng-template>
 </eurekax-base-card>
 
-<div (click)="close()" class="bg-black bg-opacity-50 z-20 h-screen w-screen absolute top-0"></div>
+<div (click)="close(true)" class="bg-black bg-opacity-50 z-20 h-screen w-screen absolute top-0"></div>

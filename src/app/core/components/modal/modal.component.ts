@@ -8,6 +8,9 @@ import {ModalContainerDirective} from "./modal-container.directive";
 })
 export class ModalComponent {
   @Input() title?: string;
+  @Input() position: 'center' | 'top' | 'bottom' = 'center';
+  @Input() showCloseButton: boolean = true;
+  @Input() backdropDismiss: boolean = true;
   @Output() closeEvent: EventEmitter<void> = new EventEmitter<void>();
   @ViewChild(ModalContainerDirective, {static: true}) modalDirective!: ModalContainerDirective;
 
@@ -15,9 +18,11 @@ export class ModalComponent {
   }
 
 
-  close() {
-    this.elementRef.nativeElement.remove();
-    this.closeEvent.emit()
+  close(backdrop?: boolean) {
+    if(!backdrop || (backdrop && this.backdropDismiss)) {
+      this.elementRef.nativeElement.remove();
+      this.closeEvent.emit()
+    }
   }
 
 }

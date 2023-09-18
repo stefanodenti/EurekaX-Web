@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StandardRoutingModule } from './standard-routing.module';
 import { LayoutStandardComponent } from './layout-standard.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { UikitModule } from 'src/app/uikit/uikit.module';
 
 
 
@@ -11,7 +12,8 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     StandardRoutingModule,
-    CoreModule
+    CoreModule,
+    UikitModule
   ]
 })
 export class StandardModule { }

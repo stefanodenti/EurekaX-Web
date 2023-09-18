@@ -15,6 +15,9 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {AppConfigService} from "./core/services/app-config.service";
+import { LicenseComponent } from './pages/license/license.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import {AppConfigService} from "./core/services/app-config.service";
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
     provideAnalytics(() => getAnalytics()),
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxEchartsModule.forRoot({ echarts }),
   ],
   providers: [
     ScreenTrackingService,
@@ -42,6 +46,6 @@ import {AppConfigService} from "./core/services/app-config.service";
 })
 export class AppModule {
 
-  constructor(private appConfigService: AppConfigService) {
+  constructor() {
   }
 }

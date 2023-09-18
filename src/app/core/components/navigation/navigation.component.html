@@ -2,7 +2,7 @@
   <li *ngFor="let navigation of navigations">
     <ng-container [ngSwitch]="navigation?.type">
       <ng-container *ngSwitchCase="'selector'">
-        <details >
+        <details #detailsElement>
           <summary [ngClass]="getCssClass(navigation)" class="hover:text-primary">
             <fa-icon *ngIf="!!navigation.icon" [icon]="$any(navigation.icon)" size="xl"></fa-icon>
             {{ navigation?.label }}
@@ -11,7 +11,7 @@
           <li
             *ngFor="let subNav of navigation?.childs"
           >
-            <a  [ngClass]="getCssClass(subNav)" [routerLink]="subNav.routerLink" class="hover:text-primary min-w-[100px]">
+            <a (click)="detailsElement.removeAttribute('open')"  [ngClass]="getCssClass(subNav)" [routerLink]="subNav.routerLink" class="hover:text-primary min-w-[100px]">
               <fa-icon *ngIf="!!subNav.icon" [icon]="$any(navigation.icon)"></fa-icon>
               {{ subNav.label }}
             </a>

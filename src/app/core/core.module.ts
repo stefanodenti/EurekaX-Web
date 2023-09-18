@@ -17,6 +17,10 @@ import { NotificationCenterComponent } from './components/notification-center/no
 import { NotificationComponent } from './components/notification/notification.component';
 import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { IsAuthorizedDirective } from './directives/is-authorized.directive';
+import { ModalComponent } from './components/modal/modal.component';
+import {UikitModule} from "../uikit/uikit.module";
+import { ModalContainerDirective } from './components/modal/modal-container.directive';
 
 
 @NgModule({
@@ -33,15 +37,19 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     AlertComponent,
     NotificationCenterComponent,
     NotificationComponent,
-    NotificationButtonComponent
+    NotificationButtonComponent,
+    IsAuthorizedDirective,
+    ModalComponent,
+    ModalContainerDirective
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        FormsModule,
-        NavigationComponent,
-        FontAwesomeModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    NavigationComponent,
+    FontAwesomeModule,
+    UikitModule
+  ],
     exports: [
         NavbarComponent,
         FooterComponent,
@@ -51,7 +59,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
         ThemeSelectorComponent,
         LanguageSelectorComponent,
         AlertListComponent,
-        NotificationCenterComponent
+        NotificationCenterComponent,
+        IsAuthorizedDirective
     ],
 })
 export class CoreModule {

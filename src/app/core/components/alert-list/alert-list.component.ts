@@ -18,26 +18,6 @@ export class AlertListComponent {
       .subscribe({
         next: (alert: Notification) => this.alerts.update(value => [alert, ...value])
       });
-
-    setTimeout(() => {
-      this.notificationService.createNotification({
-        type: NotificationType.danger,
-        title: 'Ottimo lavoro!',
-        message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
-        routerLink: '/home',
-        presentation: NotificationPresentationType.both
-      });
-
-
-      this.notificationService.createNotification({
-        id: '1',
-        type: NotificationType.info,
-        title: 'Ottimo lavoro!',
-        message: 'E\' stato aggiunto correttamente il tuo nuovo video.',
-        routerLink: '/home',
-        presentation: NotificationPresentationType.both
-      })
-    }, 3000);
   }
 
   removeAlert(id: string) {

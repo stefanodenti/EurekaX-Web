@@ -8,7 +8,7 @@ import {Footer} from "../../models/config.model";
 })
 export class FooterComponent implements OnInit {
   @Input() config: Footer | null = null;
-  year = new Date().getFullYear()
+  year = new Date().getFullYear();
   constructor() { }
 
   ngOnInit(): void {

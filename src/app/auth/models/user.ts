@@ -13,4 +13,29 @@ export interface User {
     lastSignInTime: string;
   };
   isOnline: boolean;
+  userType: UserType;
+}
+
+export interface UserType {
+  id: string;
+  name: string;
+  description: string | null;
+  imageUrl: string | null;
+  roleIds: string[]
+  roles: Role[];
+}
+export interface Role{
+  id: string;
+  code: string;
+  name: string;
+  description: string | null;
+  actionIds: string[]
+  actions: Action[];
+}
+
+export interface Action {
+  id: string;
+  code: string;
+  name: string;
+  description: string | null;
 }

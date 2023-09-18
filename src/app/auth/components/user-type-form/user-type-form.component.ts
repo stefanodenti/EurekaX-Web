@@ -3,6 +3,8 @@ import {Action, Role, UserType} from "../../models/user";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {concatMap, finalize, Subscription, take, timer} from "rxjs";
 import {QueryFirestoreService} from "../../../core/services/query-firestore.service";
+import { documentId } from '@angular/fire/firestore';
+import { Filter } from 'src/app/core/models/query.model';
 
 @Component({
   selector: 'eurekax-user-type-form',
@@ -60,14 +62,15 @@ export class UserTypeFormComponent {
       }
 
       this.isAutoCompleteLoading = true;
+      this.rolesArray = [];
       this.subscriptionAutoComplete = timer(this.debounceAutoComplete)
         .pipe(
           take(1),
           concatMap(() => {
             return this.queryService.search(
               [
-                // {keyProp: 'id', type: "not-in", keyword: this.form.value.actions?.map(action => action.id) ?? []},
-                {keyProp: 'name', type: '>=', keyword: text}
+               ...(this.form.value.roles && this.form.value.roles?.length > 0 ? [{keyProp: 'name', type: "not-in", keyword: this.form.value.roles?.map(r => r.name) } as Filter]: []),
+                {keyProp: 'name', type: '>=', keyword: text},
               ],
               'name',
               999,
@@ -91,11 +94,11 @@ export class UserTypeFormComponent {
     }
   }
 
-  selectRole(role: Role) {
-    console.log(role)
+  selectRole(role: Role, input: any) {
     this.form.value.roles?.push(role);
-    console.log(this.form.value.roles)
-    this.openDropdown = false;
+    this.rolesArray = [];
+    input.value = '';
+    input.focus();
   }
 
   removeRole(id: string) {

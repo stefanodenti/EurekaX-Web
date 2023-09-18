@@ -24,30 +24,60 @@
     <label class="label">
       <span class="label-text">Roles</span>
     </label>
-    <div class="dropdown" [class.dropdown-open]="openDropdown">
-      <div class="input input-bordered flex items-center gap-1 ">
-        <ng-container *ngFor="let role of form.value.roles">
-          <div class="tooltip" [attr.data-tip]="role.code">
-            <div class="badge badge-primary badge-outline gap-2.5 whitespace-nowrap">
-              <a class="cursor-pointer">
-                <fa-icon (click)="removeRole(role.id)" icon="xmark"></fa-icon>
-              </a>
-              {{role.name}}
-            </div>
-          </div>
-        </ng-container>
-        <input #roleInput (input)="search(roleInput.value)" type="text" placeholder="Add Role..." class="w-full bg-transparent outline-0 text-base-content">
-        <span *ngIf="isAutoCompleteLoading" class="loading loading-dots loading-xs text-base-content"></span>
-        <ul class="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-full -bottom-[6rem]" *ngIf="openDropdown">
-          <li *ngFor="let role of rolesArray">
-            <a (click)="selectRole(role); roleInput.value = ''; roleInput.focus()">
-              {{role.name}} (code: {{role.code}})
+    <div class="flex gap-4 pb-3 flex-wrap">
+      <ng-container *ngFor="let role of form.value.roles">
+        <div class="tooltip" [attr.data-tip]="role.code">
+          <div
+            class="badge badge-primary badge-outline gap-2.5 whitespace-nowrap"
+          >
+            <a class="cursor-pointer">
+              <fa-icon (click)="removeRole(role.id)" icon="xmark"></fa-icon>
             </a>
-          </li>
-        </ul>
-      </div>
+            {{ role.name }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="input input-bordered flex items-center gap-1">
+      <input
+        #roleInput
+        (input)="search(roleInput.value)"
+        type="text"
+        placeholder="Add Role..."
+        class="w-full bg-transparent outline-0 text-base-content"
+      />
+      <label
+        class="label"
+        *ngIf="!!form.get('roles')?.errors && form.get('roles')?.dirty"
+      >
+        <span
+          class="label-text-alt text-error"
+          *ngIf="!!form.get('roles')?.hasError('required')"
+          >You have to add at least one role.</span
+        >
+      </label>
+      <span
+        *ngIf="isAutoCompleteLoading"
+        class="loading loading-dots loading-xs text-base-content"
+      ></span>
     </div>
   </div>
+  <div class="max-h-32 overflow-y-auto">
+  <ul
+    class="menu menu-vertical shadow bg-base-100 rounded-box w-full "
+    *ngIf="rolesArray.length > 0"
+  >
+    <li *ngFor="let role of rolesArray">
+      <a
+        (click)="
+          selectRole(role, roleInput)"
+      >
+        {{ role.name }} (code: {{ role.code }})
+      </a>
+    </li>
+  </ul>
+</div>
 </form>
 
 <div class="flex w-full justify-center pt-4">

@@ -60,9 +60,8 @@ export class AuthManagerComponent {
     private notificationService: NotificationsService
   ) {
     this.search();
-
-
   }
+
   search() {
     this.queryService
       .search(
@@ -74,7 +73,7 @@ export class AuthManagerComponent {
       )
       .then((res: any) => {
         console.log('ReS', res);
-        this.lastVisibleEl = res.docs[res.docs.length - 1] as any;
+        this.lastVisibleEl = res.docs[res.docs.length - 1];
         this.rows = [
           ...this.rows,
           ...res.docs.map((re: any) => {
@@ -188,15 +187,7 @@ export class AuthManagerComponent {
         const role = item as Role;
         if(role.actionIds.length > 0) {
           this.loadingForm = true;
-          this.queryService
-            .search(
-              [{ keyProp: documentId(), type: 'in', keyword: role.actionIds }],
-              '',
-              999,
-              null,
-              'auth-actions'
-            )
-            .then((res: any) => {
+            this.queryService.getByDocumentByIds('auth-actions', role.actionIds).subscribe({next:(res: any) => {
               role.actions = res.docs.map((re: any) => {
                 let data = re.data() as Action;
                 data.id = re.id;
@@ -205,7 +196,7 @@ export class AuthManagerComponent {
               this.loadingForm = false;
               this.selectedRow = item;
               this.formVisible = true;
-            });
+            }});
         } else {
           this.selectedRow = item;
           this.formVisible = true;
@@ -216,21 +207,7 @@ export class AuthManagerComponent {
         const userType = item as UserType;
         if(userType.roleIds?.length > 0) {
           this.loadingForm = true;
-          this.queryService
-            .search(
-              [
-                {
-                  keyProp: documentId(),
-                  type: 'in',
-                  keyword: userType.roleIds,
-                },
-              ],
-              '',
-              999,
-              null,
-              'auth-roles'
-            )
-            .then((res: any) => {
+          this.queryService.getByDocumentByIds('auth-roles', userType.roleIds).subscribe({next:(res: any) => {
               userType.roles = res.docs.map((re: any) => {
                 let data = re.data() as Action;
                 data.id = re.id;
@@ -240,7 +217,7 @@ export class AuthManagerComponent {
               this.selectedRow = item;
               this.formVisible = true;
 
-            });
+            }});
         } else {
           this.selectedRow = item;
           this.formVisible = true;

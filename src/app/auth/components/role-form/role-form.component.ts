@@ -1,3 +1,4 @@
+import { Filter } from './../../../core/models/query.model';
 import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import {Action, Role} from "../../models/user";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
@@ -68,14 +69,14 @@ export class RoleFormComponent {
       }
 
       this.isAutoCompleteLoading = true;
-      console.log(text)
+      this.actionsArray = [];
       this.subscriptionAutoComplete = timer(this.debounceAutoComplete)
         .pipe(
           take(1),
           concatMap(() => {
             return this.queryService.search(
               [
-                // {keyProp: 'id', type: "not-in", keyword: this.form.value.actions?.map(action => action.id) ?? []},
+                ...(this.form.value.actions && this.form.value.actions?.length > 0 ? [{keyProp: 'name', type: "not-in", keyword: this.form.value.actions?.map(r => r.name) } as Filter]: []),
                 {keyProp: 'name', type: '>=', keyword: text}
               ],
             'name',
@@ -100,9 +101,11 @@ export class RoleFormComponent {
     }
   }
 
-  selectAction(action: Action) {
+  selectAction(action: Action, input: any) {
     this.form.value.actions?.push(action);
-    this.openDropdown = false;
+    this.actionsArray = [];
+    input.value = '';
+    input.focus();
   }
 
   removeAction(id: string) {
